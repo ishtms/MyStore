@@ -6,13 +6,13 @@ export default class NavigationBar extends Component {
             <div>
              <nav className="site-menu">
                     <ul>
-                        <li className="has-megamenu"><a href="index-2.html"><span>Home</span></a>
+                        <li className="has-megamenu"><a href="/"><span>Home</span></a>
                         <ul className="mega-menu">
-                            <li><a className="d-block img-thumbnail text-center navi-link" href="index-2.html"><img alt="Featured Products Slider" src="img/mega-menu-home/01.jpg" />
+                            <li><a className="d-block img-thumbnail text-center navi-link" href="/shopping#/featured"><img alt="Featured Products Slider" src="img/mega-menu-home/01.jpg" />
                                 <h6 className="mt-3">Featured Products Slider</h6></a></li>
-                            <li><a className="d-block img-thumbnail text-center navi-link" href="home-featured-categories.html"><img alt="Featured Categories" src="img/mega-menu-home/02.jpg" />
+                            <li><a className="d-block img-thumbnail text-center navi-link" href="/shopping#/featured"><img alt="Featured Categories" src="img/mega-menu-home/02.jpg" />
                                 <h6 className="mt-3">Featured Categories</h6></a></li>
-                            <li><a className="d-block img-thumbnail text-center navi-link" href="home-collection-showcase.html"><img alt="Products Collection Showcase" src="img/mega-menu-home/03.jpg" />
+                            <li><a className="d-block img-thumbnail text-center navi-link" href="/shopping#/showcase"><img alt="Products Collection Showcase" src="img/mega-menu-home/03.jpg" />
                                 <h6 className="mt-3">Products Collection Showcase</h6></a></li>
                             <li>
                             <div className="img-thumbnail text-center"><img alt="More To Come. Stay Tuned!" src="img/mega-menu-home/04.jpg" />
@@ -21,32 +21,20 @@ export default class NavigationBar extends Component {
                             </li>
                         </ul>
                         </li>
-                        <li><a href="shop-grid-ls.html"><span>Shop</span></a>
+                        <li><a href="/shopping#/shop-grid"><span>Shop</span></a>
                         <ul className="sub-menu">
-                            <li><a href="shop-categories.html">Shop Categories</a></li>
-                            <li className="has-children"><a href="shop-grid-ls.html"><span>Shop Grid</span></a>
-                            <ul className="sub-menu">
-                                <li><a href="shop-grid-ls.html">Grid Left Sidebar</a></li>
-                                <li><a href="shop-grid-rs.html">Grid Right Sidebar</a></li>
-                                <li><a href="shop-grid-ns.html">Grid No Sidebar</a></li>
-                            </ul>
-                            </li>
-                            <li className="has-children"><a href="shop-list-ls.html"><span>Shop List</span></a>
-                            <ul className="sub-menu">
-                                <li><a href="shop-list-ls.html">List Left Sidebar</a></li>
-                                <li><a href="shop-list-rs.html">List Right Sidebar</a></li>
-                                <li><a href="shop-list-ns.html">List No Sidebar</a></li>
-                            </ul>
-                            </li>
-                            <li><a href="shop-single.html">Single Product</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li className="has-children"><a href="checkout-address.html"><span>Checkout</span></a>
+                            <li><a href="/shopping#/shop-categories">Shop Categories</a></li>
+                            <li className="has-children"><a href="/shopping#/shop-grid"><span>Shop Grid</span></a>
+                           </li>
+                            <li><a href="/shopping#/shop-single">Single Product</a></li>
+                            <li><a href="/payment#/cart">Cart</a></li>
+                            <li className="has-children"><a href="/payment#/checkout-address"><span>Checkout</span></a>
                             <ul className="sub-menu">             
-                                <li><a href="checkout-address.html">Address</a></li>
-                                <li><a href="checkout-shipping.html">Shipping</a></li>
-                                <li><a href="checkout-payment.html">Payment</a></li>
-                                <li><a href="checkout-review.html">Review</a></li>
-                                <li><a href="checkout-complete.html">Complete</a></li>
+                                <li><a href="/payment#/checkout-address">Address</a></li>
+                                <li><a href="/payment#/checkout-shipping">Shipping</a></li>
+                                <li><a href="/payment#/checkout-payment">Payment</a></li>
+                                <li><a href="/payment#/checkout-review">Review</a></li>
+                                <li><a href="/payment#/checkout-complete">Complete</a></li>
                             </ul>
                             </li>
                         </ul>
@@ -92,91 +80,26 @@ export default class NavigationBar extends Component {
                             </li>
                         </ul>
                         </li>
-                        <li className="active"><a href="account-orders.html"><span>Account</span></a>
+                        <li className="active"><a href="/profile#/account-orders"><span>Account</span></a>
                         <ul className="sub-menu">
-                            <li className="active"><a href="account-login.html">Login / Register</a></li>
-                            <li><a href="account-password-recovery.html">Password Recovery</a></li>
-                            <li><a href="account-orders.html">Orders List</a></li>
-                            <li><a href="account-wishlist.html">Wishlist</a></li>
-                            <li><a href="account-profile.html">Profile Page</a></li>
-                            <li><a href="account-address.html">Contact / Shipping Address</a></li>
-                            <li><a href="account-tickets.html">My Tickets</a></li>
+                            <li className="active"><a href="/login">Login / Register</a></li>
+                            <li><a href="/profile#/account-password-recovery">Password Recovery</a></li>
+                            <li><a href="/profile#/account-orders">Orders List</a></li>
+                            <li><a href="/profile#/account-wishlist">Wishlist</a></li>
+                            <li><a href="/profile#/account-profile">Profile Page</a></li>
+                            <li><a href="/profile#/account-address">Contact / Shipping Address</a></li>
+                            <li><a href="/profile#/account-tickets">My Tickets</a></li>
                         </ul>
                         </li>
-                        <li><a href="blog-rs.html"><span>Blog</span></a>
-                        <ul className="sub-menu">
-                            <li className="has-children"><a href="blog-rs.html"><span>Blog Layout</span></a>
-                            <ul className="sub-menu">
-                                <li><a href="blog-rs.html">Blog Right Sidebar</a></li>
-                                <li><a href="blog-ls.html">Blog Left Sidebar</a></li>
-                                <li><a href="blog-ns.html">Blog No Sidebar</a></li>
-                            </ul>
-                            </li>
-                            <li className="has-children"><a href="blog-single-rs.html"><span>Single Post Layout</span></a>
-                            <ul className="sub-menu">
-                                <li><a href="blog-single-rs.html">Post Right Sidebar</a></li>
-                                <li><a href="blog-single-ls.html">Post Left Sidebar</a></li>
-                                <li><a href="blog-single-ns.html">Post No Sidebar</a></li>
-                            </ul>
-                            </li>
-                        </ul>
+                        <li><a href="/company#/blog"><span>Blog</span></a>
                         </li>
                         <li><a href="#"><span>Pages</span></a>
                         <ul className="sub-menu">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="faq.html">Help / FAQ</a></li>
-                            <li><a href="order-tracking.html">Order Tracking</a></li>
-                            <li><a href="search-results.html">Search Results</a></li>
-                            <li><a href="404.html">404 Not Found</a></li>
-                            <li><a className="text-danger" href="docs/dev-setup.html">Documentation</a></li>
-                        </ul>
-                        </li>
-                        <li className="has-megamenu"><a href="components/accordion.html"><span>Components</span></a>
-                        <ul className="mega-menu">
-                            <li><span className="mega-menu-title">A - F</span>
-                            <ul className="sub-menu">
-                                <li><a href="components/accordion.html">Accordion</a></li>
-                                <li><a href="components/alerts.html">Alerts</a></li>
-                                <li><a href="components/buttons.html">Buttons</a></li>
-                                <li><a href="components/cards.html">Cards</a></li>
-                                <li><a href="components/carousel.html">Carousel</a></li>
-                                <li><a href="components/countdown.html">Countdown</a></li>
-                                <li><a href="components/forms.html">Forms</a></li>
-                            </ul>
-                            </li>
-                            <li><span className="mega-menu-title">G - M</span>
-                            <ul className="sub-menu">
-                                <li><a href="components/gallery.html">Gallery</a></li>
-                                <li><a href="components/google-maps.html">Google Maps</a></li>
-                                <li><a href="components/images.html">Images &amp; Figures</a></li>
-                                <li><a href="components/list-group.html">List Group</a></li>
-                                <li><a href="components/market-social-buttons.html">Market &amp; Social Buttons</a></li>
-                                <li><a href="components/media.html">Media Object</a></li>
-                                <li><a href="components/modal.html">Modal</a></li>
-                            </ul>
-                            </li>
-                            <li><span className="mega-menu-title">P - T</span>
-                            <ul className="sub-menu">
-                                <li><a href="components/pagination.html">Pagination</a></li>
-                                <li><a href="components/pills.html">Pills</a></li>
-                                <li><a href="components/progress-bars.html">Progress Bars</a></li>
-                                <li><a href="components/shop-items.html">Shop Items</a></li>
-                                <li><a href="components/steps.html">Steps</a></li>
-                                <li><a href="components/tables.html">Tables</a></li>
-                                <li><a href="components/tabs.html">Tabs</a></li>
-                            </ul>
-                            </li>
-                            <li><span className="mega-menu-title">T - W</span>
-                            <ul className="sub-menu">
-                                <li><a href="components/team.html">Team</a></li>
-                                <li><a href="components/toasts.html">Toast Notifications</a></li>
-                                <li><a href="components/tooltips-popovers.html">Tooltips &amp; Popovers</a></li>
-                                <li><a href="components/typography.html">Typography</a></li>
-                                <li><a href="components/video-player.html">Video Player</a></li>
-                                <li><a href="components/widgets.html">Widgets</a></li>
-                            </ul>
-                            </li>
+                            <li><a href="/company#/about">About Us</a></li>
+                            <li><a href="/company#/contacts">Contacts</a></li>
+                            <li><a href="/company#/faq">Help / FAQ</a></li>
+                            <li><a href="/profile#/order-tracking">Order Tracking</a></li>
+                            <li><a href="/shopping#/search-results">Search Results</a></li>
                         </ul>
                         </li>
                     </ul>

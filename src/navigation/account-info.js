@@ -40,7 +40,7 @@ export default class AccountInfo extends Component {
                                 <div className="column text-right"><span className="text-lg text-medium">$289.68&nbsp;</span></div>
                             </div>
                             <div className="toolbar-dropdown-group">
-                                <div className="column"><a className="btn btn-sm btn-block btn-secondary" href="/paymen#/cart">View Cart</a></div>
+                                <div className="column"><a className="btn btn-sm btn-block btn-secondary" href="/payment#/cart">View Cart</a></div>
                                 <div className="column"><a className="btn btn-sm btn-block btn-success" href="/payment#/checkout-address">Checkout</a></div>
                             </div>
                             </div>
