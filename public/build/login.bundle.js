@@ -21222,6 +21222,10 @@ var _main = __webpack_require__(82);
 
 var _main2 = _interopRequireDefault(_main);
 
+var _footer = __webpack_require__(89);
+
+var _footer2 = _interopRequireDefault(_footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21526,340 +21530,7 @@ var Login = function (_Component) {
                                 )
                             )
                         ),
-                        _react2.default.createElement(
-                            'footer',
-                            { className: 'site-footer' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'container' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'row' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-lg-3 col-md-6' },
-                                        _react2.default.createElement(
-                                            'section',
-                                            { className: 'widget widget-light-skin' },
-                                            _react2.default.createElement(
-                                                'h3',
-                                                { className: 'widget-title' },
-                                                'Get In Touch With Us'
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                { className: 'text-white' },
-                                                'Phone: 00 33 169 7720'
-                                            ),
-                                            _react2.default.createElement(
-                                                'ul',
-                                                { className: 'list-unstyled text-sm text-white' },
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'span',
-                                                        { className: 'opacity-50' },
-                                                        'Monday-Friday:'
-                                                    ),
-                                                    '9.00 am - 8.00 pm'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'span',
-                                                        { className: 'opacity-50' },
-                                                        'Saturday:'
-                                                    ),
-                                                    '10.00 am - 6.00 pm'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'p',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'a',
-                                                    { className: 'navi-link-light', href: '#' },
-                                                    'support@unishop.com'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'social-button shape-circle sb-facebook sb-light-skin', href: '#' },
-                                                _react2.default.createElement('i', { className: 'socicon-facebook' })
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'social-button shape-circle sb-twitter sb-light-skin', href: '#' },
-                                                _react2.default.createElement('i', { className: 'socicon-twitter' })
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'social-button shape-circle sb-instagram sb-light-skin', href: '#' },
-                                                _react2.default.createElement('i', { className: 'socicon-instagram' })
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'social-button shape-circle sb-google-plus sb-light-skin', href: '#' },
-                                                _react2.default.createElement('i', { className: 'socicon-googleplus' })
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-lg-3 col-md-6' },
-                                        _react2.default.createElement(
-                                            'section',
-                                            { className: 'widget widget-light-skin' },
-                                            _react2.default.createElement(
-                                                'h3',
-                                                { className: 'widget-title' },
-                                                'Our Mobile App'
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'market-button apple-button mb-light-skin', href: '#' },
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-subtitle' },
-                                                    'Download on the'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-title' },
-                                                    'App Store'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'market-button google-button mb-light-skin', href: '#' },
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-subtitle' },
-                                                    'Download on the'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-title' },
-                                                    'Google Play'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'a',
-                                                { className: 'market-button windows-button mb-light-skin', href: '#' },
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-subtitle' },
-                                                    'Download on the'
-                                                ),
-                                                _react2.default.createElement(
-                                                    'span',
-                                                    { className: 'mb-title' },
-                                                    'Windows Store'
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-lg-3 col-md-6' },
-                                        _react2.default.createElement(
-                                            'section',
-                                            { className: 'widget widget-links widget-light-skin' },
-                                            _react2.default.createElement(
-                                                'h3',
-                                                { className: 'widget-title' },
-                                                'About Us'
-                                            ),
-                                            _react2.default.createElement(
-                                                'ul',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Careers'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'About Unishop'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Our Story'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Services'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Our Blog'
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-lg-3 col-md-6' },
-                                        _react2.default.createElement(
-                                            'section',
-                                            { className: 'widget widget-links widget-light-skin' },
-                                            _react2.default.createElement(
-                                                'h3',
-                                                { className: 'widget-title' },
-                                                'Account & Shipping Info'
-                                            ),
-                                            _react2.default.createElement(
-                                                'ul',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Your Account'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Shipping Rates & Policies'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Refunds & Replacements'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Taxes'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Delivery Info'
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'li',
-                                                    null,
-                                                    _react2.default.createElement(
-                                                        'a',
-                                                        { href: '#' },
-                                                        'Affiliate Program'
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement('hr', { className: 'hr-light mt-2 margin-bottom-2x' }),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'row' },
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-md-7 padding-bottom-1x' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'margin-bottom-1x', style: { maxWidth: 615 } },
-                                            _react2.default.createElement('img', { src: 'img/payment_methods.png', alt: 'Payment Methods' })
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'div',
-                                        { className: 'col-md-5 padding-bottom-1x' },
-                                        _react2.default.createElement('div', { className: 'margin-top-1x hidden-md-up' }),
-                                        _react2.default.createElement(
-                                            'form',
-                                            { className: 'subscribe-form', action: 'http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&id=1194bb7544', method: 'post', target: '_blank', noValidate: true },
-                                            _react2.default.createElement(
-                                                'div',
-                                                { className: 'clearfix' },
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { className: 'input-group input-light' },
-                                                    _react2.default.createElement('input', { className: 'form-control', type: 'email', name: 'EMAIL', placeholder: 'Your e-mail' }),
-                                                    _react2.default.createElement(
-                                                        'span',
-                                                        { className: 'input-group-addon' },
-                                                        _react2.default.createElement('i', { className: 'icon-mail' })
-                                                    )
-                                                ),
-                                                _react2.default.createElement(
-                                                    'div',
-                                                    { style: { position: 'absolute', left: '-5000px' }, 'aria-hidden': 'true' },
-                                                    _react2.default.createElement('input', { type: 'text', name: 'b_c7103e2c981361a6639545bd5_1194bb7544', tabIndex: -1 })
-                                                ),
-                                                _react2.default.createElement(
-                                                    'button',
-                                                    { className: 'btn btn-primary', type: 'submit' },
-                                                    _react2.default.createElement('i', { className: 'icon-check' })
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'span',
-                                                { className: 'form-text text-sm text-white opacity-50' },
-                                                'Subscribe to our Newsletter to receive early discount offers, latest news, sales and promo information.'
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'footer-copyright' },
-                                    '\xA9 All rights reserved. Made with \xA0',
-                                    _react2.default.createElement('i', { className: 'icon-heart text-danger' }),
-                                    _react2.default.createElement(
-                                        'a',
-                                        { href: 'http://rokaux.com/', target: '_blank' },
-                                        ' \xA0by rokaux'
-                                    )
-                                )
-                            )
-                        )
+                        _react2.default.createElement(_footer2.default, null)
                     ),
                     _react2.default.createElement(
                         'a',
@@ -25381,6 +25052,389 @@ var AccountInfo = function (_Component) {
 }(_react.Component);
 
 exports.default = AccountInfo;
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+    _inherits(Footer, _Component);
+
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+    }
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "footer",
+                    { className: "site-footer" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "container" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Get In Touch With Us"
+                                    ),
+                                    _react2.default.createElement(
+                                        "p",
+                                        { className: "text-white" },
+                                        "Phone: 00 33 169 7720"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        { className: "list-unstyled text-sm text-white" },
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "opacity-50" },
+                                                "Monday-Friday:"
+                                            ),
+                                            "9.00 am - 8.00 pm"
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "opacity-50" },
+                                                "Saturday:"
+                                            ),
+                                            "10.00 am - 6.00 pm"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "p",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { className: "navi-link-light", href: "#" },
+                                            "support@unishop.com"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-facebook sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-facebook" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-twitter sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-twitter" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-instagram sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-instagram" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-google-plus sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-googleplus" })
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Our Mobile App"
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button apple-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "App Store"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button google-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "Google Play"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button windows-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "Windows Store"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-links widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "About Us"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        null,
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Careers"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "About Unishop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Our Story"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Services"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Our Blog"
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-links widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Account & Shipping Info"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        null,
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Your Account"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Shipping Rates & Policies"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Refunds & Replacements"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Taxes"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Delivery Info"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Affiliate Program"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement("hr", { className: "hr-light mt-2 margin-bottom-2x" }),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-md-7 padding-bottom-1x" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "margin-bottom-1x", style: { maxWidth: 615 } },
+                                    _react2.default.createElement("img", { src: "img/payment_methods.png", alt: "Payment Methods" })
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-md-5 padding-bottom-1x" },
+                                _react2.default.createElement("div", { className: "margin-top-1x hidden-md-up" }),
+                                _react2.default.createElement(
+                                    "form",
+                                    { className: "subscribe-form", action: "http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&id=1194bb7544", method: "post", target: "_blank", noValidate: true },
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "clearfix" },
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "input-group input-light" },
+                                            _react2.default.createElement("input", { className: "form-control", type: "email", name: "EMAIL", placeholder: "Your e-mail" }),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "input-group-addon" },
+                                                _react2.default.createElement("i", { className: "icon-mail" })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { style: { position: 'absolute', left: '-5000px' }, "aria-hidden": "true" },
+                                            _react2.default.createElement("input", { type: "text", name: "b_c7103e2c981361a6639545bd5_1194bb7544", tabIndex: -1 })
+                                        ),
+                                        _react2.default.createElement(
+                                            "button",
+                                            { className: "btn btn-primary", type: "submit" },
+                                            _react2.default.createElement("i", { className: "icon-check" })
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "form-text text-sm text-white opacity-50" },
+                                        "Subscribe to our Newsletter to receive early discount offers, latest news, sales and promo information."
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "footer-copyright" },
+                            "\xA9 All rights reserved. Made with \xA0",
+                            _react2.default.createElement("i", { className: "icon-heart text-danger" }),
+                            _react2.default.createElement(
+                                "a",
+                                { href: "http://rokaux.com/", target: "_blank" },
+                                " \xA0by rokaux"
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Footer;
+}(_react.Component);
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);
