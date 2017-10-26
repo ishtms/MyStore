@@ -3384,15 +3384,77 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_Component) {
   _inherits(App, _Component);
 
-  function App() {
+  function App(props) {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      featured: [{
+        itemName: "Oakley Kickback",
+        price: "$155.00",
+        imageLink: "img/shop/products/03.jpg",
+        href: "#"
+      }]
+    };
+    return _this;
   }
 
   _createClass(App, [{
     key: 'render',
     value: function render() {
+      var something = this.state.featured.map(function (curr) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'grid-item' },
+          _react2.default.createElement(
+            'div',
+            { className: 'product-card' },
+            _react2.default.createElement(
+              'div',
+              { className: 'rating-stars' },
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star' })
+            ),
+            _react2.default.createElement(
+              'a',
+              { className: 'product-thumb', href: curr.href },
+              _react2.default.createElement('img', { src: curr.imageLink, alt: 'Product' })
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'product-title' },
+              _react2.default.createElement(
+                'a',
+                { href: curr.href },
+                curr.itemName
+              )
+            ),
+            _react2.default.createElement(
+              'h4',
+              { className: 'product-price' },
+              curr.price
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'product-buttons' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
+                _react2.default.createElement('i', { className: 'icon-heart' })
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
+                'Add to Cart'
+              )
+            )
+          )
+        );
+      });
       return _react2.default.createElement(
         'div',
         null,
@@ -3866,7 +3928,7 @@ var App = function (_Component) {
             { className: 'offcanvas-container', id: 'mobile-menu' },
             _react2.default.createElement(
               'a',
-              { className: 'account-link', href: 'account-orders.html' },
+              { className: 'account-link', href: '/profile#/account-orders' },
               _react2.default.createElement(
                 'div',
                 { className: 'user-ava' },
@@ -3901,7 +3963,7 @@ var App = function (_Component) {
                     null,
                     _react2.default.createElement(
                       'a',
-                      { href: 'index-2.html' },
+                      { href: '/' },
                       _react2.default.createElement(
                         'span',
                         null,
@@ -3919,7 +3981,7 @@ var App = function (_Component) {
                       _react2.default.createElement(
                         'a',
                         { href: 'index-2.html' },
-                        'Featured Products Slider'
+                        'Featured Products'
                       )
                     ),
                     _react2.default.createElement(
@@ -3937,7 +3999,7 @@ var App = function (_Component) {
                       _react2.default.createElement(
                         'a',
                         { href: 'home-collection-showcase.html' },
-                        'Products Collection Showcase'
+                        'Top Sellers'
                       )
                     )
                   )
@@ -5265,7 +5327,7 @@ var App = function (_Component) {
                         _react2.default.createElement(
                           'h6',
                           { className: 'mt-3' },
-                          'Featured Products Slider'
+                          'Featured Products'
                         )
                       )
                     ),
@@ -5293,7 +5355,7 @@ var App = function (_Component) {
                         _react2.default.createElement(
                           'h6',
                           { className: 'mt-3' },
-                          'Products Collection Showcase'
+                          'Top Sellers'
                         )
                       )
                     ),
@@ -7004,290 +7066,7 @@ var App = function (_Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'owl-carousel', 'data-owl-carousel': '{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-badge text-danger' },
-                      '22% Off'
-                    ),
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/09.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Rocket Dog'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      _react2.default.createElement(
-                        'del',
-                        null,
-                        '$44.95'
-                      ),
-                      '$34.99'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'rating-stars' },
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star' })
-                    ),
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/03.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Oakley Kickback'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      '$155.00'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/12.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Vented Straw Fedora'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      '$49.50'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'rating-stars' },
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' }),
-                      _react2.default.createElement('i', { className: 'icon-star filled' })
-                    ),
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/11.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Top-Sider Fathom'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      '$90.00'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/04.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Waist Leather Belt'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      '$47.00'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'grid-item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'product-card' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-badge text-danger' },
-                      '50% Off'
-                    ),
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'product-thumb', href: 'shop-single.html' },
-                      _react2.default.createElement('img', { src: 'img/shop/products/01.jpg', alt: 'Product' })
-                    ),
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'product-title' },
-                      _react2.default.createElement(
-                        'a',
-                        { href: 'shop-single.html' },
-                        'Unionbay Park'
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'product-price' },
-                      _react2.default.createElement(
-                        'del',
-                        null,
-                        '$99.99'
-                      ),
-                      '$49.99'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'product-buttons' },
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                        _react2.default.createElement('i', { className: 'icon-heart' })
-                      ),
-                      _react2.default.createElement(
-                        'button',
-                        { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                        'Add to Cart'
-                      )
-                    )
-                  )
-                )
+                something
               )
             ),
             _react2.default.createElement(

@@ -2,7 +2,34 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      featured: [
+        {
+          itemName: "Oakley Kickback",
+          price: "$155.00",
+          imageLink: "img/shop/products/03.jpg",
+          href: "#"
+        }
+      ]
+    }
+  }
     render(){
+      let something = this.state.featured.map((curr)=>{
+        return (<div className="grid-item">
+        <div className="product-card">
+          <div className="rating-stars"><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star" />
+          </div><a className="product-thumb" href={curr.href}><img src={curr.imageLink} alt="Product" /></a>
+          <h3 className="product-title"><a href={curr.href}>{curr.itemName}</a></h3>
+          <h4 className="product-price">{curr.price}</h4>
+          <div className="product-buttons">
+            <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
+            <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+          </div>
+        </div>
+      </div>);
+      }) 
         return (
           <div>
           <div>
@@ -79,7 +106,7 @@ class App extends Component{
             </nav>
           </div>
           {/* Off-Canvas Mobile Menu*/}
-          <div className="offcanvas-container" id="mobile-menu"><a className="account-link" href="account-orders.html">
+          <div className="offcanvas-container" id="mobile-menu"><a className="account-link" href="/profile#/account-orders">
               <div className="user-ava"><img src="img/account/user-ava-md.jpg" alt="Daniel Adams" />
               </div>
               <div className="user-info">
@@ -87,11 +114,11 @@ class App extends Component{
               </div></a>
             <nav className="offcanvas-menu">
               <ul className="menu">
-                <li className="has-children active"><span><a href="index-2.html"><span>Home</span></a><span className="sub-menu-toggle" /></span>
+                <li className="has-children active"><span><a href="/"><span>Home</span></a><span className="sub-menu-toggle" /></span>
                   <ul className="offcanvas-submenu">
-                    <li className="active"><a href="index-2.html">Featured Products Slider</a></li>
-                    <li><a href="home-featured-categories.html">Featured Categories</a></li>
-                    <li><a href="home-collection-showcase.html">Products Collection Showcase</a></li>
+                    <li className="active"><a href="/shopping#/featured">Featured Products</a></li>
+                    <li><a href="/shopping#/featured">Featured Categories</a></li>
+                    <li><a href="">Top Sellers</a></li>
                   </ul>
                 </li>
                 <li className="has-children"><span><a href="shop-grid-ls.html"><span>Shop</span></a><span className="sub-menu-toggle" /></span>
@@ -292,11 +319,11 @@ class App extends Component{
                 <li className="has-megamenu active"><a href="index-2.html"><span>Home</span></a>
                   <ul className="mega-menu">
                     <li><a className="d-block img-thumbnail text-center navi-link" href="index-2.html"><img alt="Featured Products Slider" src="img/mega-menu-home/01.jpg" />
-                        <h6 className="mt-3">Featured Products Slider</h6></a></li>
+                        <h6 className="mt-3">Featured Products</h6></a></li>
                     <li><a className="d-block img-thumbnail text-center navi-link" href="home-featured-categories.html"><img alt="Featured Categories" src="img/mega-menu-home/02.jpg" />
                         <h6 className="mt-3">Featured Categories</h6></a></li>
                     <li><a className="d-block img-thumbnail text-center navi-link" href="home-collection-showcase.html"><img alt="Products Collection Showcase" src="img/mega-menu-home/03.jpg" />
-                        <h6 className="mt-3">Products Collection Showcase</h6></a></li>
+                        <h6 className="mt-3">Top Sellers</h6></a></li>
                     <li>
                       <div className="img-thumbnail text-center"><img alt="More To Come. Stay Tuned!" src="img/mega-menu-home/04.jpg" />
                         <h6 className="mt-3">More To Come. Stay Tuned!</h6>
@@ -650,81 +677,7 @@ class App extends Component{
               <h3 className="text-center mb-30">Featured Products</h3>
               <div className="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
                 {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card">
-                    <div className="product-badge text-danger">22% Off</div><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/09.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Rocket Dog</a></h3>
-                    <h4 className="product-price">
-                      <del>$44.95</del>$34.99
-                    </h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
-                {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card">
-                    <div className="rating-stars"><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star" />
-                    </div><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/03.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Oakley Kickback</a></h3>
-                    <h4 className="product-price">$155.00</h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
-                {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card"><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/12.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Vented Straw Fedora</a></h3>
-                    <h4 className="product-price">$49.50</h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
-                {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card">
-                    <div className="rating-stars"><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" /><i className="icon-star filled" />
-                    </div><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/11.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Top-Sider Fathom</a></h3>
-                    <h4 className="product-price">$90.00</h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
-                {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card"><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/04.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Waist Leather Belt</a></h3>
-                    <h4 className="product-price">$47.00</h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
-                {/* Product*/}
-                <div className="grid-item">
-                  <div className="product-card">
-                    <div className="product-badge text-danger">50% Off</div><a className="product-thumb" href="shop-single.html"><img src="img/shop/products/01.jpg" alt="Product" /></a>
-                    <h3 className="product-title"><a href="shop-single.html">Unionbay Park</a></h3>
-                    <h4 className="product-price">
-                      <del>$99.99</del>$49.99
-                    </h4>
-                    <div className="product-buttons">
-                      <button className="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i className="icon-heart" /></button>
-                      <button className="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                  </div>
-                </div>
+                {something}
               </div>
             </section>
             {/* Product Widgets*/}
