@@ -22318,8 +22318,8 @@ var Navigation = function (_Component) {
                             _react2.default.createElement('a', { className: 'offcanvas-toggle menu-toggle', href: '#mobile-menu', 'data-toggle': 'offcanvas' }),
                             _react2.default.createElement(
                                 'a',
-                                { className: 'site-logo', href: 'index-2.html' },
-                                _react2.default.createElement('img', { src: 'img/logo/logo.png', alt: 'Unishop' })
+                                { className: 'site-logo', href: '/' },
+                                _react2.default.createElement('img', { src: 'img/logo/logo.png', alt: 'MyStore' })
                             )
                         )
                     ),
@@ -25513,7 +25513,7 @@ var AccountInfo = function (_Component) {
                             _react2.default.createElement(
                                 "div",
                                 { className: "account" },
-                                _react2.default.createElement("a", { href: "account-orders.html" }),
+                                _react2.default.createElement("a", { href: "/profile#/account-address" }),
                                 _react2.default.createElement("i", { className: "icon-head" }),
                                 _react2.default.createElement(
                                     "ul",
@@ -25546,7 +25546,7 @@ var AccountInfo = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-profile.html" },
+                                            { href: "/profile#/account-profile" },
                                             "My Profile"
                                         )
                                     ),
@@ -25555,7 +25555,7 @@ var AccountInfo = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-orders.html" },
+                                            { href: "/profile#/account-orders" },
                                             "Orders List"
                                         )
                                     ),
@@ -25564,7 +25564,7 @@ var AccountInfo = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-wishlist.html" },
+                                            { href: "/profile#/account-wishlist" },
                                             "Wishlist"
                                         )
                                     ),
@@ -25585,7 +25585,7 @@ var AccountInfo = function (_Component) {
                             _react2.default.createElement(
                                 "div",
                                 { className: "cart" },
-                                _react2.default.createElement("a", { href: "cart.html" }),
+                                _react2.default.createElement("a", { href: "/payment#/cart" }),
                                 _react2.default.createElement("i", { className: "icon-bag" }),
                                 _react2.default.createElement(
                                     "span",
@@ -25618,7 +25618,7 @@ var AccountInfo = function (_Component) {
                                             { className: "dropdown-product-info" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "dropdown-product-title", href: "shop-single.html" },
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
                                                 "Unionbay Park"
                                             ),
                                             _react2.default.createElement(
@@ -25646,7 +25646,7 @@ var AccountInfo = function (_Component) {
                                             { className: "dropdown-product-info" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "dropdown-product-title", href: "shop-single.html" },
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
                                                 "Daily Fabric Cap"
                                             ),
                                             _react2.default.createElement(
@@ -25674,7 +25674,7 @@ var AccountInfo = function (_Component) {
                                             { className: "dropdown-product-info" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "dropdown-product-title", href: "shop-single.html" },
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
                                                 "Haan Crossbody"
                                             ),
                                             _react2.default.createElement(
@@ -25714,7 +25714,7 @@ var AccountInfo = function (_Component) {
                                             { className: "column" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "btn btn-sm btn-block btn-secondary", href: "cart.html" },
+                                                { className: "btn btn-sm btn-block btn-secondary", href: "/paymen#/cart" },
                                                 "View Cart"
                                             )
                                         ),
@@ -25723,7 +25723,7 @@ var AccountInfo = function (_Component) {
                                             { className: "column" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "btn btn-sm btn-block btn-success", href: "checkout-address.html" },
+                                                { className: "btn btn-sm btn-block btn-success", href: "/payment#/checkout-address" },
                                                 "Checkout"
                                             )
                                         )
@@ -25805,7 +25805,7 @@ var Footer = function (_Component) {
                                     _react2.default.createElement(
                                         "p",
                                         { className: "text-white" },
-                                        "Phone: 00 33 169 7720"
+                                        "Phone: +91 77 808 74266"
                                     ),
                                     _react2.default.createElement(
                                         "ul",
@@ -25837,7 +25837,7 @@ var Footer = function (_Component) {
                                         _react2.default.createElement(
                                             "a",
                                             { className: "navi-link-light", href: "#" },
-                                            "support@unishop.com"
+                                            "codemode.co@gmail.com"
                                         )
                                     ),
                                     _react2.default.createElement(
@@ -25936,7 +25936,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/company#/about" },
                                                 "Careers"
                                             )
                                         ),
@@ -25945,8 +25945,8 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
-                                                "About Unishop"
+                                                { href: "/company#/about" },
+                                                "About MyStore"
                                             )
                                         ),
                                         _react2.default.createElement(
@@ -25954,7 +25954,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/company#/contacts" },
                                                 "Our Story"
                                             )
                                         ),
@@ -25963,7 +25963,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/company#/faq" },
                                                 "Services"
                                             )
                                         ),
@@ -25972,7 +25972,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/company#/blog" },
                                                 "Our Blog"
                                             )
                                         )
@@ -25998,7 +25998,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/profile#/account-orders" },
                                                 "Your Account"
                                             )
                                         ),
@@ -26007,7 +26007,7 @@ var Footer = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "#" },
+                                                { href: "/company#/about" },
                                                 "Shipping Rates & Policies"
                                             )
                                         ),
@@ -26070,7 +26070,7 @@ var Footer = function (_Component) {
                                 _react2.default.createElement("div", { className: "margin-top-1x hidden-md-up" }),
                                 _react2.default.createElement(
                                     "form",
-                                    { className: "subscribe-form", action: "http://rokaux.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&id=1194bb7544", method: "post", target: "_blank", noValidate: true },
+                                    { className: "subscribe-form" },
                                     _react2.default.createElement(
                                         "div",
                                         { className: "clearfix" },
@@ -26087,7 +26087,7 @@ var Footer = function (_Component) {
                                         _react2.default.createElement(
                                             "div",
                                             { style: { position: 'absolute', left: '-5000px' }, "aria-hidden": "true" },
-                                            _react2.default.createElement("input", { type: "text", name: "b_c7103e2c981361a6639545bd5_1194bb7544", tabIndex: -1 })
+                                            _react2.default.createElement("input", { type: "text", tabIndex: -1 })
                                         ),
                                         _react2.default.createElement(
                                             "button",
@@ -26110,8 +26110,8 @@ var Footer = function (_Component) {
                             _react2.default.createElement("i", { className: "icon-heart text-danger" }),
                             _react2.default.createElement(
                                 "a",
-                                { href: "http://rokaux.com/", target: "_blank" },
-                                " \xA0by rokaux"
+                                { href: "https://www.codemode.co", target: "_blank" },
+                                " \xA0by Ishtmeet Singh"
                             )
                         )
                     )

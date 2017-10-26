@@ -23,7 +23,7 @@ export default class Navigation extends Component {
                         <div className="inner">
                             {/* Off-Canvas Toggle (#shop-categories)*/}<a className="offcanvas-toggle cats-toggle" href="#shop-categories" data-toggle="offcanvas" />
                             {/* Off-Canvas Toggle (#mobile-menu)*/}<a className="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas" />
-                            {/* Site Logo*/}<a className="site-logo" href="index-2.html"><img src="img/logo/logo.png" alt="Unishop" /></a>
+                            {/* Site Logo*/}<a className="site-logo" href="/"><img src="img/logo/logo.png" alt="MyStore" /></a>
                         </div>
                     </div>
                     {/* Main Navigation*/}
