@@ -60,11 +60,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 49);
+/******/ 	return __webpack_require__(__webpack_require__.s = 85);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(18);
+} else {
+  module.exports = __webpack_require__(19);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -254,7 +269,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -296,7 +311,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -353,22 +368,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(17);
-} else {
-  module.exports = __webpack_require__(18);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 4 */
@@ -471,6 +471,42 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(31)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(32)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 6 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -489,10 +525,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -506,7 +542,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -558,10 +594,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -575,9 +611,9 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(8);
+  var invariant = __webpack_require__(3);
+  var warning = __webpack_require__(8);
+  var ReactPropTypesSecret = __webpack_require__(10);
   var loggedTypeFailures = {};
 }
 
@@ -625,10 +661,10 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -647,7 +683,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,42 +722,8 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(30)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(31)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 11 */
+/* 12 */,
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -736,7 +738,7 @@ if (process.env.NODE_ENV !== 'production') {
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -799,10 +801,10 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -873,7 +875,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -888,7 +890,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(21);
+var isTextNode = __webpack_require__(22);
 
 /*eslint-disable no-bitwise */
 
@@ -916,7 +918,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -946,7 +948,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -988,8 +990,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 16 */,
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1002,7 +1003,7 @@ module.exports = getActiveElement;
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(4),p=__webpack_require__(5);__webpack_require__(2);var r=__webpack_require__(1);
+var f=__webpack_require__(4),p=__webpack_require__(7);__webpack_require__(3);var r=__webpack_require__(2);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -1019,7 +1020,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,11 +1041,11 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var objectAssign$1 = __webpack_require__(4);
-var require$$0 = __webpack_require__(6);
-var emptyObject = __webpack_require__(5);
-var invariant = __webpack_require__(2);
-var emptyFunction = __webpack_require__(1);
-var checkPropTypes = __webpack_require__(7);
+var require$$0 = __webpack_require__(8);
+var emptyObject = __webpack_require__(7);
+var invariant = __webpack_require__(3);
+var emptyFunction = __webpack_require__(2);
+var checkPropTypes = __webpack_require__(9);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2722,10 +2723,10 @@ module.exports = ReactEntry;
 })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2763,15 +2764,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(21);
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(24);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2785,7 +2786,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(3);__webpack_require__(2);var l=__webpack_require__(9),n=__webpack_require__(4),ba=__webpack_require__(11),ca=__webpack_require__(1),da=__webpack_require__(5),ea=__webpack_require__(12),fa=__webpack_require__(13),ha=__webpack_require__(14),ia=__webpack_require__(15);
+var aa=__webpack_require__(0);__webpack_require__(3);var l=__webpack_require__(11),n=__webpack_require__(4),ba=__webpack_require__(13),ca=__webpack_require__(2),da=__webpack_require__(7),ea=__webpack_require__(14),fa=__webpack_require__(15),ha=__webpack_require__(16),ia=__webpack_require__(17);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -3034,7 +3035,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3049,7 +3050,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
  * @typechecks
  */
 
-var isNode = __webpack_require__(22);
+var isNode = __webpack_require__(23);
 
 /**
  * @param {*} object The object to check.
@@ -3062,7 +3063,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3090,7 +3091,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3110,23 +3111,23 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var react = __webpack_require__(3);
-var invariant = __webpack_require__(2);
-var ExecutionEnvironment = __webpack_require__(9);
+var react = __webpack_require__(0);
+var invariant = __webpack_require__(3);
+var ExecutionEnvironment = __webpack_require__(11);
 var _assign = __webpack_require__(4);
-var EventListener = __webpack_require__(11);
-var require$$0 = __webpack_require__(6);
-var hyphenateStyleName = __webpack_require__(24);
-var emptyFunction = __webpack_require__(1);
-var camelizeStyleName = __webpack_require__(26);
-var performanceNow = __webpack_require__(28);
-var propTypes = __webpack_require__(10);
-var emptyObject = __webpack_require__(5);
-var checkPropTypes = __webpack_require__(7);
-var shallowEqual = __webpack_require__(12);
-var containsNode = __webpack_require__(13);
-var focusNode = __webpack_require__(14);
-var getActiveElement = __webpack_require__(15);
+var EventListener = __webpack_require__(13);
+var require$$0 = __webpack_require__(8);
+var hyphenateStyleName = __webpack_require__(25);
+var emptyFunction = __webpack_require__(2);
+var camelizeStyleName = __webpack_require__(27);
+var performanceNow = __webpack_require__(29);
+var propTypes = __webpack_require__(5);
+var emptyObject = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(9);
+var shallowEqual = __webpack_require__(14);
+var containsNode = __webpack_require__(15);
+var focusNode = __webpack_require__(16);
+var getActiveElement = __webpack_require__(17);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -20316,10 +20317,10 @@ module.exports = ReactDOMFiberEntry;
 })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20334,7 +20335,7 @@ module.exports = ReactDOMFiberEntry;
 
 
 
-var hyphenate = __webpack_require__(25);
+var hyphenate = __webpack_require__(26);
 
 var msPattern = /^ms-/;
 
@@ -20361,7 +20362,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20397,7 +20398,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20412,7 +20413,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(27);
+var camelize = __webpack_require__(28);
 
 var msPattern = /^-ms-/;
 
@@ -20440,7 +20441,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20475,7 +20476,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20490,7 +20491,7 @@ module.exports = camelize;
  * @typechecks
  */
 
-var performance = __webpack_require__(29);
+var performance = __webpack_require__(30);
 
 var performanceNow;
 
@@ -20512,7 +20513,7 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20527,7 +20528,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(9);
+var ExecutionEnvironment = __webpack_require__(11);
 
 var performance;
 
@@ -20538,7 +20539,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20551,13 +20552,13 @@ module.exports = performance || {};
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var warning = __webpack_require__(6);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
+var warning = __webpack_require__(8);
 var assign = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(8);
-var checkPropTypes = __webpack_require__(7);
+var ReactPropTypesSecret = __webpack_require__(10);
+var checkPropTypes = __webpack_require__(9);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21085,10 +21086,10 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21101,9 +21102,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var ReactPropTypesSecret = __webpack_require__(8);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(10);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21153,15 +21154,2886 @@ module.exports = function() {
 
 
 /***/ }),
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _mobileMenu = __webpack_require__(34);
+
+var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
+
+var _drawerLayout = __webpack_require__(35);
+
+var _drawerLayout2 = _interopRequireDefault(_drawerLayout);
+
+var _topbar = __webpack_require__(36);
+
+var _topbar2 = _interopRequireDefault(_topbar);
+
+var _searchBox = __webpack_require__(37);
+
+var _searchBox2 = _interopRequireDefault(_searchBox);
+
+var _navigationBar = __webpack_require__(38);
+
+var _navigationBar2 = _interopRequireDefault(_navigationBar);
+
+var _accountInfo = __webpack_require__(39);
+
+var _accountInfo2 = _interopRequireDefault(_accountInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Navigation = function (_Component) {
+    _inherits(Navigation, _Component);
+
+    function Navigation() {
+        _classCallCheck(this, Navigation);
+
+        return _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).apply(this, arguments));
+    }
+
+    _createClass(Navigation, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_drawerLayout2.default, null),
+                _react2.default.createElement(_mobileMenu2.default, null),
+                _react2.default.createElement(_topbar2.default, null),
+                _react2.default.createElement(
+                    'header',
+                    { className: 'navbar navbar-sticky' },
+                    _react2.default.createElement(_searchBox2.default, null),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'site-branding' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'inner' },
+                            _react2.default.createElement('a', { className: 'offcanvas-toggle cats-toggle', href: '#shop-categories', 'data-toggle': 'offcanvas' }),
+                            _react2.default.createElement('a', { className: 'offcanvas-toggle menu-toggle', href: '#mobile-menu', 'data-toggle': 'offcanvas' }),
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'site-logo', href: '/' },
+                                _react2.default.createElement('img', { src: 'img/logo/logo.png', alt: 'MyStore' })
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(_navigationBar2.default, null),
+                    _react2.default.createElement(_accountInfo2.default, null)
+                )
+            );
+        }
+    }]);
+
+    return Navigation;
+}(_react.Component);
+
+exports.default = Navigation;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MobileMenu = function (_Component) {
+    _inherits(MobileMenu, _Component);
+
+    function MobileMenu() {
+        _classCallCheck(this, MobileMenu);
+
+        return _possibleConstructorReturn(this, (MobileMenu.__proto__ || Object.getPrototypeOf(MobileMenu)).apply(this, arguments));
+    }
+
+    _createClass(MobileMenu, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "offcanvas-container", id: "mobile-menu" },
+                    _react2.default.createElement(
+                        "a",
+                        { className: "account-link", href: "/profile#/account-orders" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "user-ava" },
+                            _react2.default.createElement("img", { src: "img/account/user-ava-md.jpg", alt: "Daniel Adams" })
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "user-info" },
+                            _react2.default.createElement(
+                                "h6",
+                                { className: "user-name" },
+                                "Daniel Adams"
+                            ),
+                            _react2.default.createElement(
+                                "span",
+                                { className: "text-sm text-white opacity-60" },
+                                "290 Reward points"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "nav",
+                        { className: "offcanvas-menu" },
+                        _react2.default.createElement(
+                            "ul",
+                            { className: "menu" },
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Home"
+                                        )
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/featured" },
+                                            "Featured Products Slider"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/featured" },
+                                            "Featured Categories"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/showcase" },
+                                            "Products Collection Showcase"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/shopping#/shop-grid" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Shop"
+                                        )
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/shop-categories" },
+                                            "Shop Categories"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/shopping#/shop-grid" },
+                                                _react2.default.createElement(
+                                                    "span",
+                                                    null,
+                                                    "Shop Grid"
+                                                )
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "/shopping#/shop-grid" },
+                                                    "Grid Left Sidebar"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "/shopping#/shop-grid" },
+                                                    "Grid Right Sidebar"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "/shopping#/shop-grid" },
+                                                    "Grid No Sidebar"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/shop-single" },
+                                            "Single Product"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/payment#/cart" },
+                                            "Cart"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/payment#/checkout-address" },
+                                            "Checkout"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Categories"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Men's Shoes"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Sneakers"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Loafers"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Boat Shoes"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Sandals"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Women's Shoes"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Sandals"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Flats"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Sneakers"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Heels"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Men's Clothing"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Shirts & Tops"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Pants"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Jackets"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Women's Clothing"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Dresses"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Shirts & Tops"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Shorts"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Swimwear"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Bags"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Handbags"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Backpacks"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Luggage"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Wallets"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "has-children" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Accessories"
+                                            ),
+                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "ul",
+                                            { className: "offcanvas-submenu" },
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Sunglasses"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Hats"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Watches"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Jewelry"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "Belts"
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                "li",
+                                                null,
+                                                _react2.default.createElement(
+                                                    "a",
+                                                    { href: "#" },
+                                                    "View All"
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children active" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-orders" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Account"
+                                        )
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "active" },
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/login" },
+                                            "Login / Register"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-password-recovery" },
+                                            "Password Recovery"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/accountorders" },
+                                            "Orders List"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-wishlist" },
+                                            "Wishlist"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-profile" },
+                                            "Profile Page"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-address" },
+                                            "Contact / Shipping Address"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-tickets" },
+                                            "Open Ticket"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-tickets" },
+                                            "My Tickets"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/company#/blog" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Blog"
+                                        )
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Pages"
+                                        )
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/company#/about" },
+                                            "About Us"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/company#/contacts" },
+                                            "Contacts"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/company#/faq" },
+                                            "Help / FAQ"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/order-tracking" },
+                                            "Order Tracking"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/shopping#/search-results" },
+                                            "Search Results"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/you-fine-bro" },
+                                            "404"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return MobileMenu;
+}(_react.Component);
+
+exports.default = MobileMenu;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DrawerLayout = function (_Component) {
+    _inherits(DrawerLayout, _Component);
+
+    function DrawerLayout() {
+        _classCallCheck(this, DrawerLayout);
+
+        return _possibleConstructorReturn(this, (DrawerLayout.__proto__ || Object.getPrototypeOf(DrawerLayout)).apply(this, arguments));
+    }
+
+    _createClass(DrawerLayout, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "offcanvas-container", id: "shop-categories" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "offcanvas-header" },
+                        _react2.default.createElement(
+                            "h3",
+                            { className: "offcanvas-title" },
+                            "Shop Categories"
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "nav",
+                        { className: "offcanvas-menu" },
+                        _react2.default.createElement(
+                            "ul",
+                            { className: "menu" },
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Men's Shoes"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sneakers"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Loafers"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Boat Shoes"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sandals"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Women's Shoes"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sandals"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Flats"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sneakers"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Heels"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Men's Clothing"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Shirts & Tops"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Pants"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Jackets"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Women's Clothing"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Dresses"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Shirts & Tops"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Shorts"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Swimwear"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Kid's Shoes"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Boots"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sandals"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Crib Shoes"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Loafers"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Bags"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Handbags"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Backpacks"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Luggage"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Wallets"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "li",
+                                { className: "has-children" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#" },
+                                        "Accessories"
+                                    ),
+                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
+                                ),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "offcanvas-submenu" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Sunglasses"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Hats"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Watches"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Jewelry"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "Belts"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            "View All"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DrawerLayout;
+}(_react.Component);
+
+exports.default = DrawerLayout;
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopBar = function (_Component) {
+    _inherits(TopBar, _Component);
+
+    function TopBar() {
+        _classCallCheck(this, TopBar);
+
+        return _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).apply(this, arguments));
+    }
+
+    _createClass(TopBar, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "topbar" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "topbar-column" },
+                        _react2.default.createElement(
+                            "a",
+                            { className: "hidden-md-down", href: "mailto:codemode.co@gmail.com" },
+                            _react2.default.createElement("i", { className: "icon-mail" }),
+                            "\xA0 codemode.co@gmail.com"
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "hidden-md-down", href: "tel:+917780874266" },
+                            _react2.default.createElement("i", { className: "icon-bell" }),
+                            "\xA0 +91 77 808 74266"
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "social-button sb-facebook shape-none sb-dark", href: "#", target: "_blank" },
+                            _react2.default.createElement("i", { className: "socicon-facebook" })
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "social-button sb-twitter shape-none sb-dark", href: "#", target: "_blank" },
+                            _react2.default.createElement("i", { className: "socicon-twitter" })
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "social-button sb-instagram shape-none sb-dark", href: "#", target: "_blank" },
+                            _react2.default.createElement("i", { className: "socicon-instagram" })
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "social-button sb-pinterest shape-none sb-dark", href: "#", target: "_blank" },
+                            _react2.default.createElement("i", { className: "socicon-pinterest" })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "topbar-column" },
+                        _react2.default.createElement(
+                            "a",
+                            { className: "hidden-md-down", href: "#" },
+                            _react2.default.createElement("i", { className: "icon-download" }),
+                            "\xA0 Get mobile app"
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return TopBar;
+}(_react.Component);
+
+exports.default = TopBar;
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchBox = function (_Component) {
+    _inherits(SearchBox, _Component);
+
+    function SearchBox() {
+        _classCallCheck(this, SearchBox);
+
+        return _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).apply(this, arguments));
+    }
+
+    _createClass(SearchBox, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "form",
+                    { className: "site-search", method: "get" },
+                    _react2.default.createElement("input", { type: "text", name: "site_search", placeholder: "Type to search..." }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "search-tools" },
+                        _react2.default.createElement(
+                            "span",
+                            { className: "clear-search" },
+                            "Clear"
+                        ),
+                        _react2.default.createElement(
+                            "span",
+                            { className: "close-search" },
+                            _react2.default.createElement("i", { className: "icon-cross" })
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return SearchBox;
+}(_react.Component);
+
+exports.default = SearchBox;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NavigationBar = function (_Component) {
+    _inherits(NavigationBar, _Component);
+
+    function NavigationBar() {
+        _classCallCheck(this, NavigationBar);
+
+        return _possibleConstructorReturn(this, (NavigationBar.__proto__ || Object.getPrototypeOf(NavigationBar)).apply(this, arguments));
+    }
+
+    _createClass(NavigationBar, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "nav",
+                    { className: "site-menu" },
+                    _react2.default.createElement(
+                        "ul",
+                        null,
+                        _react2.default.createElement(
+                            "li",
+                            { className: "has-megamenu" },
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Home"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "mega-menu" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/featured" },
+                                        _react2.default.createElement("img", { alt: "Featured Products Slider", src: "img/mega-menu-home/01.jpg" }),
+                                        _react2.default.createElement(
+                                            "h6",
+                                            { className: "mt-3" },
+                                            "Featured Products Slider"
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/featured" },
+                                        _react2.default.createElement("img", { alt: "Featured Categories", src: "img/mega-menu-home/02.jpg" }),
+                                        _react2.default.createElement(
+                                            "h6",
+                                            { className: "mt-3" },
+                                            "Featured Categories"
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/showcase" },
+                                        _react2.default.createElement("img", { alt: "Products Collection Showcase", src: "img/mega-menu-home/03.jpg" }),
+                                        _react2.default.createElement(
+                                            "h6",
+                                            { className: "mt-3" },
+                                            "Products Collection Showcase"
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "img-thumbnail text-center" },
+                                        _react2.default.createElement("img", { alt: "More To Come. Stay Tuned!", src: "img/mega-menu-home/04.jpg" }),
+                                        _react2.default.createElement(
+                                            "h6",
+                                            { className: "mt-3" },
+                                            "More To Come. Stay Tuned!"
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/shopping#/shop-grid" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Shop"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "sub-menu" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/shopping#/shop-categories" },
+                                        "Shop Categories"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "has-children" },
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/shopping#/shop-grid" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Shop Grid"
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/shopping#/shop-single" },
+                                        "Single Product"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/payment#/cart" },
+                                        "Cart"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "has-children" },
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/payment#/checkout-address" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            null,
+                                            "Checkout"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        { className: "sub-menu" },
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/payment#/checkout-address" },
+                                                "Address"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/payment#/checkout-shipping" },
+                                                "Shipping"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/payment#/checkout-payment" },
+                                                "Payment"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/payment#/checkout-review" },
+                                                "Review"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/payment#/checkout-complete" },
+                                                "Complete"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            { className: "has-megamenu" },
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Mega Menu"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "mega-menu" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "mega-menu-title" },
+                                        "Top Categories"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        { className: "sub-menu" },
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Men's Shoes"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Women's Shoes"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Shirts and Tops"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Swimwear"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Shorts and Pants"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Accessories"
+                                            )
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "mega-menu-title" },
+                                        "Specialty Shops"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        { className: "sub-menu" },
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Junior's Shop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Swim Shop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Athletic Shop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Outdoor Shop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Luxury Shop"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Accessories Shop"
+                                            )
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "section",
+                                        { className: "promo-box", style: { backgroundImage: 'url(img/banners/02.jpg)' } },
+                                        _react2.default.createElement("span", { className: "overlay-dark", style: { opacity: '.4' } }),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "promo-box-content text-center padding-top-2x padding-bottom-2x" },
+                                            _react2.default.createElement(
+                                                "h4",
+                                                { className: "text-light text-thin text-shadow" },
+                                                "New Collection of"
+                                            ),
+                                            _react2.default.createElement(
+                                                "h3",
+                                                { className: "text-bold text-light text-shadow" },
+                                                "Sunglasses"
+                                            ),
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "btn btn-sm btn-primary", href: "#" },
+                                                "Shop Now"
+                                            )
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "section",
+                                        { className: "promo-box", style: { backgroundImage: 'url(img/banners/03.jpg)' } },
+                                        _react2.default.createElement("span", { className: "overlay-dark", style: { opacity: '.45' } }),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "promo-box-content text-center padding-top-2x padding-bottom-2x" },
+                                            _react2.default.createElement(
+                                                "h3",
+                                                { className: "text-bold text-light text-shadow" },
+                                                "Limited Offer"
+                                            ),
+                                            _react2.default.createElement(
+                                                "h4",
+                                                { className: "text-light text-thin text-shadow" },
+                                                "save up to 50%!"
+                                            ),
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "btn btn-sm btn-primary", href: "#" },
+                                                "Learn More"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            { className: "active" },
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/profile#/account-orders" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Account"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "sub-menu" },
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "active" },
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/login" },
+                                        "Login / Register"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-password-recovery" },
+                                        "Password Recovery"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-orders" },
+                                        "Orders List"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-wishlist" },
+                                        "Wishlist"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-profile" },
+                                        "Profile Page"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-address" },
+                                        "Contact / Shipping Address"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/account-tickets" },
+                                        "My Tickets"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "/company#/blog" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Blog"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Pages"
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "sub-menu" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/company#/about" },
+                                        "About Us"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/company#/contacts" },
+                                        "Contacts"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/company#/faq" },
+                                        "Help / FAQ"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/profile#/order-tracking" },
+                                        "Order Tracking"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "/shopping#/search-results" },
+                                        "Search Results"
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return NavigationBar;
+}(_react.Component);
+
+exports.default = NavigationBar;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AccountInfo = function (_Component) {
+    _inherits(AccountInfo, _Component);
+
+    function AccountInfo() {
+        _classCallCheck(this, AccountInfo);
+
+        return _possibleConstructorReturn(this, (AccountInfo.__proto__ || Object.getPrototypeOf(AccountInfo)).apply(this, arguments));
+    }
+
+    _createClass(AccountInfo, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "toolbar" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "inner" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "tools" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "search" },
+                                _react2.default.createElement("i", { className: "icon-search" })
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "account" },
+                                _react2.default.createElement("a", { href: "/profile#/account-address" }),
+                                _react2.default.createElement("i", { className: "icon-head" }),
+                                _react2.default.createElement(
+                                    "ul",
+                                    { className: "toolbar-dropdown" },
+                                    _react2.default.createElement(
+                                        "li",
+                                        { className: "sub-menu-user" },
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "user-ava" },
+                                            _react2.default.createElement("img", { src: "img/account/user-ava-sm.jpg", alt: "Daniel Adams" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "user-info" },
+                                            _react2.default.createElement(
+                                                "h6",
+                                                { className: "user-name" },
+                                                "Daniel Adams"
+                                            ),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "text-xs text-muted" },
+                                                "290 Reward points"
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-profile" },
+                                            "My Profile"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-orders" },
+                                            "Orders List"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "/profile#/account-wishlist" },
+                                            "Wishlist"
+                                        )
+                                    ),
+                                    _react2.default.createElement("li", { className: "sub-menu-separator" }),
+                                    _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { href: "#" },
+                                            " ",
+                                            _react2.default.createElement("i", { className: "icon-unlock" }),
+                                            "Logout"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "cart" },
+                                _react2.default.createElement("a", { href: "/payment#/cart" }),
+                                _react2.default.createElement("i", { className: "icon-bag" }),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "count" },
+                                    "3"
+                                ),
+                                _react2.default.createElement(
+                                    "span",
+                                    { className: "subtotal" },
+                                    "$289.68"
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "toolbar-dropdown" },
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "dropdown-product-item" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "dropdown-product-remove" },
+                                            _react2.default.createElement("i", { className: "icon-cross" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "a",
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
+                                            _react2.default.createElement("img", { src: "img/cart-dropdown/01.jpg", alt: "Product" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "dropdown-product-info" },
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
+                                                "Unionbay Park"
+                                            ),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "dropdown-product-details" },
+                                                "1 x $43.90"
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "dropdown-product-item" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "dropdown-product-remove" },
+                                            _react2.default.createElement("i", { className: "icon-cross" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "a",
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
+                                            _react2.default.createElement("img", { src: "img/cart-dropdown/02.jpg", alt: "Product" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "dropdown-product-info" },
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
+                                                "Daily Fabric Cap"
+                                            ),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "dropdown-product-details" },
+                                                "2 x $24.89"
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "dropdown-product-item" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "dropdown-product-remove" },
+                                            _react2.default.createElement("i", { className: "icon-cross" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "a",
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
+                                            _react2.default.createElement("img", { src: "img/cart-dropdown/03.jpg", alt: "Product" })
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "dropdown-product-info" },
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
+                                                "Haan Crossbody"
+                                            ),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "dropdown-product-details" },
+                                                "1 x $200.00"
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "toolbar-dropdown-group" },
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "column" },
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "text-lg" },
+                                                "Total:"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "column text-right" },
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "text-lg text-medium" },
+                                                "$289.68\xA0"
+                                            )
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "toolbar-dropdown-group" },
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "column" },
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "btn btn-sm btn-block btn-secondary", href: "/payment#/cart" },
+                                                "View Cart"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "column" },
+                                            _react2.default.createElement(
+                                                "a",
+                                                { className: "btn btn-sm btn-block btn-success", href: "/payment#/checkout-address" },
+                                                "Checkout"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AccountInfo;
+}(_react.Component);
+
+exports.default = AccountInfo;
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+    _inherits(Footer, _Component);
+
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+    }
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "footer",
+                    { className: "site-footer" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "container" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Get In Touch With Us"
+                                    ),
+                                    _react2.default.createElement(
+                                        "p",
+                                        { className: "text-white" },
+                                        "Phone: +91 77 808 74266"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        { className: "list-unstyled text-sm text-white" },
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "opacity-50" },
+                                                "Monday-Friday:"
+                                            ),
+                                            "9.00 am - 8.00 pm"
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "opacity-50" },
+                                                "Saturday:"
+                                            ),
+                                            "10.00 am - 6.00 pm"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "p",
+                                        null,
+                                        _react2.default.createElement(
+                                            "a",
+                                            { className: "navi-link-light", href: "#" },
+                                            "codemode.co@gmail.com"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-facebook sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-facebook" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-twitter sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-twitter" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-instagram sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-instagram" })
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "social-button shape-circle sb-google-plus sb-light-skin", href: "#" },
+                                        _react2.default.createElement("i", { className: "socicon-googleplus" })
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Our Mobile App"
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button apple-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "App Store"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button google-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "Google Play"
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "a",
+                                        { className: "market-button windows-button mb-light-skin", href: "#" },
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-subtitle" },
+                                            "Download on the"
+                                        ),
+                                        _react2.default.createElement(
+                                            "span",
+                                            { className: "mb-title" },
+                                            "Windows Store"
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-links widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "About Us"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        null,
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/about" },
+                                                "Careers"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/about" },
+                                                "About MyStore"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/contacts" },
+                                                "Our Story"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/faq" },
+                                                "Services"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/blog" },
+                                                "Our Blog"
+                                            )
+                                        )
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-lg-3 col-md-6" },
+                                _react2.default.createElement(
+                                    "section",
+                                    { className: "widget widget-links widget-light-skin" },
+                                    _react2.default.createElement(
+                                        "h3",
+                                        { className: "widget-title" },
+                                        "Account & Shipping Info"
+                                    ),
+                                    _react2.default.createElement(
+                                        "ul",
+                                        null,
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/profile#/account-orders" },
+                                                "Your Account"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "/company#/about" },
+                                                "Shipping Rates & Policies"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Refunds & Replacements"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Taxes"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Delivery Info"
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "li",
+                                            null,
+                                            _react2.default.createElement(
+                                                "a",
+                                                { href: "#" },
+                                                "Affiliate Program"
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement("hr", { className: "hr-light mt-2 margin-bottom-2x" }),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "row" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-md-7 padding-bottom-1x" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "margin-bottom-1x", style: { maxWidth: 615 } },
+                                    _react2.default.createElement("img", { src: "img/payment_methods.png", alt: "Payment Methods" })
+                                )
+                            ),
+                            _react2.default.createElement(
+                                "div",
+                                { className: "col-md-5 padding-bottom-1x" },
+                                _react2.default.createElement("div", { className: "margin-top-1x hidden-md-up" }),
+                                _react2.default.createElement(
+                                    "form",
+                                    { className: "subscribe-form" },
+                                    _react2.default.createElement(
+                                        "div",
+                                        { className: "clearfix" },
+                                        _react2.default.createElement(
+                                            "div",
+                                            { className: "input-group input-light" },
+                                            _react2.default.createElement("input", { className: "form-control", type: "email", name: "EMAIL", placeholder: "Your e-mail" }),
+                                            _react2.default.createElement(
+                                                "span",
+                                                { className: "input-group-addon" },
+                                                _react2.default.createElement("i", { className: "icon-mail" })
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            "div",
+                                            { style: { position: 'absolute', left: '-5000px' }, "aria-hidden": "true" },
+                                            _react2.default.createElement("input", { type: "text", tabIndex: -1 })
+                                        ),
+                                        _react2.default.createElement(
+                                            "button",
+                                            { className: "btn btn-primary", type: "submit" },
+                                            _react2.default.createElement("i", { className: "icon-check" })
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "form-text text-sm text-white opacity-50" },
+                                        "Subscribe to our Newsletter to receive early discount offers, latest news, sales and promo information."
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "footer-copyright" },
+                            "\xA9 All rights reserved. Made with \xA0",
+                            _react2.default.createElement("i", { className: "icon-heart text-danger" }),
+                            _react2.default.createElement(
+                                "a",
+                                { href: "https://www.codemode.co", target: "_blank" },
+                                " \xA0by Ishtmeet Singh"
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Footer;
+}(_react.Component);
+
+exports.default = Footer;
+
+/***/ }),
 /* 41 */,
 /* 42 */,
 /* 43 */,
@@ -21170,7 +24042,43 @@ module.exports = function() {
 /* 46 */,
 /* 47 */,
 /* 48 */,
-/* 49 */
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21178,19 +24086,19 @@ module.exports = function() {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(20);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _main = __webpack_require__(82);
+var _main = __webpack_require__(33);
 
 var _main2 = _interopRequireDefault(_main);
 
-var _footer = __webpack_require__(89);
+var _footer = __webpack_require__(40);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -22204,3926 +25112,6 @@ var App = function (_Component) {
 }(_react.Component);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
-
-/***/ }),
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _mobileMenu = __webpack_require__(83);
-
-var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
-
-var _drawerLayout = __webpack_require__(84);
-
-var _drawerLayout2 = _interopRequireDefault(_drawerLayout);
-
-var _topbar = __webpack_require__(85);
-
-var _topbar2 = _interopRequireDefault(_topbar);
-
-var _searchBox = __webpack_require__(86);
-
-var _searchBox2 = _interopRequireDefault(_searchBox);
-
-var _navigationBar = __webpack_require__(87);
-
-var _navigationBar2 = _interopRequireDefault(_navigationBar);
-
-var _accountInfo = __webpack_require__(88);
-
-var _accountInfo2 = _interopRequireDefault(_accountInfo);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Navigation = function (_Component) {
-    _inherits(Navigation, _Component);
-
-    function Navigation() {
-        _classCallCheck(this, Navigation);
-
-        return _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).apply(this, arguments));
-    }
-
-    _createClass(Navigation, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_drawerLayout2.default, null),
-                _react2.default.createElement(_mobileMenu2.default, null),
-                _react2.default.createElement(_topbar2.default, null),
-                _react2.default.createElement(
-                    'header',
-                    { className: 'navbar navbar-sticky' },
-                    _react2.default.createElement(_searchBox2.default, null),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'site-branding' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'inner' },
-                            _react2.default.createElement('a', { className: 'offcanvas-toggle cats-toggle', href: '#shop-categories', 'data-toggle': 'offcanvas' }),
-                            _react2.default.createElement('a', { className: 'offcanvas-toggle menu-toggle', href: '#mobile-menu', 'data-toggle': 'offcanvas' }),
-                            _react2.default.createElement(
-                                'a',
-                                { className: 'site-logo', href: '/' },
-                                _react2.default.createElement('img', { src: 'img/logo/logo.png', alt: 'MyStore' })
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(_navigationBar2.default, null),
-                    _react2.default.createElement(_accountInfo2.default, null)
-                )
-            );
-        }
-    }]);
-
-    return Navigation;
-}(_react.Component);
-
-exports.default = Navigation;
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MobileMenu = function (_Component) {
-    _inherits(MobileMenu, _Component);
-
-    function MobileMenu() {
-        _classCallCheck(this, MobileMenu);
-
-        return _possibleConstructorReturn(this, (MobileMenu.__proto__ || Object.getPrototypeOf(MobileMenu)).apply(this, arguments));
-    }
-
-    _createClass(MobileMenu, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "offcanvas-container", id: "mobile-menu" },
-                    _react2.default.createElement(
-                        "a",
-                        { className: "account-link", href: "account-orders.html" },
-                        _react2.default.createElement(
-                            "div",
-                            { className: "user-ava" },
-                            _react2.default.createElement("img", { src: "img/account/user-ava-md.jpg", alt: "Daniel Adams" })
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "user-info" },
-                            _react2.default.createElement(
-                                "h6",
-                                { className: "user-name" },
-                                "Daniel Adams"
-                            ),
-                            _react2.default.createElement(
-                                "span",
-                                { className: "text-sm text-white opacity-60" },
-                                "290 Reward points"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "nav",
-                        { className: "offcanvas-menu" },
-                        _react2.default.createElement(
-                            "ul",
-                            { className: "menu" },
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "index-2.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Home"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "index-2.html" },
-                                            "Featured Products Slider"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "home-featured-categories.html" },
-                                            "Featured Categories"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "home-collection-showcase.html" },
-                                            "Products Collection Showcase"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-grid-ls.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Shop"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "shop-categories.html" },
-                                            "Shop Categories"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-ls.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Shop Grid"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-grid-ls.html" },
-                                                    "Grid Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-grid-rs.html" },
-                                                    "Grid Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-grid-ns.html" },
-                                                    "Grid No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ls.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Shop List"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-ls.html" },
-                                                    "List Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-rs.html" },
-                                                    "List Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-ns.html" },
-                                                    "List No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "shop-single.html" },
-                                            "Single Product"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "cart.html" },
-                                            "Cart"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "checkout.html" },
-                                            "Checkout"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Categories"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Men's Shoes"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Sneakers"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Loafers"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Boat Shoes"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Sandals"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Women's Shoes"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Sandals"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Flats"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Sneakers"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Heels"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Men's Clothing"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Shirts & Tops"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Pants"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Jackets"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Women's Clothing"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Dresses"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Shirts & Tops"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Shorts"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Swimwear"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Bags"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Handbags"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Backpacks"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Luggage"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Wallets"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Accessories"
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Sunglasses"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Hats"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Watches"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Jewelry"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "Belts"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "#" },
-                                                    "View All"
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children active" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-orders.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Account"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "active" },
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-login.html" },
-                                            "Login / Register"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-password-recovery.html" },
-                                            "Password Recovery"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-orders.html" },
-                                            "Orders List"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-wishlist.html" },
-                                            "Wishlist"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-profile.html" },
-                                            "Profile Page"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-address.html" },
-                                            "Contact / Shipping Address"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-open-ticket.html" },
-                                            "Open Ticket"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "account-tickets.html" },
-                                            "My Tickets"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "blog-rs.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Blog"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-rs.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Blog Layout"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-rs.html" },
-                                                    "Blog Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-ls.html" },
-                                                    "Blog Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-ns.html" },
-                                                    "Blog No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-rs.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Single Post Layout"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-rs.html" },
-                                                    "Post Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-ls.html" },
-                                                    "Post Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-ns.html" },
-                                                    "Post No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Pages"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "about.html" },
-                                            "About Us"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "mobile-app.html" },
-                                            "Unishop Mobile App"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "services.html" },
-                                            "Services"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "contacts.html" },
-                                            "Contacts"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "faq.html" },
-                                            "Help / FAQ"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "order-tracking.html" },
-                                            "Order Tracking"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "search-results.html" },
-                                            "Search Results"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "404.html" },
-                                            "404"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "text-danger", href: "docs/dev-setup.html" },
-                                            "Documentation"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "components/accordion.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Components"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/accordion.html" },
-                                            "Accordion"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/alerts.html" },
-                                            "Alerts"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/buttons.html" },
-                                            "Buttons"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/cards.html" },
-                                            "Cards"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/carousel.html" },
-                                            "Carousel"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/countdown.html" },
-                                            "Countdown"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/forms.html" },
-                                            "Forms"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/gallery.html" },
-                                            "Gallery"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/google-maps.html" },
-                                            "Google Maps"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/images.html" },
-                                            "Images & Figures"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/list-group.html" },
-                                            "List Group"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/market-social-buttons.html" },
-                                            "Market & Social Buttons"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/media.html" },
-                                            "Media Object"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/modal.html" },
-                                            "Modal"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/pagination.html" },
-                                            "Pagination"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/pills.html" },
-                                            "Pills"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/progress-bars.html" },
-                                            "Progress Bars"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/shop-items.html" },
-                                            "Shop Items"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/steps.html" },
-                                            "Steps"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tables.html" },
-                                            "Tables"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tabs.html" },
-                                            "Tabs"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/team.html" },
-                                            "Team"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/toasts.html" },
-                                            "Toast Notifications"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tooltips-popovers.html" },
-                                            "Tooltips & Popovers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/typography.html" },
-                                            "Typography"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/video-player.html" },
-                                            "Video Player"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/widgets.html" },
-                                            "Widgets"
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return MobileMenu;
-}(_react.Component);
-
-exports.default = MobileMenu;
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var DrawerLayout = function (_Component) {
-    _inherits(DrawerLayout, _Component);
-
-    function DrawerLayout() {
-        _classCallCheck(this, DrawerLayout);
-
-        return _possibleConstructorReturn(this, (DrawerLayout.__proto__ || Object.getPrototypeOf(DrawerLayout)).apply(this, arguments));
-    }
-
-    _createClass(DrawerLayout, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "offcanvas-container", id: "shop-categories" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "offcanvas-header" },
-                        _react2.default.createElement(
-                            "h3",
-                            { className: "offcanvas-title" },
-                            "Shop Categories"
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "nav",
-                        { className: "offcanvas-menu" },
-                        _react2.default.createElement(
-                            "ul",
-                            { className: "menu" },
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Men's Shoes"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sneakers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Loafers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Boat Shoes"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sandals"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Women's Shoes"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sandals"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Flats"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sneakers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Heels"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Men's Clothing"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Shirts & Tops"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Pants"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Jackets"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Women's Clothing"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Dresses"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Shirts & Tops"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Shorts"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Swimwear"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Kid's Shoes"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Boots"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sandals"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Crib Shoes"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Loafers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Bags"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Handbags"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Backpacks"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Luggage"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Wallets"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "#" },
-                                        "Accessories"
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Sunglasses"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Hats"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Watches"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Jewelry"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "Belts"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            "View All"
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return DrawerLayout;
-}(_react.Component);
-
-exports.default = DrawerLayout;
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TopBar = function (_Component) {
-    _inherits(TopBar, _Component);
-
-    function TopBar() {
-        _classCallCheck(this, TopBar);
-
-        return _possibleConstructorReturn(this, (TopBar.__proto__ || Object.getPrototypeOf(TopBar)).apply(this, arguments));
-    }
-
-    _createClass(TopBar, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "topbar" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "topbar-column" },
-                        _react2.default.createElement(
-                            "a",
-                            { className: "hidden-md-down", href: "mailto:support@unishop.com" },
-                            _react2.default.createElement("i", { className: "icon-mail" }),
-                            "\xA0 support@unishop.com"
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "hidden-md-down", href: "tel:00331697720" },
-                            _react2.default.createElement("i", { className: "icon-bell" }),
-                            "\xA0 00 33 169 7720"
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "social-button sb-facebook shape-none sb-dark", href: "#", target: "_blank" },
-                            _react2.default.createElement("i", { className: "socicon-facebook" })
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "social-button sb-twitter shape-none sb-dark", href: "#", target: "_blank" },
-                            _react2.default.createElement("i", { className: "socicon-twitter" })
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "social-button sb-instagram shape-none sb-dark", href: "#", target: "_blank" },
-                            _react2.default.createElement("i", { className: "socicon-instagram" })
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "social-button sb-pinterest shape-none sb-dark", href: "#", target: "_blank" },
-                            _react2.default.createElement("i", { className: "socicon-pinterest" })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "topbar-column" },
-                        _react2.default.createElement(
-                            "a",
-                            { className: "hidden-md-down", href: "#" },
-                            _react2.default.createElement("i", { className: "icon-download" }),
-                            "\xA0 Get mobile app"
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "lang-currency-switcher-wrap" },
-                            _react2.default.createElement(
-                                "div",
-                                { className: "lang-currency-switcher dropdown-toggle" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "language" },
-                                    _react2.default.createElement("img", { alt: "English", src: "img/flags/GB.png" })
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "currency" },
-                                    "$ USD"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "dropdown-menu" },
-                                _react2.default.createElement(
-                                    "div",
-                                    { className: "currency-select" },
-                                    _react2.default.createElement(
-                                        "select",
-                                        { className: "form-control form-control-rounded form-control-sm" },
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "$ USD"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\u20AC EUR"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\xA3 UKP"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\xA5 JPY"
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/FR.png", alt: "Fran\xE7ais" }),
-                                    "Fran\xE7ais"
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/DE.png", alt: "Deutsch" }),
-                                    "Deutsch"
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/IT.png", alt: "Italiano" }),
-                                    "Italiano"
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return TopBar;
-}(_react.Component);
-
-exports.default = TopBar;
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SearchBox = function (_Component) {
-    _inherits(SearchBox, _Component);
-
-    function SearchBox() {
-        _classCallCheck(this, SearchBox);
-
-        return _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).apply(this, arguments));
-    }
-
-    _createClass(SearchBox, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "form",
-                    { className: "site-search", method: "get" },
-                    _react2.default.createElement("input", { type: "text", name: "site_search", placeholder: "Type to search..." }),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "search-tools" },
-                        _react2.default.createElement(
-                            "span",
-                            { className: "clear-search" },
-                            "Clear"
-                        ),
-                        _react2.default.createElement(
-                            "span",
-                            { className: "close-search" },
-                            _react2.default.createElement("i", { className: "icon-cross" })
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return SearchBox;
-}(_react.Component);
-
-exports.default = SearchBox;
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var NavigationBar = function (_Component) {
-    _inherits(NavigationBar, _Component);
-
-    function NavigationBar() {
-        _classCallCheck(this, NavigationBar);
-
-        return _possibleConstructorReturn(this, (NavigationBar.__proto__ || Object.getPrototypeOf(NavigationBar)).apply(this, arguments));
-    }
-
-    _createClass(NavigationBar, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "nav",
-                    { className: "site-menu" },
-                    _react2.default.createElement(
-                        "ul",
-                        null,
-                        _react2.default.createElement(
-                            "li",
-                            { className: "has-megamenu" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "index-2.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Home"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "mega-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "index-2.html" },
-                                        _react2.default.createElement("img", { alt: "Featured Products Slider", src: "img/mega-menu-home/01.jpg" }),
-                                        _react2.default.createElement(
-                                            "h6",
-                                            { className: "mt-3" },
-                                            "Featured Products Slider"
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "home-featured-categories.html" },
-                                        _react2.default.createElement("img", { alt: "Featured Categories", src: "img/mega-menu-home/02.jpg" }),
-                                        _react2.default.createElement(
-                                            "h6",
-                                            { className: "mt-3" },
-                                            "Featured Categories"
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "home-collection-showcase.html" },
-                                        _react2.default.createElement("img", { alt: "Products Collection Showcase", src: "img/mega-menu-home/03.jpg" }),
-                                        _react2.default.createElement(
-                                            "h6",
-                                            { className: "mt-3" },
-                                            "Products Collection Showcase"
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "img-thumbnail text-center" },
-                                        _react2.default.createElement("img", { alt: "More To Come. Stay Tuned!", src: "img/mega-menu-home/04.jpg" }),
-                                        _react2.default.createElement(
-                                            "h6",
-                                            { className: "mt-3" },
-                                            "More To Come. Stay Tuned!"
-                                        )
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "shop-grid-ls.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Shop"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "sub-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-categories.html" },
-                                        "Shop Categories"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-grid-ls.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Shop Grid"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-ls.html" },
-                                                "Grid Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-rs.html" },
-                                                "Grid Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-ns.html" },
-                                                "Grid No Sidebar"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-list-ls.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Shop List"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ls.html" },
-                                                "List Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-rs.html" },
-                                                "List Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ns.html" },
-                                                "List No Sidebar"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-single.html" },
-                                        "Single Product"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "cart.html" },
-                                        "Cart"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "checkout-address.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Checkout"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "checkout-address.html" },
-                                                "Address"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "checkout-shipping.html" },
-                                                "Shipping"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "checkout-payment.html" },
-                                                "Payment"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "checkout-review.html" },
-                                                "Review"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "checkout-complete.html" },
-                                                "Complete"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            { className: "has-megamenu" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "#" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Mega Menu"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "mega-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "Top Categories"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Men's Shoes"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Women's Shoes"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Shirts and Tops"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Swimwear"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Shorts and Pants"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Accessories"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "Specialty Shops"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Junior's Shop"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Swim Shop"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Athletic Shop"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Outdoor Shop"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Luxury Shop"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Accessories Shop"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "section",
-                                        { className: "promo-box", style: { backgroundImage: 'url(img/banners/02.jpg)' } },
-                                        _react2.default.createElement("span", { className: "overlay-dark", style: { opacity: '.4' } }),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "promo-box-content text-center padding-top-2x padding-bottom-2x" },
-                                            _react2.default.createElement(
-                                                "h4",
-                                                { className: "text-light text-thin text-shadow" },
-                                                "New Collection of"
-                                            ),
-                                            _react2.default.createElement(
-                                                "h3",
-                                                { className: "text-bold text-light text-shadow" },
-                                                "Sunglasses"
-                                            ),
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "btn btn-sm btn-primary", href: "#" },
-                                                "Shop Now"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "section",
-                                        { className: "promo-box", style: { backgroundImage: 'url(img/banners/03.jpg)' } },
-                                        _react2.default.createElement("span", { className: "overlay-dark", style: { opacity: '.45' } }),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "promo-box-content text-center padding-top-2x padding-bottom-2x" },
-                                            _react2.default.createElement(
-                                                "h3",
-                                                { className: "text-bold text-light text-shadow" },
-                                                "Limited Offer"
-                                            ),
-                                            _react2.default.createElement(
-                                                "h4",
-                                                { className: "text-light text-thin text-shadow" },
-                                                "save up to 50%!"
-                                            ),
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "btn btn-sm btn-primary", href: "#" },
-                                                "Learn More"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            { className: "active" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "account-orders.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Account"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "sub-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "active" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-login.html" },
-                                        "Login / Register"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-password-recovery.html" },
-                                        "Password Recovery"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-orders.html" },
-                                        "Orders List"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-wishlist.html" },
-                                        "Wishlist"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-profile.html" },
-                                        "Profile Page"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-address.html" },
-                                        "Contact / Shipping Address"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "account-tickets.html" },
-                                        "My Tickets"
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "blog-rs.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Blog"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "sub-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "blog-rs.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Blog Layout"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-rs.html" },
-                                                "Blog Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-ls.html" },
-                                                "Blog Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-ns.html" },
-                                                "Blog No Sidebar"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "blog-single-rs.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Single Post Layout"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-rs.html" },
-                                                "Post Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-ls.html" },
-                                                "Post Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-ns.html" },
-                                                "Post No Sidebar"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "#" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Pages"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "sub-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "about.html" },
-                                        "About Us"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "contacts.html" },
-                                        "Contacts"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "faq.html" },
-                                        "Help / FAQ"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "order-tracking.html" },
-                                        "Order Tracking"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "search-results.html" },
-                                        "Search Results"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "404.html" },
-                                        "404 Not Found"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "text-danger", href: "docs/dev-setup.html" },
-                                        "Documentation"
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            { className: "has-megamenu" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "components/accordion.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Components"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "mega-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "A - F"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/accordion.html" },
-                                                "Accordion"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/alerts.html" },
-                                                "Alerts"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/buttons.html" },
-                                                "Buttons"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/cards.html" },
-                                                "Cards"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/carousel.html" },
-                                                "Carousel"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/countdown.html" },
-                                                "Countdown"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/forms.html" },
-                                                "Forms"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "G - M"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/gallery.html" },
-                                                "Gallery"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/google-maps.html" },
-                                                "Google Maps"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/images.html" },
-                                                "Images & Figures"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/list-group.html" },
-                                                "List Group"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/market-social-buttons.html" },
-                                                "Market & Social Buttons"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/media.html" },
-                                                "Media Object"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/modal.html" },
-                                                "Modal"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "P - T"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/pagination.html" },
-                                                "Pagination"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/pills.html" },
-                                                "Pills"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/progress-bars.html" },
-                                                "Progress Bars"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/shop-items.html" },
-                                                "Shop Items"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/steps.html" },
-                                                "Steps"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tables.html" },
-                                                "Tables"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tabs.html" },
-                                                "Tabs"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "T - W"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/team.html" },
-                                                "Team"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/toasts.html" },
-                                                "Toast Notifications"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tooltips-popovers.html" },
-                                                "Tooltips & Popovers"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/typography.html" },
-                                                "Typography"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/video-player.html" },
-                                                "Video Player"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/widgets.html" },
-                                                "Widgets"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return NavigationBar;
-}(_react.Component);
-
-exports.default = NavigationBar;
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AccountInfo = function (_Component) {
-    _inherits(AccountInfo, _Component);
-
-    function AccountInfo() {
-        _classCallCheck(this, AccountInfo);
-
-        return _possibleConstructorReturn(this, (AccountInfo.__proto__ || Object.getPrototypeOf(AccountInfo)).apply(this, arguments));
-    }
-
-    _createClass(AccountInfo, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "toolbar" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "inner" },
-                        _react2.default.createElement(
-                            "div",
-                            { className: "tools" },
-                            _react2.default.createElement(
-                                "div",
-                                { className: "search" },
-                                _react2.default.createElement("i", { className: "icon-search" })
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "account" },
-                                _react2.default.createElement("a", { href: "/profile#/account-address" }),
-                                _react2.default.createElement("i", { className: "icon-head" }),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "toolbar-dropdown" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "sub-menu-user" },
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "user-ava" },
-                                            _react2.default.createElement("img", { src: "img/account/user-ava-sm.jpg", alt: "Daniel Adams" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "user-info" },
-                                            _react2.default.createElement(
-                                                "h6",
-                                                { className: "user-name" },
-                                                "Daniel Adams"
-                                            ),
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "text-xs text-muted" },
-                                                "290 Reward points"
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "/profile#/account-profile" },
-                                            "My Profile"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "/profile#/account-orders" },
-                                            "Orders List"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "/profile#/account-wishlist" },
-                                            "Wishlist"
-                                        )
-                                    ),
-                                    _react2.default.createElement("li", { className: "sub-menu-separator" }),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "#" },
-                                            " ",
-                                            _react2.default.createElement("i", { className: "icon-unlock" }),
-                                            "Logout"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "cart" },
-                                _react2.default.createElement("a", { href: "/payment#/cart" }),
-                                _react2.default.createElement("i", { className: "icon-bag" }),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "count" },
-                                    "3"
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "subtotal" },
-                                    "$289.68"
-                                ),
-                                _react2.default.createElement(
-                                    "div",
-                                    { className: "toolbar-dropdown" },
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "dropdown-product-item" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "dropdown-product-remove" },
-                                            _react2.default.createElement("i", { className: "icon-cross" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
-                                            _react2.default.createElement("img", { src: "img/cart-dropdown/01.jpg", alt: "Product" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "dropdown-product-info" },
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
-                                                "Unionbay Park"
-                                            ),
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "dropdown-product-details" },
-                                                "1 x $43.90"
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "dropdown-product-item" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "dropdown-product-remove" },
-                                            _react2.default.createElement("i", { className: "icon-cross" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
-                                            _react2.default.createElement("img", { src: "img/cart-dropdown/02.jpg", alt: "Product" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "dropdown-product-info" },
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
-                                                "Daily Fabric Cap"
-                                            ),
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "dropdown-product-details" },
-                                                "2 x $24.89"
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "dropdown-product-item" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "dropdown-product-remove" },
-                                            _react2.default.createElement("i", { className: "icon-cross" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
-                                            _react2.default.createElement("img", { src: "img/cart-dropdown/03.jpg", alt: "Product" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "dropdown-product-info" },
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "dropdown-product-title", href: "/shopping#/shop-single" },
-                                                "Haan Crossbody"
-                                            ),
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "dropdown-product-details" },
-                                                "1 x $200.00"
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "toolbar-dropdown-group" },
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "column" },
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "text-lg" },
-                                                "Total:"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "column text-right" },
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "text-lg text-medium" },
-                                                "$289.68\xA0"
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "toolbar-dropdown-group" },
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "column" },
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "btn btn-sm btn-block btn-secondary", href: "/paymen#/cart" },
-                                                "View Cart"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "column" },
-                                            _react2.default.createElement(
-                                                "a",
-                                                { className: "btn btn-sm btn-block btn-success", href: "/payment#/checkout-address" },
-                                                "Checkout"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AccountInfo;
-}(_react.Component);
-
-exports.default = AccountInfo;
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Footer = function (_Component) {
-    _inherits(Footer, _Component);
-
-    function Footer() {
-        _classCallCheck(this, Footer);
-
-        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
-    }
-
-    _createClass(Footer, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "footer",
-                    { className: "site-footer" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "container" },
-                        _react2.default.createElement(
-                            "div",
-                            { className: "row" },
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-lg-3 col-md-6" },
-                                _react2.default.createElement(
-                                    "section",
-                                    { className: "widget widget-light-skin" },
-                                    _react2.default.createElement(
-                                        "h3",
-                                        { className: "widget-title" },
-                                        "Get In Touch With Us"
-                                    ),
-                                    _react2.default.createElement(
-                                        "p",
-                                        { className: "text-white" },
-                                        "Phone: +91 77 808 74266"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "list-unstyled text-sm text-white" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "opacity-50" },
-                                                "Monday-Friday:"
-                                            ),
-                                            "9.00 am - 8.00 pm"
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "opacity-50" },
-                                                "Saturday:"
-                                            ),
-                                            "10.00 am - 6.00 pm"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "p",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "navi-link-light", href: "#" },
-                                            "codemode.co@gmail.com"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "social-button shape-circle sb-facebook sb-light-skin", href: "#" },
-                                        _react2.default.createElement("i", { className: "socicon-facebook" })
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "social-button shape-circle sb-twitter sb-light-skin", href: "#" },
-                                        _react2.default.createElement("i", { className: "socicon-twitter" })
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "social-button shape-circle sb-instagram sb-light-skin", href: "#" },
-                                        _react2.default.createElement("i", { className: "socicon-instagram" })
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "social-button shape-circle sb-google-plus sb-light-skin", href: "#" },
-                                        _react2.default.createElement("i", { className: "socicon-googleplus" })
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-lg-3 col-md-6" },
-                                _react2.default.createElement(
-                                    "section",
-                                    { className: "widget widget-light-skin" },
-                                    _react2.default.createElement(
-                                        "h3",
-                                        { className: "widget-title" },
-                                        "Our Mobile App"
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "market-button apple-button mb-light-skin", href: "#" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-subtitle" },
-                                            "Download on the"
-                                        ),
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-title" },
-                                            "App Store"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "market-button google-button mb-light-skin", href: "#" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-subtitle" },
-                                            "Download on the"
-                                        ),
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-title" },
-                                            "Google Play"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "market-button windows-button mb-light-skin", href: "#" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-subtitle" },
-                                            "Download on the"
-                                        ),
-                                        _react2.default.createElement(
-                                            "span",
-                                            { className: "mb-title" },
-                                            "Windows Store"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-lg-3 col-md-6" },
-                                _react2.default.createElement(
-                                    "section",
-                                    { className: "widget widget-links widget-light-skin" },
-                                    _react2.default.createElement(
-                                        "h3",
-                                        { className: "widget-title" },
-                                        "About Us"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        null,
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/about" },
-                                                "Careers"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/about" },
-                                                "About MyStore"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/contacts" },
-                                                "Our Story"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/faq" },
-                                                "Services"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/blog" },
-                                                "Our Blog"
-                                            )
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-lg-3 col-md-6" },
-                                _react2.default.createElement(
-                                    "section",
-                                    { className: "widget widget-links widget-light-skin" },
-                                    _react2.default.createElement(
-                                        "h3",
-                                        { className: "widget-title" },
-                                        "Account & Shipping Info"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        null,
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/profile#/account-orders" },
-                                                "Your Account"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "/company#/about" },
-                                                "Shipping Rates & Policies"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Refunds & Replacements"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Taxes"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Delivery Info"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "#" },
-                                                "Affiliate Program"
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement("hr", { className: "hr-light mt-2 margin-bottom-2x" }),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "row" },
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-md-7 padding-bottom-1x" },
-                                _react2.default.createElement(
-                                    "div",
-                                    { className: "margin-bottom-1x", style: { maxWidth: 615 } },
-                                    _react2.default.createElement("img", { src: "img/payment_methods.png", alt: "Payment Methods" })
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "col-md-5 padding-bottom-1x" },
-                                _react2.default.createElement("div", { className: "margin-top-1x hidden-md-up" }),
-                                _react2.default.createElement(
-                                    "form",
-                                    { className: "subscribe-form" },
-                                    _react2.default.createElement(
-                                        "div",
-                                        { className: "clearfix" },
-                                        _react2.default.createElement(
-                                            "div",
-                                            { className: "input-group input-light" },
-                                            _react2.default.createElement("input", { className: "form-control", type: "email", name: "EMAIL", placeholder: "Your e-mail" }),
-                                            _react2.default.createElement(
-                                                "span",
-                                                { className: "input-group-addon" },
-                                                _react2.default.createElement("i", { className: "icon-mail" })
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "div",
-                                            { style: { position: 'absolute', left: '-5000px' }, "aria-hidden": "true" },
-                                            _react2.default.createElement("input", { type: "text", tabIndex: -1 })
-                                        ),
-                                        _react2.default.createElement(
-                                            "button",
-                                            { className: "btn btn-primary", type: "submit" },
-                                            _react2.default.createElement("i", { className: "icon-check" })
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "form-text text-sm text-white opacity-50" },
-                                        "Subscribe to our Newsletter to receive early discount offers, latest news, sales and promo information."
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "footer-copyright" },
-                            "\xA9 All rights reserved. Made with \xA0",
-                            _react2.default.createElement("i", { className: "icon-heart text-danger" }),
-                            _react2.default.createElement(
-                                "a",
-                                { href: "https://www.codemode.co", target: "_blank" },
-                                " \xA0by Ishtmeet Singh"
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Footer;
-}(_react.Component);
-
-exports.default = Footer;
 
 /***/ })
 /******/ ]);

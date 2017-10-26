@@ -26,13 +26,13 @@ export default class AccountInfo extends Component {
                         </div>
                         <div className="cart"><a href="/payment#/cart" /><i className="icon-bag" /><span className="count">3</span><span className="subtotal">$289.68</span>
                             <div className="toolbar-dropdown">
-                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/01.jpg" alt="Product" /></a>
+                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="/shopping#/shop-single"><img src="img/cart-dropdown/01.jpg" alt="Product" /></a>
                                 <div className="dropdown-product-info"><a className="dropdown-product-title" href="/shopping#/shop-single">Unionbay Park</a><span className="dropdown-product-details">1 x $43.90</span></div>
                             </div>
-                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/02.jpg" alt="Product" /></a>
+                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="/shopping#/shop-single"><img src="img/cart-dropdown/02.jpg" alt="Product" /></a>
                                 <div className="dropdown-product-info"><a className="dropdown-product-title" href="/shopping#/shop-single">Daily Fabric Cap</a><span className="dropdown-product-details">2 x $24.89</span></div>
                             </div>
-                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="shop-single.html"><img src="img/cart-dropdown/03.jpg" alt="Product" /></a>
+                            <div className="dropdown-product-item"><span className="dropdown-product-remove"><i className="icon-cross" /></span><a className="dropdown-product-thumb" href="/shopping#/shop-single"><img src="img/cart-dropdown/03.jpg" alt="Product" /></a>
                                 <div className="dropdown-product-info"><a className="dropdown-product-title" href="/shopping#/shop-single">Haan Crossbody</a><span className="dropdown-product-details">1 x $200.00</span></div>
                             </div>
                             <div className="toolbar-dropdown-group">

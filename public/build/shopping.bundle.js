@@ -60,11 +60,26 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 99);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(18);
+} else {
+  module.exports = __webpack_require__(19);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -254,7 +269,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -296,7 +311,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -353,22 +368,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(17);
-} else {
-  module.exports = __webpack_require__(18);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 4 */
@@ -471,6 +471,109 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(31)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(32)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  warning = function(condition, format, args) {
+    var len = arguments.length;
+    args = new Array(len > 2 ? len - 2 : 0);
+    for (var key = 2; key < len; key++) {
+      args[key - 2] = arguments[key];
+    }
+    if (format === undefined) {
+      throw new Error(
+        '`warning(condition, format, ...args)` requires a warning ' +
+        'message argument'
+      );
+    }
+
+    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+      throw new Error(
+        'The warning format should be able to uniquely identify this ' +
+        'warning. Please, use a more descriptive format than: ' + format
+      );
+    }
+
+    if (!condition) {
+      var argIndex = 0;
+      var message = 'Warning: ' +
+        format.replace(/%s/g, function() {
+          return args[argIndex++];
+        });
+      if (typeof console !== 'undefined') {
+        console.error(message);
+      }
+      try {
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        throw new Error(message);
+      } catch(x) {}
+    }
+  };
+}
+
+module.exports = warning;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -489,10 +592,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -506,7 +609,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -558,10 +661,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -575,9 +678,9 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(8);
+  var invariant = __webpack_require__(3);
+  var warning = __webpack_require__(8);
+  var ReactPropTypesSecret = __webpack_require__(10);
   var loggedTypeFailures = {};
 }
 
@@ -625,10 +728,10 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -647,7 +750,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -686,42 +789,66 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright 2013-2015, Facebook, Inc.
+ * All rights reserved.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
 
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
 
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(30)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(31)();
-}
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+var invariant = function(condition, format, a, b, c, d, e, f) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  }
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error(
+        'Minified exception occurred; use the non-minified dev environment ' +
+        'for the full error message and additional helpful warnings.'
+      );
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+};
+
+module.exports = invariant;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -736,7 +863,7 @@ if (process.env.NODE_ENV !== 'production') {
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -799,10 +926,10 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -873,7 +1000,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -888,7 +1015,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(21);
+var isTextNode = __webpack_require__(22);
 
 /*eslint-disable no-bitwise */
 
@@ -916,7 +1043,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -946,7 +1073,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -988,8 +1115,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 16 */,
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1002,7 +1128,7 @@ module.exports = getActiveElement;
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(4),p=__webpack_require__(5);__webpack_require__(2);var r=__webpack_require__(1);
+var f=__webpack_require__(4),p=__webpack_require__(7);__webpack_require__(3);var r=__webpack_require__(2);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -1019,7 +1145,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,11 +1166,11 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var objectAssign$1 = __webpack_require__(4);
-var require$$0 = __webpack_require__(6);
-var emptyObject = __webpack_require__(5);
-var invariant = __webpack_require__(2);
-var emptyFunction = __webpack_require__(1);
-var checkPropTypes = __webpack_require__(7);
+var require$$0 = __webpack_require__(8);
+var emptyObject = __webpack_require__(7);
+var invariant = __webpack_require__(3);
+var emptyFunction = __webpack_require__(2);
+var checkPropTypes = __webpack_require__(9);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2722,10 +2848,10 @@ module.exports = ReactEntry;
 })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2763,15 +2889,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(21);
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(24);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2785,7 +2911,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(3);__webpack_require__(2);var l=__webpack_require__(9),n=__webpack_require__(4),ba=__webpack_require__(11),ca=__webpack_require__(1),da=__webpack_require__(5),ea=__webpack_require__(12),fa=__webpack_require__(13),ha=__webpack_require__(14),ia=__webpack_require__(15);
+var aa=__webpack_require__(0);__webpack_require__(3);var l=__webpack_require__(11),n=__webpack_require__(4),ba=__webpack_require__(13),ca=__webpack_require__(2),da=__webpack_require__(7),ea=__webpack_require__(14),fa=__webpack_require__(15),ha=__webpack_require__(16),ia=__webpack_require__(17);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -3034,7 +3160,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3049,7 +3175,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
  * @typechecks
  */
 
-var isNode = __webpack_require__(22);
+var isNode = __webpack_require__(23);
 
 /**
  * @param {*} object The object to check.
@@ -3062,7 +3188,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3090,7 +3216,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3110,23 +3236,23 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var react = __webpack_require__(3);
-var invariant = __webpack_require__(2);
-var ExecutionEnvironment = __webpack_require__(9);
+var react = __webpack_require__(0);
+var invariant = __webpack_require__(3);
+var ExecutionEnvironment = __webpack_require__(11);
 var _assign = __webpack_require__(4);
-var EventListener = __webpack_require__(11);
-var require$$0 = __webpack_require__(6);
-var hyphenateStyleName = __webpack_require__(24);
-var emptyFunction = __webpack_require__(1);
-var camelizeStyleName = __webpack_require__(26);
-var performanceNow = __webpack_require__(28);
-var propTypes = __webpack_require__(10);
-var emptyObject = __webpack_require__(5);
-var checkPropTypes = __webpack_require__(7);
-var shallowEqual = __webpack_require__(12);
-var containsNode = __webpack_require__(13);
-var focusNode = __webpack_require__(14);
-var getActiveElement = __webpack_require__(15);
+var EventListener = __webpack_require__(13);
+var require$$0 = __webpack_require__(8);
+var hyphenateStyleName = __webpack_require__(25);
+var emptyFunction = __webpack_require__(2);
+var camelizeStyleName = __webpack_require__(27);
+var performanceNow = __webpack_require__(29);
+var propTypes = __webpack_require__(5);
+var emptyObject = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(9);
+var shallowEqual = __webpack_require__(14);
+var containsNode = __webpack_require__(15);
+var focusNode = __webpack_require__(16);
+var getActiveElement = __webpack_require__(17);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -20316,10 +20442,10 @@ module.exports = ReactDOMFiberEntry;
 })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20334,7 +20460,7 @@ module.exports = ReactDOMFiberEntry;
 
 
 
-var hyphenate = __webpack_require__(25);
+var hyphenate = __webpack_require__(26);
 
 var msPattern = /^ms-/;
 
@@ -20361,7 +20487,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20397,7 +20523,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20412,7 +20538,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(27);
+var camelize = __webpack_require__(28);
 
 var msPattern = /^-ms-/;
 
@@ -20440,7 +20566,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20475,7 +20601,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20490,7 +20616,7 @@ module.exports = camelize;
  * @typechecks
  */
 
-var performance = __webpack_require__(29);
+var performance = __webpack_require__(30);
 
 var performanceNow;
 
@@ -20512,7 +20638,7 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20527,7 +20653,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(9);
+var ExecutionEnvironment = __webpack_require__(11);
 
 var performance;
 
@@ -20538,7 +20664,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20551,13 +20677,13 @@ module.exports = performance || {};
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var warning = __webpack_require__(6);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
+var warning = __webpack_require__(8);
 var assign = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(8);
-var checkPropTypes = __webpack_require__(7);
+var ReactPropTypesSecret = __webpack_require__(10);
+var checkPropTypes = __webpack_require__(9);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21085,10 +21211,10 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21101,9 +21227,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var ReactPropTypesSecret = __webpack_require__(8);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(10);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21153,122 +21279,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(19);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _main = __webpack_require__(82);
-
-var _main2 = _interopRequireDefault(_main);
-
-var _footer = __webpack_require__(89);
-
-var _footer2 = _interopRequireDefault(_footer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Shopping = function (_Component) {
-    _inherits(Shopping, _Component);
-
-    function Shopping() {
-        _classCallCheck(this, Shopping);
-
-        return _possibleConstructorReturn(this, (Shopping.__proto__ || Object.getPrototypeOf(Shopping)).apply(this, arguments));
-    }
-
-    _createClass(Shopping, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_main2.default, null),
-                'Shopping',
-                _react2.default.createElement(_footer2.default, null),
-                _react2.default.createElement(
-                    'a',
-                    { className: 'scroll-to-top-btn', href: '#' },
-                    _react2.default.createElement('i', { className: 'icon-arrow-up' })
-                ),
-                _react2.default.createElement('div', { className: 'site-backdrop' })
-            );
-        }
-    }]);
-
-    return Shopping;
-}(_react.Component);
-
-_reactDom2.default.render(_react2.default.createElement(Shopping, null), document.getElementById('shopping'));
-
-/***/ }),
-/* 81 */,
-/* 82 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21280,31 +21291,31 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _mobileMenu = __webpack_require__(83);
+var _mobileMenu = __webpack_require__(34);
 
 var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
 
-var _drawerLayout = __webpack_require__(84);
+var _drawerLayout = __webpack_require__(35);
 
 var _drawerLayout2 = _interopRequireDefault(_drawerLayout);
 
-var _topbar = __webpack_require__(85);
+var _topbar = __webpack_require__(36);
 
 var _topbar2 = _interopRequireDefault(_topbar);
 
-var _searchBox = __webpack_require__(86);
+var _searchBox = __webpack_require__(37);
 
 var _searchBox2 = _interopRequireDefault(_searchBox);
 
-var _navigationBar = __webpack_require__(87);
+var _navigationBar = __webpack_require__(38);
 
 var _navigationBar2 = _interopRequireDefault(_navigationBar);
 
-var _accountInfo = __webpack_require__(88);
+var _accountInfo = __webpack_require__(39);
 
 var _accountInfo2 = _interopRequireDefault(_accountInfo);
 
@@ -21366,7 +21377,7 @@ var Navigation = function (_Component) {
 exports.default = Navigation;
 
 /***/ }),
-/* 83 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21378,7 +21389,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -21410,7 +21421,7 @@ var MobileMenu = function (_Component) {
                     { className: "offcanvas-container", id: "mobile-menu" },
                     _react2.default.createElement(
                         "a",
-                        { className: "account-link", href: "account-orders.html" },
+                        { className: "account-link", href: "/profile#/account-orders" },
                         _react2.default.createElement(
                             "div",
                             { className: "user-ava" },
@@ -21445,7 +21456,7 @@ var MobileMenu = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "index-2.html" },
+                                        { href: "/" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
@@ -21462,7 +21473,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "index-2.html" },
+                                            { href: "/shopping#/featured" },
                                             "Featured Products Slider"
                                         )
                                     ),
@@ -21471,7 +21482,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "home-featured-categories.html" },
+                                            { href: "/shopping#/featured" },
                                             "Featured Categories"
                                         )
                                     ),
@@ -21480,7 +21491,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "home-collection-showcase.html" },
+                                            { href: "/shopping#/showcase" },
                                             "Products Collection Showcase"
                                         )
                                     )
@@ -21494,7 +21505,7 @@ var MobileMenu = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "shop-grid-ls.html" },
+                                        { href: "/shopping#/shop-grid" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
@@ -21511,7 +21522,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "shop-categories.html" },
+                                            { href: "/shopping#/shop-categories" },
                                             "Shop Categories"
                                         )
                                     ),
@@ -21523,7 +21534,7 @@ var MobileMenu = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "shop-grid-ls.html" },
+                                                { href: "/shopping#/shop-grid" },
                                                 _react2.default.createElement(
                                                     "span",
                                                     null,
@@ -21540,7 +21551,7 @@ var MobileMenu = function (_Component) {
                                                 null,
                                                 _react2.default.createElement(
                                                     "a",
-                                                    { href: "shop-grid-ls.html" },
+                                                    { href: "/shopping#/shop-grid" },
                                                     "Grid Left Sidebar"
                                                 )
                                             ),
@@ -21549,7 +21560,7 @@ var MobileMenu = function (_Component) {
                                                 null,
                                                 _react2.default.createElement(
                                                     "a",
-                                                    { href: "shop-grid-rs.html" },
+                                                    { href: "/shopping#/shop-grid" },
                                                     "Grid Right Sidebar"
                                                 )
                                             ),
@@ -21558,57 +21569,8 @@ var MobileMenu = function (_Component) {
                                                 null,
                                                 _react2.default.createElement(
                                                     "a",
-                                                    { href: "shop-grid-ns.html" },
+                                                    { href: "/shopping#/shop-grid" },
                                                     "Grid No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ls.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Shop List"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-ls.html" },
-                                                    "List Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-rs.html" },
-                                                    "List Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "shop-list-ns.html" },
-                                                    "List No Sidebar"
                                                 )
                                             )
                                         )
@@ -21618,7 +21580,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "shop-single.html" },
+                                            { href: "/shopping#/shop-single" },
                                             "Single Product"
                                         )
                                     ),
@@ -21627,7 +21589,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "cart.html" },
+                                            { href: "/payment#/cart" },
                                             "Cart"
                                         )
                                     ),
@@ -21636,7 +21598,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "checkout.html" },
+                                            { href: "/payment#/checkout-address" },
                                             "Checkout"
                                         )
                                     )
@@ -22046,7 +22008,7 @@ var MobileMenu = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-orders.html" },
+                                        { href: "/profile#/account-orders" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
@@ -22063,7 +22025,7 @@ var MobileMenu = function (_Component) {
                                         { className: "active" },
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-login.html" },
+                                            { href: "/login" },
                                             "Login / Register"
                                         )
                                     ),
@@ -22072,7 +22034,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-password-recovery.html" },
+                                            { href: "/profile#/account-password-recovery" },
                                             "Password Recovery"
                                         )
                                     ),
@@ -22081,7 +22043,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-orders.html" },
+                                            { href: "/profile#/accountorders" },
                                             "Orders List"
                                         )
                                     ),
@@ -22090,7 +22052,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-wishlist.html" },
+                                            { href: "/profile#/account-wishlist" },
                                             "Wishlist"
                                         )
                                     ),
@@ -22099,7 +22061,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-profile.html" },
+                                            { href: "/profile#/account-profile" },
                                             "Profile Page"
                                         )
                                     ),
@@ -22108,7 +22070,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-address.html" },
+                                            { href: "/profile#/account-address" },
                                             "Contact / Shipping Address"
                                         )
                                     ),
@@ -22117,7 +22079,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-open-ticket.html" },
+                                            { href: "/profile#/account-tickets" },
                                             "Open Ticket"
                                         )
                                     ),
@@ -22126,7 +22088,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "account-tickets.html" },
+                                            { href: "/profile#/account-tickets" },
                                             "My Tickets"
                                         )
                                     )
@@ -22140,7 +22102,7 @@ var MobileMenu = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "blog-rs.html" },
+                                        { href: "/company#/blog" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
@@ -22148,108 +22110,6 @@ var MobileMenu = function (_Component) {
                                         )
                                     ),
                                     _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-rs.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Blog Layout"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-rs.html" },
-                                                    "Blog Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-ls.html" },
-                                                    "Blog Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-ns.html" },
-                                                    "Blog No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        { className: "has-children" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-rs.html" },
-                                                _react2.default.createElement(
-                                                    "span",
-                                                    null,
-                                                    "Single Post Layout"
-                                                )
-                                            ),
-                                            _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                        ),
-                                        _react2.default.createElement(
-                                            "ul",
-                                            { className: "offcanvas-submenu" },
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-rs.html" },
-                                                    "Post Right Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-ls.html" },
-                                                    "Post Left Sidebar"
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                "li",
-                                                null,
-                                                _react2.default.createElement(
-                                                    "a",
-                                                    { href: "blog-single-ns.html" },
-                                                    "Post No Sidebar"
-                                                )
-                                            )
-                                        )
-                                    )
                                 )
                             ),
                             _react2.default.createElement(
@@ -22277,7 +22137,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "about.html" },
+                                            { href: "/company#/about" },
                                             "About Us"
                                         )
                                     ),
@@ -22286,25 +22146,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "mobile-app.html" },
-                                            "Unishop Mobile App"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "services.html" },
-                                            "Services"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "contacts.html" },
+                                            { href: "/company#/contacts" },
                                             "Contacts"
                                         )
                                     ),
@@ -22313,7 +22155,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "faq.html" },
+                                            { href: "/company#/faq" },
                                             "Help / FAQ"
                                         )
                                     ),
@@ -22322,7 +22164,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "order-tracking.html" },
+                                            { href: "/profile#/order-tracking" },
                                             "Order Tracking"
                                         )
                                     ),
@@ -22331,7 +22173,7 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "search-results.html" },
+                                            { href: "/shopping#/search-results" },
                                             "Search Results"
                                         )
                                     ),
@@ -22340,282 +22182,8 @@ var MobileMenu = function (_Component) {
                                         null,
                                         _react2.default.createElement(
                                             "a",
-                                            { href: "404.html" },
+                                            { href: "/you-fine-bro" },
                                             "404"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { className: "text-danger", href: "docs/dev-setup.html" },
-                                            "Documentation"
-                                        )
-                                    )
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "li",
-                                { className: "has-children" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "components/accordion.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Components"
-                                        )
-                                    ),
-                                    _react2.default.createElement("span", { className: "sub-menu-toggle" })
-                                ),
-                                _react2.default.createElement(
-                                    "ul",
-                                    { className: "offcanvas-submenu" },
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/accordion.html" },
-                                            "Accordion"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/alerts.html" },
-                                            "Alerts"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/buttons.html" },
-                                            "Buttons"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/cards.html" },
-                                            "Cards"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/carousel.html" },
-                                            "Carousel"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/countdown.html" },
-                                            "Countdown"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/forms.html" },
-                                            "Forms"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/gallery.html" },
-                                            "Gallery"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/google-maps.html" },
-                                            "Google Maps"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/images.html" },
-                                            "Images & Figures"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/list-group.html" },
-                                            "List Group"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/market-social-buttons.html" },
-                                            "Market & Social Buttons"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/media.html" },
-                                            "Media Object"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/modal.html" },
-                                            "Modal"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/pagination.html" },
-                                            "Pagination"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/pills.html" },
-                                            "Pills"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/progress-bars.html" },
-                                            "Progress Bars"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/shop-items.html" },
-                                            "Shop Items"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/steps.html" },
-                                            "Steps"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tables.html" },
-                                            "Tables"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tabs.html" },
-                                            "Tabs"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/team.html" },
-                                            "Team"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/toasts.html" },
-                                            "Toast Notifications"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/tooltips-popovers.html" },
-                                            "Tooltips & Popovers"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/typography.html" },
-                                            "Typography"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/video-player.html" },
-                                            "Video Player"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "li",
-                                        null,
-                                        _react2.default.createElement(
-                                            "a",
-                                            { href: "components/widgets.html" },
-                                            "Widgets"
                                         )
                                     )
                                 )
@@ -22633,7 +22201,7 @@ var MobileMenu = function (_Component) {
 exports.default = MobileMenu;
 
 /***/ }),
-/* 84 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22645,7 +22213,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23144,7 +22712,7 @@ var DrawerLayout = function (_Component) {
 exports.default = DrawerLayout;
 
 /***/ }),
-/* 85 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23156,7 +22724,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23191,15 +22759,15 @@ var TopBar = function (_Component) {
                         { className: "topbar-column" },
                         _react2.default.createElement(
                             "a",
-                            { className: "hidden-md-down", href: "mailto:support@unishop.com" },
+                            { className: "hidden-md-down", href: "mailto:codemode.co@gmail.com" },
                             _react2.default.createElement("i", { className: "icon-mail" }),
-                            "\xA0 support@unishop.com"
+                            "\xA0 codemode.co@gmail.com"
                         ),
                         _react2.default.createElement(
                             "a",
-                            { className: "hidden-md-down", href: "tel:00331697720" },
+                            { className: "hidden-md-down", href: "tel:+917780874266" },
                             _react2.default.createElement("i", { className: "icon-bell" }),
-                            "\xA0 00 33 169 7720"
+                            "\xA0 +91 77 808 74266"
                         ),
                         _react2.default.createElement(
                             "a",
@@ -23230,74 +22798,6 @@ var TopBar = function (_Component) {
                             { className: "hidden-md-down", href: "#" },
                             _react2.default.createElement("i", { className: "icon-download" }),
                             "\xA0 Get mobile app"
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "lang-currency-switcher-wrap" },
-                            _react2.default.createElement(
-                                "div",
-                                { className: "lang-currency-switcher dropdown-toggle" },
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "language" },
-                                    _react2.default.createElement("img", { alt: "English", src: "img/flags/GB.png" })
-                                ),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "currency" },
-                                    "$ USD"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "div",
-                                { className: "dropdown-menu" },
-                                _react2.default.createElement(
-                                    "div",
-                                    { className: "currency-select" },
-                                    _react2.default.createElement(
-                                        "select",
-                                        { className: "form-control form-control-rounded form-control-sm" },
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "$ USD"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\u20AC EUR"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\xA3 UKP"
-                                        ),
-                                        _react2.default.createElement(
-                                            "option",
-                                            { value: "usd" },
-                                            "\xA5 JPY"
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/FR.png", alt: "Fran\xE7ais" }),
-                                    "Fran\xE7ais"
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/DE.png", alt: "Deutsch" }),
-                                    "Deutsch"
-                                ),
-                                _react2.default.createElement(
-                                    "a",
-                                    { className: "dropdown-item", href: "#" },
-                                    _react2.default.createElement("img", { src: "img/flags/IT.png", alt: "Italiano" }),
-                                    "Italiano"
-                                )
-                            )
                         )
                     )
                 )
@@ -23311,7 +22811,7 @@ var TopBar = function (_Component) {
 exports.default = TopBar;
 
 /***/ }),
-/* 86 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23323,7 +22823,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23379,7 +22879,7 @@ var SearchBox = function (_Component) {
 exports.default = SearchBox;
 
 /***/ }),
-/* 87 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23391,7 +22891,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -23429,7 +22929,7 @@ var NavigationBar = function (_Component) {
                             { className: "has-megamenu" },
                             _react2.default.createElement(
                                 "a",
-                                { href: "index-2.html" },
+                                { href: "/" },
                                 _react2.default.createElement(
                                     "span",
                                     null,
@@ -23444,7 +22944,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "index-2.html" },
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/featured" },
                                         _react2.default.createElement("img", { alt: "Featured Products Slider", src: "img/mega-menu-home/01.jpg" }),
                                         _react2.default.createElement(
                                             "h6",
@@ -23458,7 +22958,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "home-featured-categories.html" },
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/featured" },
                                         _react2.default.createElement("img", { alt: "Featured Categories", src: "img/mega-menu-home/02.jpg" }),
                                         _react2.default.createElement(
                                             "h6",
@@ -23472,7 +22972,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { className: "d-block img-thumbnail text-center navi-link", href: "home-collection-showcase.html" },
+                                        { className: "d-block img-thumbnail text-center navi-link", href: "/shopping#/showcase" },
                                         _react2.default.createElement("img", { alt: "Products Collection Showcase", src: "img/mega-menu-home/03.jpg" }),
                                         _react2.default.createElement(
                                             "h6",
@@ -23502,7 +23002,7 @@ var NavigationBar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "shop-grid-ls.html" },
+                                { href: "/shopping#/shop-grid" },
                                 _react2.default.createElement(
                                     "span",
                                     null,
@@ -23517,7 +23017,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "shop-categories.html" },
+                                        { href: "/shopping#/shop-categories" },
                                         "Shop Categories"
                                     )
                                 ),
@@ -23526,86 +23026,11 @@ var NavigationBar = function (_Component) {
                                     { className: "has-children" },
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "shop-grid-ls.html" },
+                                        { href: "/shopping#/shop-grid" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
                                             "Shop Grid"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-ls.html" },
-                                                "Grid Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-rs.html" },
-                                                "Grid Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-grid-ns.html" },
-                                                "Grid No Sidebar"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "shop-list-ls.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Shop List"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ls.html" },
-                                                "List Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-rs.html" },
-                                                "List Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "shop-list-ns.html" },
-                                                "List No Sidebar"
-                                            )
                                         )
                                     )
                                 ),
@@ -23614,7 +23039,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "shop-single.html" },
+                                        { href: "/shopping#/shop-single" },
                                         "Single Product"
                                     )
                                 ),
@@ -23623,7 +23048,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "cart.html" },
+                                        { href: "/payment#/cart" },
                                         "Cart"
                                     )
                                 ),
@@ -23632,7 +23057,7 @@ var NavigationBar = function (_Component) {
                                     { className: "has-children" },
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "checkout-address.html" },
+                                        { href: "/payment#/checkout-address" },
                                         _react2.default.createElement(
                                             "span",
                                             null,
@@ -23647,7 +23072,7 @@ var NavigationBar = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "checkout-address.html" },
+                                                { href: "/payment#/checkout-address" },
                                                 "Address"
                                             )
                                         ),
@@ -23656,7 +23081,7 @@ var NavigationBar = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "checkout-shipping.html" },
+                                                { href: "/payment#/checkout-shipping" },
                                                 "Shipping"
                                             )
                                         ),
@@ -23665,7 +23090,7 @@ var NavigationBar = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "checkout-payment.html" },
+                                                { href: "/payment#/checkout-payment" },
                                                 "Payment"
                                             )
                                         ),
@@ -23674,7 +23099,7 @@ var NavigationBar = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "checkout-review.html" },
+                                                { href: "/payment#/checkout-review" },
                                                 "Review"
                                             )
                                         ),
@@ -23683,7 +23108,7 @@ var NavigationBar = function (_Component) {
                                             null,
                                             _react2.default.createElement(
                                                 "a",
-                                                { href: "checkout-complete.html" },
+                                                { href: "/payment#/checkout-complete" },
                                                 "Complete"
                                             )
                                         )
@@ -23903,7 +23328,7 @@ var NavigationBar = function (_Component) {
                             { className: "active" },
                             _react2.default.createElement(
                                 "a",
-                                { href: "account-orders.html" },
+                                { href: "/profile#/account-orders" },
                                 _react2.default.createElement(
                                     "span",
                                     null,
@@ -23918,7 +23343,7 @@ var NavigationBar = function (_Component) {
                                     { className: "active" },
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-login.html" },
+                                        { href: "/login" },
                                         "Login / Register"
                                     )
                                 ),
@@ -23927,7 +23352,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-password-recovery.html" },
+                                        { href: "/profile#/account-password-recovery" },
                                         "Password Recovery"
                                     )
                                 ),
@@ -23936,7 +23361,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-orders.html" },
+                                        { href: "/profile#/account-orders" },
                                         "Orders List"
                                     )
                                 ),
@@ -23945,7 +23370,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-wishlist.html" },
+                                        { href: "/profile#/account-wishlist" },
                                         "Wishlist"
                                     )
                                 ),
@@ -23954,7 +23379,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-profile.html" },
+                                        { href: "/profile#/account-profile" },
                                         "Profile Page"
                                     )
                                 ),
@@ -23963,7 +23388,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-address.html" },
+                                        { href: "/profile#/account-address" },
                                         "Contact / Shipping Address"
                                     )
                                 ),
@@ -23972,7 +23397,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "account-tickets.html" },
+                                        { href: "/profile#/account-tickets" },
                                         "My Tickets"
                                     )
                                 )
@@ -23983,103 +23408,11 @@ var NavigationBar = function (_Component) {
                             null,
                             _react2.default.createElement(
                                 "a",
-                                { href: "blog-rs.html" },
+                                { href: "/company#/blog" },
                                 _react2.default.createElement(
                                     "span",
                                     null,
                                     "Blog"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "sub-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "blog-rs.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Blog Layout"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-rs.html" },
-                                                "Blog Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-ls.html" },
-                                                "Blog Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-ns.html" },
-                                                "Blog No Sidebar"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    { className: "has-children" },
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "blog-single-rs.html" },
-                                        _react2.default.createElement(
-                                            "span",
-                                            null,
-                                            "Single Post Layout"
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-rs.html" },
-                                                "Post Right Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-ls.html" },
-                                                "Post Left Sidebar"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "blog-single-ns.html" },
-                                                "Post No Sidebar"
-                                            )
-                                        )
-                                    )
                                 )
                             )
                         ),
@@ -24103,7 +23436,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "about.html" },
+                                        { href: "/company#/about" },
                                         "About Us"
                                     )
                                 ),
@@ -24112,7 +23445,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "contacts.html" },
+                                        { href: "/company#/contacts" },
                                         "Contacts"
                                     )
                                 ),
@@ -24121,7 +23454,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "faq.html" },
+                                        { href: "/company#/faq" },
                                         "Help / FAQ"
                                     )
                                 ),
@@ -24130,7 +23463,7 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "order-tracking.html" },
+                                        { href: "/profile#/order-tracking" },
                                         "Order Tracking"
                                     )
                                 ),
@@ -24139,338 +23472,8 @@ var NavigationBar = function (_Component) {
                                     null,
                                     _react2.default.createElement(
                                         "a",
-                                        { href: "search-results.html" },
+                                        { href: "/shopping#/search-results" },
                                         "Search Results"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { href: "404.html" },
-                                        "404 Not Found"
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "a",
-                                        { className: "text-danger", href: "docs/dev-setup.html" },
-                                        "Documentation"
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            { className: "has-megamenu" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "components/accordion.html" },
-                                _react2.default.createElement(
-                                    "span",
-                                    null,
-                                    "Components"
-                                )
-                            ),
-                            _react2.default.createElement(
-                                "ul",
-                                { className: "mega-menu" },
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "A - F"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/accordion.html" },
-                                                "Accordion"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/alerts.html" },
-                                                "Alerts"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/buttons.html" },
-                                                "Buttons"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/cards.html" },
-                                                "Cards"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/carousel.html" },
-                                                "Carousel"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/countdown.html" },
-                                                "Countdown"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/forms.html" },
-                                                "Forms"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "G - M"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/gallery.html" },
-                                                "Gallery"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/google-maps.html" },
-                                                "Google Maps"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/images.html" },
-                                                "Images & Figures"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/list-group.html" },
-                                                "List Group"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/market-social-buttons.html" },
-                                                "Market & Social Buttons"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/media.html" },
-                                                "Media Object"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/modal.html" },
-                                                "Modal"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "P - T"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/pagination.html" },
-                                                "Pagination"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/pills.html" },
-                                                "Pills"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/progress-bars.html" },
-                                                "Progress Bars"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/shop-items.html" },
-                                                "Shop Items"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/steps.html" },
-                                                "Steps"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tables.html" },
-                                                "Tables"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tabs.html" },
-                                                "Tabs"
-                                            )
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    "li",
-                                    null,
-                                    _react2.default.createElement(
-                                        "span",
-                                        { className: "mega-menu-title" },
-                                        "T - W"
-                                    ),
-                                    _react2.default.createElement(
-                                        "ul",
-                                        { className: "sub-menu" },
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/team.html" },
-                                                "Team"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/toasts.html" },
-                                                "Toast Notifications"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/tooltips-popovers.html" },
-                                                "Tooltips & Popovers"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/typography.html" },
-                                                "Typography"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/video-player.html" },
-                                                "Video Player"
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            "li",
-                                            null,
-                                            _react2.default.createElement(
-                                                "a",
-                                                { href: "components/widgets.html" },
-                                                "Widgets"
-                                            )
-                                        )
                                     )
                                 )
                             )
@@ -24487,7 +23490,7 @@ var NavigationBar = function (_Component) {
 exports.default = NavigationBar;
 
 /***/ }),
-/* 88 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24499,7 +23502,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -24640,7 +23643,7 @@ var AccountInfo = function (_Component) {
                                         ),
                                         _react2.default.createElement(
                                             "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
                                             _react2.default.createElement("img", { src: "img/cart-dropdown/01.jpg", alt: "Product" })
                                         ),
                                         _react2.default.createElement(
@@ -24668,7 +23671,7 @@ var AccountInfo = function (_Component) {
                                         ),
                                         _react2.default.createElement(
                                             "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
                                             _react2.default.createElement("img", { src: "img/cart-dropdown/02.jpg", alt: "Product" })
                                         ),
                                         _react2.default.createElement(
@@ -24696,7 +23699,7 @@ var AccountInfo = function (_Component) {
                                         ),
                                         _react2.default.createElement(
                                             "a",
-                                            { className: "dropdown-product-thumb", href: "shop-single.html" },
+                                            { className: "dropdown-product-thumb", href: "/shopping#/shop-single" },
                                             _react2.default.createElement("img", { src: "img/cart-dropdown/03.jpg", alt: "Product" })
                                         ),
                                         _react2.default.createElement(
@@ -24744,7 +23747,7 @@ var AccountInfo = function (_Component) {
                                             { className: "column" },
                                             _react2.default.createElement(
                                                 "a",
-                                                { className: "btn btn-sm btn-block btn-secondary", href: "/paymen#/cart" },
+                                                { className: "btn btn-sm btn-block btn-secondary", href: "/payment#/cart" },
                                                 "View Cart"
                                             )
                                         ),
@@ -24773,7 +23776,7 @@ var AccountInfo = function (_Component) {
 exports.default = AccountInfo;
 
 /***/ }),
-/* 89 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24785,7 +23788,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25154,6 +24157,9405 @@ var Footer = function (_Component) {
 }(_react.Component);
 
 exports.default = Footer;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var addLeadingSlash = exports.addLeadingSlash = function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+};
+
+var stripLeadingSlash = exports.stripLeadingSlash = function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+};
+
+var hasBasename = exports.hasBasename = function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+};
+
+var stripBasename = exports.stripBasename = function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+};
+
+var stripTrailingSlash = exports.stripTrailingSlash = function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+};
+
+var parsePath = exports.parsePath = function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+
+  var hashIndex = pathname.indexOf('#');
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+};
+
+var createPath = exports.createPath = function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+
+
+  var path = pathname || '/';
+
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
+
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : '#' + hash;
+
+  return path;
+};
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addLeadingSlash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return stripLeadingSlash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hasBasename; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return stripBasename; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return stripTrailingSlash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return parsePath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return createPath; });
+var addLeadingSlash = function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+};
+
+var stripLeadingSlash = function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+};
+
+var hasBasename = function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+};
+
+var stripBasename = function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+};
+
+var stripTrailingSlash = function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+};
+
+var parsePath = function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+
+  var hashIndex = pathname.indexOf('#');
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+};
+
+var createPath = function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+
+
+  var path = pathname || '/';
+
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
+
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : '#' + hash;
+
+  return path;
+};
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createLocation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(42);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+var createLocation = function createLocation(path, state, key, currentLocation) {
+  var location = void 0;
+  if (typeof path === 'string') {
+    // Two-arg form: push(path, state)
+    location = Object(__WEBPACK_IMPORTED_MODULE_2__PathUtils__["d" /* parsePath */])(path);
+    location.state = state;
+  } else {
+    // One-arg form: push(location)
+    location = _extends({}, path);
+
+    if (location.pathname === undefined) location.pathname = '';
+
+    if (location.search) {
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+    } else {
+      location.search = '';
+    }
+
+    if (location.hash) {
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+    } else {
+      location.hash = '';
+    }
+
+    if (state !== undefined && location.state === undefined) location.state = state;
+  }
+
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
+
+  if (currentLocation) {
+    // Resolve incomplete/relative pathname relative to current location.
+    if (!location.pathname) {
+      location.pathname = currentLocation.pathname;
+    } else if (location.pathname.charAt(0) !== '/') {
+      location.pathname = Object(__WEBPACK_IMPORTED_MODULE_0_resolve_pathname__["default"])(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
+    }
+  }
+
+  return location;
+};
+
+var locationsAreEqual = function locationsAreEqual(a, b) {
+  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && Object(__WEBPACK_IMPORTED_MODULE_1_value_equal__["default"])(a.state, b.state);
+};
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.locationsAreEqual = exports.createLocation = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _resolvePathname = __webpack_require__(50);
+
+var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
+
+var _valueEqual = __webpack_require__(51);
+
+var _valueEqual2 = _interopRequireDefault(_valueEqual);
+
+var _PathUtils = __webpack_require__(41);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createLocation = exports.createLocation = function createLocation(path, state, key, currentLocation) {
+  var location = void 0;
+  if (typeof path === 'string') {
+    // Two-arg form: push(path, state)
+    location = (0, _PathUtils.parsePath)(path);
+    location.state = state;
+  } else {
+    // One-arg form: push(location)
+    location = _extends({}, path);
+
+    if (location.pathname === undefined) location.pathname = '';
+
+    if (location.search) {
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+    } else {
+      location.search = '';
+    }
+
+    if (location.hash) {
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+    } else {
+      location.hash = '';
+    }
+
+    if (state !== undefined && location.state === undefined) location.state = state;
+  }
+
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
+
+  if (currentLocation) {
+    // Resolve incomplete/relative pathname relative to current location.
+    if (!location.pathname) {
+      location.pathname = currentLocation.pathname;
+    } else if (location.pathname.charAt(0) !== '/') {
+      location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
+    }
+  }
+
+  return location;
+};
+
+var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a, b) {
+  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
+};
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _warning = __webpack_require__(6);
+
+var _warning2 = _interopRequireDefault(_warning);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createTransitionManager = function createTransitionManager() {
+  var prompt = null;
+
+  var setPrompt = function setPrompt(nextPrompt) {
+    (0, _warning2.default)(prompt == null, 'A history supports only one prompt at a time');
+
+    prompt = nextPrompt;
+
+    return function () {
+      if (prompt === nextPrompt) prompt = null;
+    };
+  };
+
+  var confirmTransitionTo = function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+    // TODO: If another transition starts while we're still confirming
+    // the previous one, we may end up in a weird state. Figure out the
+    // best way to handle this.
+    if (prompt != null) {
+      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+
+      if (typeof result === 'string') {
+        if (typeof getUserConfirmation === 'function') {
+          getUserConfirmation(result, callback);
+        } else {
+          (0, _warning2.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+
+          callback(true);
+        }
+      } else {
+        // Return false from a transition hook to cancel the transition.
+        callback(result !== false);
+      }
+    } else {
+      callback(true);
+    }
+  };
+
+  var listeners = [];
+
+  var appendListener = function appendListener(fn) {
+    var isActive = true;
+
+    var listener = function listener() {
+      if (isActive) fn.apply(undefined, arguments);
+    };
+
+    listeners.push(listener);
+
+    return function () {
+      isActive = false;
+      listeners = listeners.filter(function (item) {
+        return item !== listener;
+      });
+    };
+  };
+
+  var notifyListeners = function notifyListeners() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    listeners.forEach(function (listener) {
+      return listener.apply(undefined, args);
+    });
+  };
+
+  return {
+    setPrompt: setPrompt,
+    confirmTransitionTo: confirmTransitionTo,
+    appendListener: appendListener,
+    notifyListeners: notifyListeners
+  };
+};
+
+exports.default = createTransitionManager;
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(47);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__["a" /* default */]);
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+/**
+ * The public API for putting history on context.
+ */
+
+var Router = function (_React$Component) {
+  _inherits(Router, _React$Component);
+
+  function Router() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Router);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+      match: _this.computeMatch(_this.props.history.location.pathname)
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Router.prototype.getChildContext = function getChildContext() {
+    return {
+      router: _extends({}, this.context.router, {
+        history: this.props.history,
+        route: {
+          location: this.props.history.location,
+          match: this.state.match
+        }
+      })
+    };
+  };
+
+  Router.prototype.computeMatch = function computeMatch(pathname) {
+    return {
+      path: '/',
+      url: '/',
+      params: {},
+      isExact: pathname === '/'
+    };
+  };
+
+  Router.prototype.componentWillMount = function componentWillMount() {
+    var _this2 = this;
+
+    var _props = this.props,
+        children = _props.children,
+        history = _props.history;
+
+
+    __WEBPACK_IMPORTED_MODULE_1_invariant___default()(children == null || __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 1, 'A <Router> may have only one child element');
+
+    // Do this here so we can setState when a <Redirect> changes the
+    // location in componentWillMount. This happens e.g. when doing
+    // server rendering using a <StaticRouter>.
+    this.unlisten = history.listen(function () {
+      _this2.setState({
+        match: _this2.computeMatch(history.location.pathname)
+      });
+    });
+  };
+
+  Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(this.props.history === nextProps.history, 'You cannot change <Router history>');
+  };
+
+  Router.prototype.componentWillUnmount = function componentWillUnmount() {
+    this.unlisten();
+  };
+
+  Router.prototype.render = function render() {
+    var children = this.props.children;
+
+    return children ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.only(children) : null;
+  };
+
+  return Router;
+}(__WEBPACK_IMPORTED_MODULE_2_react___default.a.Component);
+
+Router.propTypes = {
+  history: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+  children: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.node
+};
+Router.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
+};
+Router.childContextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Router);
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_path_to_regexp__);
+
+
+var patternCache = {};
+var cacheLimit = 10000;
+var cacheCount = 0;
+
+var compilePath = function compilePath(pattern, options) {
+  var cacheKey = '' + options.end + options.strict + options.sensitive;
+  var cache = patternCache[cacheKey] || (patternCache[cacheKey] = {});
+
+  if (cache[pattern]) return cache[pattern];
+
+  var keys = [];
+  var re = __WEBPACK_IMPORTED_MODULE_0_path_to_regexp___default()(pattern, keys, options);
+  var compiledPattern = { re: re, keys: keys };
+
+  if (cacheCount < cacheLimit) {
+    cache[pattern] = compiledPattern;
+    cacheCount++;
+  }
+
+  return compiledPattern;
+};
+
+/**
+ * Public API for matching a URL pathname to a path pattern.
+ */
+var matchPath = function matchPath(pathname) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (typeof options === 'string') options = { path: options };
+
+  var _options = options,
+      _options$path = _options.path,
+      path = _options$path === undefined ? '/' : _options$path,
+      _options$exact = _options.exact,
+      exact = _options$exact === undefined ? false : _options$exact,
+      _options$strict = _options.strict,
+      strict = _options$strict === undefined ? false : _options$strict,
+      _options$sensitive = _options.sensitive,
+      sensitive = _options$sensitive === undefined ? false : _options$sensitive;
+
+  var _compilePath = compilePath(path, { end: exact, strict: strict, sensitive: sensitive }),
+      re = _compilePath.re,
+      keys = _compilePath.keys;
+
+  var match = re.exec(pathname);
+
+  if (!match) return null;
+
+  var url = match[0],
+      values = match.slice(1);
+
+  var isExact = pathname === url;
+
+  if (exact && !isExact) return null;
+
+  return {
+    path: path, // the path pattern used to match
+    url: path === '/' && url === '' ? '/' : url, // the matched portion of the URL
+    isExact: isExact, // whether or not we matched exactly
+    params: keys.reduce(function (memo, key, index) {
+      memo[key.name] = values[index];
+      return memo;
+    }, {})
+  };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (matchPath);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+
+
+var createTransitionManager = function createTransitionManager() {
+  var prompt = null;
+
+  var setPrompt = function setPrompt(nextPrompt) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(prompt == null, 'A history supports only one prompt at a time');
+
+    prompt = nextPrompt;
+
+    return function () {
+      if (prompt === nextPrompt) prompt = null;
+    };
+  };
+
+  var confirmTransitionTo = function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+    // TODO: If another transition starts while we're still confirming
+    // the previous one, we may end up in a weird state. Figure out the
+    // best way to handle this.
+    if (prompt != null) {
+      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+
+      if (typeof result === 'string') {
+        if (typeof getUserConfirmation === 'function') {
+          getUserConfirmation(result, callback);
+        } else {
+          __WEBPACK_IMPORTED_MODULE_0_warning___default()(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+
+          callback(true);
+        }
+      } else {
+        // Return false from a transition hook to cancel the transition.
+        callback(result !== false);
+      }
+    } else {
+      callback(true);
+    }
+  };
+
+  var listeners = [];
+
+  var appendListener = function appendListener(fn) {
+    var isActive = true;
+
+    var listener = function listener() {
+      if (isActive) fn.apply(undefined, arguments);
+    };
+
+    listeners.push(listener);
+
+    return function () {
+      isActive = false;
+      listeners = listeners.filter(function (item) {
+        return item !== listener;
+      });
+    };
+  };
+
+  var notifyListeners = function notifyListeners() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    listeners.forEach(function (listener) {
+      return listener.apply(undefined, args);
+    });
+  };
+
+  return {
+    setPrompt: setPrompt,
+    confirmTransitionTo: confirmTransitionTo,
+    appendListener: appendListener,
+    notifyListeners: notifyListeners
+  };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function isAbsolute(pathname) {
+  return pathname.charAt(0) === '/';
+}
+
+// About 1.5x faster than the two-arg version of Array#splice()
+function spliceOne(list, index) {
+  for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
+    list[i] = list[k];
+  }
+
+  list.pop();
+}
+
+// This implementation is based heavily on node's url.parse
+function resolvePathname(to) {
+  var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  var toParts = to && to.split('/') || [];
+  var fromParts = from && from.split('/') || [];
+
+  var isToAbs = to && isAbsolute(to);
+  var isFromAbs = from && isAbsolute(from);
+  var mustEndAbs = isToAbs || isFromAbs;
+
+  if (to && isAbsolute(to)) {
+    // to is absolute
+    fromParts = toParts;
+  } else if (toParts.length) {
+    // to is relative, drop the filename
+    fromParts.pop();
+    fromParts = fromParts.concat(toParts);
+  }
+
+  if (!fromParts.length) return '/';
+
+  var hasTrailingSlash = void 0;
+  if (fromParts.length) {
+    var last = fromParts[fromParts.length - 1];
+    hasTrailingSlash = last === '.' || last === '..' || last === '';
+  } else {
+    hasTrailingSlash = false;
+  }
+
+  var up = 0;
+  for (var i = fromParts.length; i >= 0; i--) {
+    var part = fromParts[i];
+
+    if (part === '.') {
+      spliceOne(fromParts, i);
+    } else if (part === '..') {
+      spliceOne(fromParts, i);
+      up++;
+    } else if (up) {
+      spliceOne(fromParts, i);
+      up--;
+    }
+  }
+
+  if (!mustEndAbs) for (; up--; up) {
+    fromParts.unshift('..');
+  }if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) fromParts.unshift('');
+
+  var result = fromParts.join('/');
+
+  if (hasTrailingSlash && result.substr(-1) !== '/') result += '/';
+
+  return result;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (resolvePathname);
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function valueEqual(a, b) {
+  if (a === b) return true;
+
+  if (a == null || b == null) return false;
+
+  if (Array.isArray(a)) {
+    return Array.isArray(b) && a.length === b.length && a.every(function (item, index) {
+      return valueEqual(item, b[index]);
+    });
+  }
+
+  var aType = typeof a === 'undefined' ? 'undefined' : _typeof(a);
+  var bType = typeof b === 'undefined' ? 'undefined' : _typeof(b);
+
+  if (aType !== bType) return false;
+
+  if (aType === 'object') {
+    var aValue = a.valueOf();
+    var bValue = b.valueOf();
+
+    if (aValue !== a || bValue !== b) return valueEqual(aValue, bValue);
+
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
+
+    if (aKeys.length !== bKeys.length) return false;
+
+    return aKeys.every(function (key) {
+      return valueEqual(a[key], b[key]);
+    });
+  }
+
+  return false;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (valueEqual);
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var addEventListener = exports.addEventListener = function addEventListener(node, event, listener) {
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
+};
+
+var removeEventListener = exports.removeEventListener = function removeEventListener(node, event, listener) {
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
+};
+
+var getConfirmation = exports.getConfirmation = function getConfirmation(message, callback) {
+  return callback(window.confirm(message));
+}; // eslint-disable-line no-alert
+
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+var supportsHistory = exports.supportsHistory = function supportsHistory() {
+  var ua = window.navigator.userAgent;
+
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+
+  return window.history && 'pushState' in window.history;
+};
+
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+var supportsPopStateOnHashChange = exports.supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+};
+
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+};
+
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+};
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var isModifiedEvent = function isModifiedEvent(event) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+};
+
+/**
+ * The public API for rendering a history-aware <a>.
+ */
+
+var Link = function (_React$Component) {
+  _inherits(Link, _React$Component);
+
+  function Link() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Link);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.handleClick = function (event) {
+      if (_this.props.onClick) _this.props.onClick(event);
+
+      if (!event.defaultPrevented && // onClick prevented default
+      event.button === 0 && // ignore right clicks
+      !_this.props.target && // let browser handle "target=_blank" etc.
+      !isModifiedEvent(event) // ignore clicks with modifier keys
+      ) {
+          event.preventDefault();
+
+          var history = _this.context.router.history;
+          var _this$props = _this.props,
+              replace = _this$props.replace,
+              to = _this$props.to;
+
+
+          if (replace) {
+            history.replace(to);
+          } else {
+            history.push(to);
+          }
+        }
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Link.prototype.render = function render() {
+    var _props = this.props,
+        replace = _props.replace,
+        to = _props.to,
+        innerRef = _props.innerRef,
+        props = _objectWithoutProperties(_props, ['replace', 'to', 'innerRef']); // eslint-disable-line no-unused-vars
+
+    __WEBPACK_IMPORTED_MODULE_2_invariant___default()(this.context.router, 'You should not use <Link> outside a <Router>');
+
+    var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', _extends({}, props, { onClick: this.handleClick, href: href, ref: innerRef }));
+  };
+
+  return Link;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+Link.propTypes = {
+  onClick: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
+  target: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired,
+  innerRef: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func])
+};
+Link.defaultProps = {
+  replace: false
+};
+Link.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+      push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
+      replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
+      createHref: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Link);
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(55);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__["a" /* default */]);
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(48);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var isEmptyChildren = function isEmptyChildren(children) {
+  return __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 0;
+};
+
+/**
+ * The public API for matching a single path and rendering.
+ */
+
+var Route = function (_React$Component) {
+  _inherits(Route, _React$Component);
+
+  function Route() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Route);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.state = {
+      match: _this.computeMatch(_this.props, _this.context.router)
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Route.prototype.getChildContext = function getChildContext() {
+    return {
+      router: _extends({}, this.context.router, {
+        route: {
+          location: this.props.location || this.context.router.route.location,
+          match: this.state.match
+        }
+      })
+    };
+  };
+
+  Route.prototype.computeMatch = function computeMatch(_ref, router) {
+    var computedMatch = _ref.computedMatch,
+        location = _ref.location,
+        path = _ref.path,
+        strict = _ref.strict,
+        exact = _ref.exact,
+        sensitive = _ref.sensitive;
+
+    if (computedMatch) return computedMatch; // <Switch> already computed the match for us
+
+    __WEBPACK_IMPORTED_MODULE_1_invariant___default()(router, 'You should not use <Route> or withRouter() outside a <Router>');
+
+    var route = router.route;
+
+    var pathname = (location || route.location).pathname;
+
+    return path ? Object(__WEBPACK_IMPORTED_MODULE_4__matchPath__["a" /* default */])(pathname, { path: path, strict: strict, exact: exact, sensitive: sensitive }) : route.match;
+  };
+
+  Route.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.render), 'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.component && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(this.props.render && this.props.children && !isEmptyChildren(this.props.children)), 'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored');
+  };
+
+  Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps, nextContext) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(nextProps.location && !this.props.location), '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!(!nextProps.location && this.props.location), '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+
+    this.setState({
+      match: this.computeMatch(nextProps, nextContext.router)
+    });
+  };
+
+  Route.prototype.render = function render() {
+    var match = this.state.match;
+    var _props = this.props,
+        children = _props.children,
+        component = _props.component,
+        render = _props.render;
+    var _context$router = this.context.router,
+        history = _context$router.history,
+        route = _context$router.route,
+        staticContext = _context$router.staticContext;
+
+    var location = this.props.location || route.location;
+    var props = { match: match, location: location, history: history, staticContext: staticContext };
+
+    return component ? // component prop gets first priority, only called if there's a match
+    match ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(component, props) : null : render ? // render prop is next, only called if there's a match
+    match ? render(props) : null : children ? // children come last, always called
+    typeof children === 'function' ? children(props) : !isEmptyChildren(children) ? __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.only(children) : null : null;
+  };
+
+  return Route;
+}(__WEBPACK_IMPORTED_MODULE_2_react___default.a.Component);
+
+Route.propTypes = {
+  computedMatch: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object, // private, from <Switch>
+  path: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.string,
+  exact: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  strict: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  sensitive: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
+  component: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
+  render: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func,
+  children: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.func, __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.node]),
+  location: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
+};
+Route.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+    route: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+    staticContext: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object
+  })
+};
+Route.childContextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Route);
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return canUseDOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addEventListener; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return removeEventListener; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getConfirmation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return supportsHistory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return supportsPopStateOnHashChange; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return supportsGoWithoutReloadUsingHash; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return isExtraneousPopstateEvent; });
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var addEventListener = function addEventListener(node, event, listener) {
+  return node.addEventListener ? node.addEventListener(event, listener, false) : node.attachEvent('on' + event, listener);
+};
+
+var removeEventListener = function removeEventListener(node, event, listener) {
+  return node.removeEventListener ? node.removeEventListener(event, listener, false) : node.detachEvent('on' + event, listener);
+};
+
+var getConfirmation = function getConfirmation(message, callback) {
+  return callback(window.confirm(message));
+}; // eslint-disable-line no-alert
+
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+var supportsHistory = function supportsHistory() {
+  var ua = window.navigator.userAgent;
+
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+
+  return window.history && 'pushState' in window.history;
+};
+
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+var supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+};
+
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+var supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+};
+
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
+  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+};
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(58);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(60);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(53);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(62);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(65);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(68);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(70);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(54);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(46);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(76);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(78);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(80);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(81);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(46);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+/**
+ * The public API for a <Router> that uses HTML5 history.
+ */
+
+var BrowserRouter = function (_React$Component) {
+  _inherits(BrowserRouter, _React$Component);
+
+  function BrowserRouter() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, BrowserRouter);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = __WEBPACK_IMPORTED_MODULE_3_history_createBrowserHistory___default()(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  BrowserRouter.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!this.props.history, '<BrowserRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { BrowserRouter as Router }`.');
+  };
+
+  BrowserRouter.prototype.render = function render() {
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Router__["a" /* default */], { history: this.history, children: this.props.children });
+  };
+
+  return BrowserRouter;
+}(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component);
+
+BrowserRouter.propTypes = {
+  basename: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
+  forceRefresh: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.bool,
+  getUserConfirmation: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func,
+  keyLength: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.number,
+  children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (BrowserRouter);
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _warning = __webpack_require__(6);
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var _invariant = __webpack_require__(12);
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
+var _LocationUtils = __webpack_require__(44);
+
+var _PathUtils = __webpack_require__(41);
+
+var _createTransitionManager = __webpack_require__(45);
+
+var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
+
+var _DOMUtils = __webpack_require__(52);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
+
+var getHistoryState = function getHistoryState() {
+  try {
+    return window.history.state || {};
+  } catch (e) {
+    // IE 11 sometimes throws when accessing window.history.state
+    // See https://github.com/ReactTraining/history/pull/289
+    return {};
+  }
+};
+
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */
+var createBrowserHistory = function createBrowserHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  (0, _invariant2.default)(_DOMUtils.canUseDOM, 'Browser history needs a DOM');
+
+  var globalHistory = window.history;
+  var canUseHistory = (0, _DOMUtils.supportsHistory)();
+  var needsHashChangeListener = !(0, _DOMUtils.supportsPopStateOnHashChange)();
+
+  var _props$forceRefresh = props.forceRefresh,
+      forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
+      _props$getUserConfirm = props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === undefined ? _DOMUtils.getConfirmation : _props$getUserConfirm,
+      _props$keyLength = props.keyLength,
+      keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
+
+  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : '';
+
+  var getDOMLocation = function getDOMLocation(historyState) {
+    var _ref = historyState || {},
+        key = _ref.key,
+        state = _ref.state;
+
+    var _window$location = window.location,
+        pathname = _window$location.pathname,
+        search = _window$location.search,
+        hash = _window$location.hash;
+
+
+    var path = pathname + search + hash;
+
+    (0, _warning2.default)(!basename || (0, _PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+
+    if (basename) path = (0, _PathUtils.stripBasename)(path, basename);
+
+    return (0, _LocationUtils.createLocation)(path, state, key);
+  };
+
+  var createKey = function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  };
+
+  var transitionManager = (0, _createTransitionManager2.default)();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var handlePopState = function handlePopState(event) {
+    // Ignore extraneous popstate events in WebKit.
+    if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) return;
+
+    handlePop(getDOMLocation(event.state));
+  };
+
+  var handleHashChange = function handleHashChange() {
+    handlePop(getDOMLocation(getHistoryState()));
+  };
+
+  var forceNextPop = false;
+
+  var handlePop = function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({ action: action, location: location });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  };
+
+  var revertPop = function revertPop(fromLocation) {
+    var toLocation = history.location;
+
+    // TODO: We could probably make this more reliable by
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
+
+    var toIndex = allKeys.indexOf(toLocation.key);
+
+    if (toIndex === -1) toIndex = 0;
+
+    var fromIndex = allKeys.indexOf(fromLocation.key);
+
+    if (fromIndex === -1) fromIndex = 0;
+
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  };
+
+  var initialLocation = getDOMLocation(getHistoryState());
+  var allKeys = [initialLocation.key];
+
+  // Public interface
+
+  var createHref = function createHref(location) {
+    return basename + (0, _PathUtils.createPath)(location);
+  };
+
+  var push = function push(path, state) {
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'PUSH';
+    var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+
+      if (canUseHistory) {
+        globalHistory.pushState({ key: key, state: state }, null, href);
+
+        if (forceRefresh) {
+          window.location.href = href;
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          var nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+
+          nextKeys.push(location.key);
+          allKeys = nextKeys;
+
+          setState({ action: action, location: location });
+        }
+      } else {
+        (0, _warning2.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+
+        window.location.href = href;
+      }
+    });
+  };
+
+  var replace = function replace(path, state) {
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+
+      if (canUseHistory) {
+        globalHistory.replaceState({ key: key, state: state }, null, href);
+
+        if (forceRefresh) {
+          window.location.replace(href);
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+
+          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+
+          setState({ action: action, location: location });
+        }
+      } else {
+        (0, _warning2.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+
+        window.location.replace(href);
+      }
+    });
+  };
+
+  var go = function go(n) {
+    globalHistory.go(n);
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var listenerCount = 0;
+
+  var checkDOMListeners = function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1) {
+      (0, _DOMUtils.addEventListener)(window, PopStateEvent, handlePopState);
+
+      if (needsHashChangeListener) (0, _DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      (0, _DOMUtils.removeEventListener)(window, PopStateEvent, handlePopState);
+
+      if (needsHashChangeListener) (0, _DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+    }
+  };
+
+  var isBlocked = false;
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  };
+
+  var listen = function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  };
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+exports.default = createBrowserHistory;
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createHashHistory__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(46);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+/**
+ * The public API for a <Router> that uses window.location.hash.
+ */
+
+var HashRouter = function (_React$Component) {
+  _inherits(HashRouter, _React$Component);
+
+  function HashRouter() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, HashRouter);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = __WEBPACK_IMPORTED_MODULE_3_history_createHashHistory___default()(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  HashRouter.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!this.props.history, '<HashRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { HashRouter as Router }`.');
+  };
+
+  HashRouter.prototype.render = function render() {
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Router__["a" /* default */], { history: this.history, children: this.props.children });
+  };
+
+  return HashRouter;
+}(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component);
+
+HashRouter.propTypes = {
+  basename: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
+  getUserConfirmation: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func,
+  hashType: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.oneOf(['hashbang', 'noslash', 'slash']),
+  children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (HashRouter);
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _warning = __webpack_require__(6);
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var _invariant = __webpack_require__(12);
+
+var _invariant2 = _interopRequireDefault(_invariant);
+
+var _LocationUtils = __webpack_require__(44);
+
+var _PathUtils = __webpack_require__(41);
+
+var _createTransitionManager = __webpack_require__(45);
+
+var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
+
+var _DOMUtils = __webpack_require__(52);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HashChangeEvent = 'hashchange';
+
+var HashPathCoders = {
+  hashbang: {
+    encodePath: function encodePath(path) {
+      return path.charAt(0) === '!' ? path : '!/' + (0, _PathUtils.stripLeadingSlash)(path);
+    },
+    decodePath: function decodePath(path) {
+      return path.charAt(0) === '!' ? path.substr(1) : path;
+    }
+  },
+  noslash: {
+    encodePath: _PathUtils.stripLeadingSlash,
+    decodePath: _PathUtils.addLeadingSlash
+  },
+  slash: {
+    encodePath: _PathUtils.addLeadingSlash,
+    decodePath: _PathUtils.addLeadingSlash
+  }
+};
+
+var getHashPath = function getHashPath() {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var hashIndex = href.indexOf('#');
+  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+};
+
+var pushHashPath = function pushHashPath(path) {
+  return window.location.hash = path;
+};
+
+var replaceHashPath = function replaceHashPath(path) {
+  var hashIndex = window.location.href.indexOf('#');
+
+  window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
+};
+
+var createHashHistory = function createHashHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  (0, _invariant2.default)(_DOMUtils.canUseDOM, 'Hash history needs a DOM');
+
+  var globalHistory = window.history;
+  var canGoWithoutReload = (0, _DOMUtils.supportsGoWithoutReloadUsingHash)();
+
+  var _props$getUserConfirm = props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === undefined ? _DOMUtils.getConfirmation : _props$getUserConfirm,
+      _props$hashType = props.hashType,
+      hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
+
+  var basename = props.basename ? (0, _PathUtils.stripTrailingSlash)((0, _PathUtils.addLeadingSlash)(props.basename)) : '';
+
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
+      encodePath = _HashPathCoders$hashT.encodePath,
+      decodePath = _HashPathCoders$hashT.decodePath;
+
+
+  var getDOMLocation = function getDOMLocation() {
+    var path = decodePath(getHashPath());
+
+    (0, _warning2.default)(!basename || (0, _PathUtils.hasBasename)(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+
+    if (basename) path = (0, _PathUtils.stripBasename)(path, basename);
+
+    return (0, _LocationUtils.createLocation)(path);
+  };
+
+  var transitionManager = (0, _createTransitionManager2.default)();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var forceNextPop = false;
+  var ignorePath = null;
+
+  var handleHashChange = function handleHashChange() {
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+
+    if (path !== encodedPath) {
+      // Ensure we always have a properly-encoded hash.
+      replaceHashPath(encodedPath);
+    } else {
+      var location = getDOMLocation();
+      var prevLocation = history.location;
+
+      if (!forceNextPop && (0, _LocationUtils.locationsAreEqual)(prevLocation, location)) return; // A hashchange doesn't always == location change.
+
+      if (ignorePath === (0, _PathUtils.createPath)(location)) return; // Ignore this change; we already setState in push/replace.
+
+      ignorePath = null;
+
+      handlePop(location);
+    }
+  };
+
+  var handlePop = function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({ action: action, location: location });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  };
+
+  var revertPop = function revertPop(fromLocation) {
+    var toLocation = history.location;
+
+    // TODO: We could probably make this more reliable by
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
+
+    var toIndex = allPaths.lastIndexOf((0, _PathUtils.createPath)(toLocation));
+
+    if (toIndex === -1) toIndex = 0;
+
+    var fromIndex = allPaths.lastIndexOf((0, _PathUtils.createPath)(fromLocation));
+
+    if (fromIndex === -1) fromIndex = 0;
+
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  };
+
+  // Ensure the hash is encoded properly before doing anything else.
+  var path = getHashPath();
+  var encodedPath = encodePath(path);
+
+  if (path !== encodedPath) replaceHashPath(encodedPath);
+
+  var initialLocation = getDOMLocation();
+  var allPaths = [(0, _PathUtils.createPath)(initialLocation)];
+
+  // Public interface
+
+  var createHref = function createHref(location) {
+    return '#' + encodePath(basename + (0, _PathUtils.createPath)(location));
+  };
+
+  var push = function push(path, state) {
+    (0, _warning2.default)(state === undefined, 'Hash history cannot push state; it is ignored');
+
+    var action = 'PUSH';
+    var location = (0, _LocationUtils.createLocation)(path, undefined, undefined, history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var path = (0, _PathUtils.createPath)(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a PUSH, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        pushHashPath(encodedPath);
+
+        var prevIndex = allPaths.lastIndexOf((0, _PathUtils.createPath)(history.location));
+        var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+
+        nextPaths.push(path);
+        allPaths = nextPaths;
+
+        setState({ action: action, location: location });
+      } else {
+        (0, _warning2.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+
+        setState();
+      }
+    });
+  };
+
+  var replace = function replace(path, state) {
+    (0, _warning2.default)(state === undefined, 'Hash history cannot replace state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = (0, _LocationUtils.createLocation)(path, undefined, undefined, history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var path = (0, _PathUtils.createPath)(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        replaceHashPath(encodedPath);
+      }
+
+      var prevIndex = allPaths.indexOf((0, _PathUtils.createPath)(history.location));
+
+      if (prevIndex !== -1) allPaths[prevIndex] = path;
+
+      setState({ action: action, location: location });
+    });
+  };
+
+  var go = function go(n) {
+    (0, _warning2.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+
+    globalHistory.go(n);
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var listenerCount = 0;
+
+  var checkDOMListeners = function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1) {
+      (0, _DOMUtils.addEventListener)(window, HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      (0, _DOMUtils.removeEventListener)(window, HashChangeEvent, handleHashChange);
+    }
+  };
+
+  var isBlocked = false;
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  };
+
+  var listen = function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  };
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+exports.default = createHashHistory;
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(63);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(47);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+/**
+ * The public API for a <Router> that stores location in memory.
+ */
+
+var MemoryRouter = function (_React$Component) {
+  _inherits(MemoryRouter, _React$Component);
+
+  function MemoryRouter() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, MemoryRouter);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.history = __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default()(_this.props), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  MemoryRouter.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!this.props.history, '<MemoryRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { MemoryRouter as Router }`.');
+  };
+
+  MemoryRouter.prototype.render = function render() {
+    return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Router__["a" /* default */], { history: this.history, children: this.props.children });
+  };
+
+  return MemoryRouter;
+}(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component);
+
+MemoryRouter.propTypes = {
+  initialEntries: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.array,
+  initialIndex: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.number,
+  getUserConfirmation: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func,
+  keyLength: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.number,
+  children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (MemoryRouter);
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _warning = __webpack_require__(6);
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var _PathUtils = __webpack_require__(41);
+
+var _LocationUtils = __webpack_require__(44);
+
+var _createTransitionManager = __webpack_require__(45);
+
+var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var clamp = function clamp(n, lowerBound, upperBound) {
+  return Math.min(Math.max(n, lowerBound), upperBound);
+};
+
+/**
+ * Creates a history object that stores locations in memory.
+ */
+var createMemoryHistory = function createMemoryHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var getUserConfirmation = props.getUserConfirmation,
+      _props$initialEntries = props.initialEntries,
+      initialEntries = _props$initialEntries === undefined ? ['/'] : _props$initialEntries,
+      _props$initialIndex = props.initialIndex,
+      initialIndex = _props$initialIndex === undefined ? 0 : _props$initialIndex,
+      _props$keyLength = props.keyLength,
+      keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
+
+
+  var transitionManager = (0, _createTransitionManager2.default)();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = history.entries.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var createKey = function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  };
+
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
+  var entries = initialEntries.map(function (entry) {
+    return typeof entry === 'string' ? (0, _LocationUtils.createLocation)(entry, undefined, createKey()) : (0, _LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
+  });
+
+  // Public interface
+
+  var createHref = _PathUtils.createPath;
+
+  var push = function push(path, state) {
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'PUSH';
+    var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var prevIndex = history.index;
+      var nextIndex = prevIndex + 1;
+
+      var nextEntries = history.entries.slice(0);
+      if (nextEntries.length > nextIndex) {
+        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+      } else {
+        nextEntries.push(location);
+      }
+
+      setState({
+        action: action,
+        location: location,
+        index: nextIndex,
+        entries: nextEntries
+      });
+    });
+  };
+
+  var replace = function replace(path, state) {
+    (0, _warning2.default)(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = (0, _LocationUtils.createLocation)(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      history.entries[history.index] = location;
+
+      setState({ action: action, location: location });
+    });
+  };
+
+  var go = function go(n) {
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+
+    var action = 'POP';
+    var location = history.entries[nextIndex];
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (ok) {
+        setState({
+          action: action,
+          location: location,
+          index: nextIndex
+        });
+      } else {
+        // Mimic the behavior of DOM histories by
+        // causing a render after a cancelled POP.
+        setState();
+      }
+    });
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var canGo = function canGo(n) {
+    var nextIndex = history.index + n;
+    return nextIndex >= 0 && nextIndex < history.entries.length;
+  };
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return transitionManager.setPrompt(prompt);
+  };
+
+  var listen = function listen(listener) {
+    return transitionManager.appendListener(listener);
+  };
+
+  var history = {
+    length: entries.length,
+    action: 'POP',
+    location: entries[index],
+    index: index,
+    entries: entries,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    canGo: canGo,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+exports.default = createMemoryHistory;
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Route__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Link__ = __webpack_require__(53);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+
+
+
+/**
+ * A <Link> wrapper that knows if it's "active" or not.
+ */
+var NavLink = function NavLink(_ref) {
+  var to = _ref.to,
+      exact = _ref.exact,
+      strict = _ref.strict,
+      location = _ref.location,
+      activeClassName = _ref.activeClassName,
+      className = _ref.className,
+      activeStyle = _ref.activeStyle,
+      style = _ref.style,
+      getIsActive = _ref.isActive,
+      ariaCurrent = _ref.ariaCurrent,
+      rest = _objectWithoutProperties(_ref, ['to', 'exact', 'strict', 'location', 'activeClassName', 'className', 'activeStyle', 'style', 'isActive', 'ariaCurrent']);
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Route__["a" /* default */], {
+    path: (typeof to === 'undefined' ? 'undefined' : _typeof(to)) === 'object' ? to.pathname : to,
+    exact: exact,
+    strict: strict,
+    location: location,
+    children: function children(_ref2) {
+      var location = _ref2.location,
+          match = _ref2.match;
+
+      var isActive = !!(getIsActive ? getIsActive(match, location) : match);
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Link__["a" /* default */], _extends({
+        to: to,
+        className: isActive ? [className, activeClassName].filter(function (i) {
+          return i;
+        }).join(' ') : className,
+        style: isActive ? _extends({}, style, activeStyle) : style,
+        'aria-current': isActive && ariaCurrent
+      }, rest));
+    }
+  });
+};
+
+NavLink.propTypes = {
+  to: __WEBPACK_IMPORTED_MODULE_3__Link__["a" /* default */].propTypes.to,
+  exact: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  strict: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  location: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,
+  activeClassName: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  className: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  activeStyle: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,
+  style: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,
+  isActive: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
+  ariaCurrent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOf(['page', 'step', 'location', 'true'])
+};
+
+NavLink.defaultProps = {
+  activeClassName: 'active',
+  ariaCurrent: 'true'
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (NavLink);
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isarray = __webpack_require__(67)
+
+/**
+ * Expose `pathToRegexp`.
+ */
+module.exports = pathToRegexp
+module.exports.parse = parse
+module.exports.compile = compile
+module.exports.tokensToFunction = tokensToFunction
+module.exports.tokensToRegExp = tokensToRegExp
+
+/**
+ * The main path matching regexp utility.
+ *
+ * @type {RegExp}
+ */
+var PATH_REGEXP = new RegExp([
+  // Match escaped characters that would otherwise appear in future matches.
+  // This allows the user to escape special characters that won't transform.
+  '(\\\\.)',
+  // Match Express-style parameters and un-named parameters with a prefix
+  // and optional suffixes. Matches appear as:
+  //
+  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+  '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
+].join('|'), 'g')
+
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {string}  str
+ * @param  {Object=} options
+ * @return {!Array}
+ */
+function parse (str, options) {
+  var tokens = []
+  var key = 0
+  var index = 0
+  var path = ''
+  var defaultDelimiter = options && options.delimiter || '/'
+  var res
+
+  while ((res = PATH_REGEXP.exec(str)) != null) {
+    var m = res[0]
+    var escaped = res[1]
+    var offset = res.index
+    path += str.slice(index, offset)
+    index = offset + m.length
+
+    // Ignore already escaped sequences.
+    if (escaped) {
+      path += escaped[1]
+      continue
+    }
+
+    var next = str[index]
+    var prefix = res[2]
+    var name = res[3]
+    var capture = res[4]
+    var group = res[5]
+    var modifier = res[6]
+    var asterisk = res[7]
+
+    // Push the current path onto the tokens.
+    if (path) {
+      tokens.push(path)
+      path = ''
+    }
+
+    var partial = prefix != null && next != null && next !== prefix
+    var repeat = modifier === '+' || modifier === '*'
+    var optional = modifier === '?' || modifier === '*'
+    var delimiter = res[2] || defaultDelimiter
+    var pattern = capture || group
+
+    tokens.push({
+      name: name || key++,
+      prefix: prefix || '',
+      delimiter: delimiter,
+      optional: optional,
+      repeat: repeat,
+      partial: partial,
+      asterisk: !!asterisk,
+      pattern: pattern ? escapeGroup(pattern) : (asterisk ? '.*' : '[^' + escapeString(delimiter) + ']+?')
+    })
+  }
+
+  // Match any characters still remaining.
+  if (index < str.length) {
+    path += str.substr(index)
+  }
+
+  // If the path exists, push it onto the end.
+  if (path) {
+    tokens.push(path)
+  }
+
+  return tokens
+}
+
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {string}             str
+ * @param  {Object=}            options
+ * @return {!function(Object=, Object=)}
+ */
+function compile (str, options) {
+  return tokensToFunction(parse(str, options))
+}
+
+/**
+ * Prettier encoding of URI path segments.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeURIComponentPretty (str) {
+  return encodeURI(str).replace(/[\/?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
+ *
+ * @param  {string}
+ * @return {string}
+ */
+function encodeAsterisk (str) {
+  return encodeURI(str).replace(/[?#]/g, function (c) {
+    return '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  })
+}
+
+/**
+ * Expose a method for transforming tokens into the path function.
+ */
+function tokensToFunction (tokens) {
+  // Compile all the tokens into regexps.
+  var matches = new Array(tokens.length)
+
+  // Compile all the patterns before compilation.
+  for (var i = 0; i < tokens.length; i++) {
+    if (typeof tokens[i] === 'object') {
+      matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$')
+    }
+  }
+
+  return function (obj, opts) {
+    var path = ''
+    var data = obj || {}
+    var options = opts || {}
+    var encode = options.pretty ? encodeURIComponentPretty : encodeURIComponent
+
+    for (var i = 0; i < tokens.length; i++) {
+      var token = tokens[i]
+
+      if (typeof token === 'string') {
+        path += token
+
+        continue
+      }
+
+      var value = data[token.name]
+      var segment
+
+      if (value == null) {
+        if (token.optional) {
+          // Prepend partial segment prefixes.
+          if (token.partial) {
+            path += token.prefix
+          }
+
+          continue
+        } else {
+          throw new TypeError('Expected "' + token.name + '" to be defined')
+        }
+      }
+
+      if (isarray(value)) {
+        if (!token.repeat) {
+          throw new TypeError('Expected "' + token.name + '" to not repeat, but received `' + JSON.stringify(value) + '`')
+        }
+
+        if (value.length === 0) {
+          if (token.optional) {
+            continue
+          } else {
+            throw new TypeError('Expected "' + token.name + '" to not be empty')
+          }
+        }
+
+        for (var j = 0; j < value.length; j++) {
+          segment = encode(value[j])
+
+          if (!matches[i].test(segment)) {
+            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received `' + JSON.stringify(segment) + '`')
+          }
+
+          path += (j === 0 ? token.prefix : token.delimiter) + segment
+        }
+
+        continue
+      }
+
+      segment = token.asterisk ? encodeAsterisk(value) : encode(value)
+
+      if (!matches[i].test(segment)) {
+        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+      }
+
+      path += token.prefix + segment
+    }
+
+    return path
+  }
+}
+
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {string} str
+ * @return {string}
+ */
+function escapeString (str) {
+  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
+}
+
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {string} group
+ * @return {string}
+ */
+function escapeGroup (group) {
+  return group.replace(/([=!:$\/()])/g, '\\$1')
+}
+
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {!RegExp} re
+ * @param  {Array}   keys
+ * @return {!RegExp}
+ */
+function attachKeys (re, keys) {
+  re.keys = keys
+  return re
+}
+
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {string}
+ */
+function flags (options) {
+  return options.sensitive ? '' : 'i'
+}
+
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {!RegExp} path
+ * @param  {!Array}  keys
+ * @return {!RegExp}
+ */
+function regexpToRegexp (path, keys) {
+  // Use a negative lookahead to match only capturing groups.
+  var groups = path.source.match(/\((?!\?)/g)
+
+  if (groups) {
+    for (var i = 0; i < groups.length; i++) {
+      keys.push({
+        name: i,
+        prefix: null,
+        delimiter: null,
+        optional: false,
+        repeat: false,
+        partial: false,
+        asterisk: false,
+        pattern: null
+      })
+    }
+  }
+
+  return attachKeys(path, keys)
+}
+
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {!Array}  path
+ * @param  {Array}   keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function arrayToRegexp (path, keys, options) {
+  var parts = []
+
+  for (var i = 0; i < path.length; i++) {
+    parts.push(pathToRegexp(path[i], keys, options).source)
+  }
+
+  var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options))
+
+  return attachKeys(regexp, keys)
+}
+
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {string}  path
+ * @param  {!Array}  keys
+ * @param  {!Object} options
+ * @return {!RegExp}
+ */
+function stringToRegexp (path, keys, options) {
+  return tokensToRegExp(parse(path, options), keys, options)
+}
+
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {!Array}          tokens
+ * @param  {(Array|Object)=} keys
+ * @param  {Object=}         options
+ * @return {!RegExp}
+ */
+function tokensToRegExp (tokens, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options)
+    keys = []
+  }
+
+  options = options || {}
+
+  var strict = options.strict
+  var end = options.end !== false
+  var route = ''
+
+  // Iterate over the tokens and create our regexp string.
+  for (var i = 0; i < tokens.length; i++) {
+    var token = tokens[i]
+
+    if (typeof token === 'string') {
+      route += escapeString(token)
+    } else {
+      var prefix = escapeString(token.prefix)
+      var capture = '(?:' + token.pattern + ')'
+
+      keys.push(token)
+
+      if (token.repeat) {
+        capture += '(?:' + prefix + capture + ')*'
+      }
+
+      if (token.optional) {
+        if (!token.partial) {
+          capture = '(?:' + prefix + '(' + capture + '))?'
+        } else {
+          capture = prefix + '(' + capture + ')?'
+        }
+      } else {
+        capture = prefix + '(' + capture + ')'
+      }
+
+      route += capture
+    }
+  }
+
+  var delimiter = escapeString(options.delimiter || '/')
+  var endsWithDelimiter = route.slice(-delimiter.length) === delimiter
+
+  // In non-strict mode we allow a slash at the end of match. If the path to
+  // match already ends with a slash, we remove it for consistency. The slash
+  // is valid at the end of a path match, not in the middle. This is important
+  // in non-ending mode, where "/test/" shouldn't match "/test//route".
+  if (!strict) {
+    route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?'
+  }
+
+  if (end) {
+    route += '$'
+  } else {
+    // In non-ending mode, we need the capturing groups to match as much as
+    // possible by using a positive lookahead to the end or next path segment.
+    route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)'
+  }
+
+  return attachKeys(new RegExp('^' + route, flags(options)), keys)
+}
+
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(string|RegExp|Array)} path
+ * @param  {(Array|Object)=}       keys
+ * @param  {Object=}               options
+ * @return {!RegExp}
+ */
+function pathToRegexp (path, keys, options) {
+  if (!isarray(keys)) {
+    options = /** @type {!Object} */ (keys || options)
+    keys = []
+  }
+
+  options = options || {}
+
+  if (path instanceof RegExp) {
+    return regexpToRegexp(path, /** @type {!Array} */ (keys))
+  }
+
+  if (isarray(path)) {
+    return arrayToRegexp(/** @type {!Array} */ (path), /** @type {!Array} */ (keys), options)
+  }
+
+  return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
+}
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(69);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_invariant__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+/**
+ * The public API for prompting the user before navigating away
+ * from a screen with a component.
+ */
+
+var Prompt = function (_React$Component) {
+  _inherits(Prompt, _React$Component);
+
+  function Prompt() {
+    _classCallCheck(this, Prompt);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+  }
+
+  Prompt.prototype.enable = function enable(message) {
+    if (this.unblock) this.unblock();
+
+    this.unblock = this.context.router.history.block(message);
+  };
+
+  Prompt.prototype.disable = function disable() {
+    if (this.unblock) {
+      this.unblock();
+      this.unblock = null;
+    }
+  };
+
+  Prompt.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_2_invariant___default()(this.context.router, 'You should not use <Prompt> outside a <Router>');
+
+    if (this.props.when) this.enable(this.props.message);
+  };
+
+  Prompt.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    if (nextProps.when) {
+      if (!this.props.when || this.props.message !== nextProps.message) this.enable(nextProps.message);
+    } else {
+      this.disable();
+    }
+  };
+
+  Prompt.prototype.componentWillUnmount = function componentWillUnmount() {
+    this.disable();
+  };
+
+  Prompt.prototype.render = function render() {
+    return null;
+  };
+
+  return Prompt;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+Prompt.propTypes = {
+  when: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  message: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string]).isRequired
+};
+Prompt.defaultProps = {
+  when: true
+};
+Prompt.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+      block: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Prompt);
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__ = __webpack_require__(71);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Redirect__["a" /* default */]);
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(72);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+/**
+ * The public API for updating the location programmatically
+ * with a component.
+ */
+
+var Redirect = function (_React$Component) {
+  _inherits(Redirect, _React$Component);
+
+  function Redirect() {
+    _classCallCheck(this, Redirect);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+  }
+
+  Redirect.prototype.isStatic = function isStatic() {
+    return this.context.router && this.context.router.staticContext;
+  };
+
+  Redirect.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_3_invariant___default()(this.context.router, 'You should not use <Redirect> outside a <Router>');
+
+    if (this.isStatic()) this.perform();
+  };
+
+  Redirect.prototype.componentDidMount = function componentDidMount() {
+    if (!this.isStatic()) this.perform();
+  };
+
+  Redirect.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var prevTo = Object(__WEBPACK_IMPORTED_MODULE_4_history__["a" /* createLocation */])(prevProps.to);
+    var nextTo = Object(__WEBPACK_IMPORTED_MODULE_4_history__["a" /* createLocation */])(this.props.to);
+
+    if (Object(__WEBPACK_IMPORTED_MODULE_4_history__["b" /* locationsAreEqual */])(prevTo, nextTo)) {
+      __WEBPACK_IMPORTED_MODULE_2_warning___default()(false, 'You tried to redirect to the same route you\'re currently on: ' + ('"' + nextTo.pathname + nextTo.search + '"'));
+      return;
+    }
+
+    this.perform();
+  };
+
+  Redirect.prototype.perform = function perform() {
+    var history = this.context.router.history;
+    var _props = this.props,
+        push = _props.push,
+        to = _props.to;
+
+
+    if (push) {
+      history.push(to);
+    } else {
+      history.replace(to);
+    }
+  };
+
+  Redirect.prototype.render = function render() {
+    return null;
+  };
+
+  return Redirect;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+Redirect.propTypes = {
+  push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  from: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired
+};
+Redirect.defaultProps = {
+  push: false
+};
+Redirect.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    history: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+      push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
+      replace: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired
+    }).isRequired,
+    staticContext: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object
+  }).isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Redirect);
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(73);
+/* unused harmony reexport createBrowserHistory */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(74);
+/* unused harmony reexport createHashHistory */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(75);
+/* unused harmony reexport createMemoryHistory */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(43);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(42);
+/* unused harmony reexport parsePath */
+/* unused harmony reexport createPath */
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(56);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+
+
+
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
+
+var getHistoryState = function getHistoryState() {
+  try {
+    return window.history.state || {};
+  } catch (e) {
+    // IE 11 sometimes throws when accessing window.history.state
+    // See https://github.com/ReactTraining/history/pull/289
+    return {};
+  }
+};
+
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */
+var createBrowserHistory = function createBrowserHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  __WEBPACK_IMPORTED_MODULE_1_invariant___default()(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["b" /* canUseDOM */], 'Browser history needs a DOM');
+
+  var globalHistory = window.history;
+  var canUseHistory = Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["g" /* supportsHistory */])();
+  var needsHashChangeListener = !Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["h" /* supportsPopStateOnHashChange */])();
+
+  var _props$forceRefresh = props.forceRefresh,
+      forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
+      _props$getUserConfirm = props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === undefined ? __WEBPACK_IMPORTED_MODULE_5__DOMUtils__["c" /* getConfirmation */] : _props$getUserConfirm,
+      _props$keyLength = props.keyLength,
+      keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
+
+  var basename = props.basename ? Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["g" /* stripTrailingSlash */])(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["a" /* addLeadingSlash */])(props.basename)) : '';
+
+  var getDOMLocation = function getDOMLocation(historyState) {
+    var _ref = historyState || {},
+        key = _ref.key,
+        state = _ref.state;
+
+    var _window$location = window.location,
+        pathname = _window$location.pathname,
+        search = _window$location.search,
+        hash = _window$location.hash;
+
+
+    var path = pathname + search + hash;
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!basename || Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["c" /* hasBasename */])(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+
+    if (basename) path = Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["e" /* stripBasename */])(path, basename);
+
+    return Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, state, key);
+  };
+
+  var createKey = function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  };
+
+  var transitionManager = Object(__WEBPACK_IMPORTED_MODULE_4__createTransitionManager__["a" /* default */])();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var handlePopState = function handlePopState(event) {
+    // Ignore extraneous popstate events in WebKit.
+    if (Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["d" /* isExtraneousPopstateEvent */])(event)) return;
+
+    handlePop(getDOMLocation(event.state));
+  };
+
+  var handleHashChange = function handleHashChange() {
+    handlePop(getDOMLocation(getHistoryState()));
+  };
+
+  var forceNextPop = false;
+
+  var handlePop = function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({ action: action, location: location });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  };
+
+  var revertPop = function revertPop(fromLocation) {
+    var toLocation = history.location;
+
+    // TODO: We could probably make this more reliable by
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
+
+    var toIndex = allKeys.indexOf(toLocation.key);
+
+    if (toIndex === -1) toIndex = 0;
+
+    var fromIndex = allKeys.indexOf(fromLocation.key);
+
+    if (fromIndex === -1) fromIndex = 0;
+
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  };
+
+  var initialLocation = getDOMLocation(getHistoryState());
+  var allKeys = [initialLocation.key];
+
+  // Public interface
+
+  var createHref = function createHref(location) {
+    return basename + Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(location);
+  };
+
+  var push = function push(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'PUSH';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+
+      if (canUseHistory) {
+        globalHistory.pushState({ key: key, state: state }, null, href);
+
+        if (forceRefresh) {
+          window.location.href = href;
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          var nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+
+          nextKeys.push(location.key);
+          allKeys = nextKeys;
+
+          setState({ action: action, location: location });
+        }
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0_warning___default()(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+
+        window.location.href = href;
+      }
+    });
+  };
+
+  var replace = function replace(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+
+      if (canUseHistory) {
+        globalHistory.replaceState({ key: key, state: state }, null, href);
+
+        if (forceRefresh) {
+          window.location.replace(href);
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+
+          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+
+          setState({ action: action, location: location });
+        }
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0_warning___default()(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+
+        window.location.replace(href);
+      }
+    });
+  };
+
+  var go = function go(n) {
+    globalHistory.go(n);
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var listenerCount = 0;
+
+  var checkDOMListeners = function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1) {
+      Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["a" /* addEventListener */])(window, PopStateEvent, handlePopState);
+
+      if (needsHashChangeListener) Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["a" /* addEventListener */])(window, HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["e" /* removeEventListener */])(window, PopStateEvent, handlePopState);
+
+      if (needsHashChangeListener) Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["e" /* removeEventListener */])(window, HashChangeEvent, handleHashChange);
+    }
+  };
+
+  var isBlocked = false;
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  };
+
+  var listen = function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  };
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = (createBrowserHistory);
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(56);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+
+
+
+var HashChangeEvent = 'hashchange';
+
+var HashPathCoders = {
+  hashbang: {
+    encodePath: function encodePath(path) {
+      return path.charAt(0) === '!' ? path : '!/' + Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["f" /* stripLeadingSlash */])(path);
+    },
+    decodePath: function decodePath(path) {
+      return path.charAt(0) === '!' ? path.substr(1) : path;
+    }
+  },
+  noslash: {
+    encodePath: __WEBPACK_IMPORTED_MODULE_3__PathUtils__["f" /* stripLeadingSlash */],
+    decodePath: __WEBPACK_IMPORTED_MODULE_3__PathUtils__["a" /* addLeadingSlash */]
+  },
+  slash: {
+    encodePath: __WEBPACK_IMPORTED_MODULE_3__PathUtils__["a" /* addLeadingSlash */],
+    decodePath: __WEBPACK_IMPORTED_MODULE_3__PathUtils__["a" /* addLeadingSlash */]
+  }
+};
+
+var getHashPath = function getHashPath() {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var hashIndex = href.indexOf('#');
+  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+};
+
+var pushHashPath = function pushHashPath(path) {
+  return window.location.hash = path;
+};
+
+var replaceHashPath = function replaceHashPath(path) {
+  var hashIndex = window.location.href.indexOf('#');
+
+  window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
+};
+
+var createHashHistory = function createHashHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  __WEBPACK_IMPORTED_MODULE_1_invariant___default()(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["b" /* canUseDOM */], 'Hash history needs a DOM');
+
+  var globalHistory = window.history;
+  var canGoWithoutReload = Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["f" /* supportsGoWithoutReloadUsingHash */])();
+
+  var _props$getUserConfirm = props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === undefined ? __WEBPACK_IMPORTED_MODULE_5__DOMUtils__["c" /* getConfirmation */] : _props$getUserConfirm,
+      _props$hashType = props.hashType,
+      hashType = _props$hashType === undefined ? 'slash' : _props$hashType;
+
+  var basename = props.basename ? Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["g" /* stripTrailingSlash */])(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["a" /* addLeadingSlash */])(props.basename)) : '';
+
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
+      encodePath = _HashPathCoders$hashT.encodePath,
+      decodePath = _HashPathCoders$hashT.decodePath;
+
+
+  var getDOMLocation = function getDOMLocation() {
+    var path = decodePath(getHashPath());
+
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!basename || Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["c" /* hasBasename */])(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+
+    if (basename) path = Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["e" /* stripBasename */])(path, basename);
+
+    return Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path);
+  };
+
+  var transitionManager = Object(__WEBPACK_IMPORTED_MODULE_4__createTransitionManager__["a" /* default */])();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var forceNextPop = false;
+  var ignorePath = null;
+
+  var handleHashChange = function handleHashChange() {
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+
+    if (path !== encodedPath) {
+      // Ensure we always have a properly-encoded hash.
+      replaceHashPath(encodedPath);
+    } else {
+      var location = getDOMLocation();
+      var prevLocation = history.location;
+
+      if (!forceNextPop && Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["b" /* locationsAreEqual */])(prevLocation, location)) return; // A hashchange doesn't always == location change.
+
+      if (ignorePath === Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(location)) return; // Ignore this change; we already setState in push/replace.
+
+      ignorePath = null;
+
+      handlePop(location);
+    }
+  };
+
+  var handlePop = function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({ action: action, location: location });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  };
+
+  var revertPop = function revertPop(fromLocation) {
+    var toLocation = history.location;
+
+    // TODO: We could probably make this more reliable by
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
+
+    var toIndex = allPaths.lastIndexOf(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(toLocation));
+
+    if (toIndex === -1) toIndex = 0;
+
+    var fromIndex = allPaths.lastIndexOf(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(fromLocation));
+
+    if (fromIndex === -1) fromIndex = 0;
+
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  };
+
+  // Ensure the hash is encoded properly before doing anything else.
+  var path = getHashPath();
+  var encodedPath = encodePath(path);
+
+  if (path !== encodedPath) replaceHashPath(encodedPath);
+
+  var initialLocation = getDOMLocation();
+  var allPaths = [Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(initialLocation)];
+
+  // Public interface
+
+  var createHref = function createHref(location) {
+    return '#' + encodePath(basename + Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(location));
+  };
+
+  var push = function push(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(state === undefined, 'Hash history cannot push state; it is ignored');
+
+    var action = 'PUSH';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, undefined, undefined, history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var path = Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a PUSH, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        pushHashPath(encodedPath);
+
+        var prevIndex = allPaths.lastIndexOf(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(history.location));
+        var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+
+        nextPaths.push(path);
+        allPaths = nextPaths;
+
+        setState({ action: action, location: location });
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0_warning___default()(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+
+        setState();
+      }
+    });
+  };
+
+  var replace = function replace(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(state === undefined, 'Hash history cannot replace state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, undefined, undefined, history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var path = Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        replaceHashPath(encodedPath);
+      }
+
+      var prevIndex = allPaths.indexOf(Object(__WEBPACK_IMPORTED_MODULE_3__PathUtils__["b" /* createPath */])(history.location));
+
+      if (prevIndex !== -1) allPaths[prevIndex] = path;
+
+      setState({ action: action, location: location });
+    });
+  };
+
+  var go = function go(n) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+
+    globalHistory.go(n);
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var listenerCount = 0;
+
+  var checkDOMListeners = function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1) {
+      Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["a" /* addEventListener */])(window, HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      Object(__WEBPACK_IMPORTED_MODULE_5__DOMUtils__["e" /* removeEventListener */])(window, HashChangeEvent, handleHashChange);
+    }
+  };
+
+  var isBlocked = false;
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  };
+
+  var listen = function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  };
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = (createHashHistory);
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(49);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+
+var clamp = function clamp(n, lowerBound, upperBound) {
+  return Math.min(Math.max(n, lowerBound), upperBound);
+};
+
+/**
+ * Creates a history object that stores locations in memory.
+ */
+var createMemoryHistory = function createMemoryHistory() {
+  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var getUserConfirmation = props.getUserConfirmation,
+      _props$initialEntries = props.initialEntries,
+      initialEntries = _props$initialEntries === undefined ? ['/'] : _props$initialEntries,
+      _props$initialIndex = props.initialIndex,
+      initialIndex = _props$initialIndex === undefined ? 0 : _props$initialIndex,
+      _props$keyLength = props.keyLength,
+      keyLength = _props$keyLength === undefined ? 6 : _props$keyLength;
+
+
+  var transitionManager = Object(__WEBPACK_IMPORTED_MODULE_3__createTransitionManager__["a" /* default */])();
+
+  var setState = function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = history.entries.length;
+
+    transitionManager.notifyListeners(history.location, history.action);
+  };
+
+  var createKey = function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  };
+
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
+  var entries = initialEntries.map(function (entry) {
+    return typeof entry === 'string' ? Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(entry, undefined, createKey()) : Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(entry, undefined, entry.key || createKey());
+  });
+
+  // Public interface
+
+  var createHref = __WEBPACK_IMPORTED_MODULE_1__PathUtils__["b" /* createPath */];
+
+  var push = function push(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'PUSH';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      var prevIndex = history.index;
+      var nextIndex = prevIndex + 1;
+
+      var nextEntries = history.entries.slice(0);
+      if (nextEntries.length > nextIndex) {
+        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+      } else {
+        nextEntries.push(location);
+      }
+
+      setState({
+        action: action,
+        location: location,
+        index: nextIndex,
+        entries: nextEntries
+      });
+    });
+  };
+
+  var replace = function replace(path, state) {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!((typeof path === 'undefined' ? 'undefined' : _typeof(path)) === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+
+    var action = 'REPLACE';
+    var location = Object(__WEBPACK_IMPORTED_MODULE_2__LocationUtils__["a" /* createLocation */])(path, state, createKey(), history.location);
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+
+      history.entries[history.index] = location;
+
+      setState({ action: action, location: location });
+    });
+  };
+
+  var go = function go(n) {
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+
+    var action = 'POP';
+    var location = history.entries[nextIndex];
+
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (ok) {
+        setState({
+          action: action,
+          location: location,
+          index: nextIndex
+        });
+      } else {
+        // Mimic the behavior of DOM histories by
+        // causing a render after a cancelled POP.
+        setState();
+      }
+    });
+  };
+
+  var goBack = function goBack() {
+    return go(-1);
+  };
+
+  var goForward = function goForward() {
+    return go(1);
+  };
+
+  var canGo = function canGo(n) {
+    var nextIndex = history.index + n;
+    return nextIndex >= 0 && nextIndex < history.entries.length;
+  };
+
+  var block = function block() {
+    var prompt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return transitionManager.setPrompt(prompt);
+  };
+
+  var listen = function listen(listener) {
+    return transitionManager.appendListener(listener);
+  };
+
+  var history = {
+    length: entries.length,
+    action: 'POP',
+    location: entries[index],
+    index: index,
+    entries: entries,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    canGo: canGo,
+    block: block,
+    listen: listen
+  };
+
+  return history;
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = (createMemoryHistory);
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__ = __webpack_require__(77);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_StaticRouter__["a" /* default */]);
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(47);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var normalizeLocation = function normalizeLocation(object) {
+  var _object$pathname = object.pathname,
+      pathname = _object$pathname === undefined ? '/' : _object$pathname,
+      _object$search = object.search,
+      search = _object$search === undefined ? '' : _object$search,
+      _object$hash = object.hash,
+      hash = _object$hash === undefined ? '' : _object$hash;
+
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+};
+
+var addBasename = function addBasename(basename, location) {
+  if (!basename) return location;
+
+  return _extends({}, location, {
+    pathname: Object(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__["addLeadingSlash"])(basename) + location.pathname
+  });
+};
+
+var stripBasename = function stripBasename(basename, location) {
+  if (!basename) return location;
+
+  var base = Object(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__["addLeadingSlash"])(basename);
+
+  if (location.pathname.indexOf(base) !== 0) return location;
+
+  return _extends({}, location, {
+    pathname: location.pathname.substr(base.length)
+  });
+};
+
+var createLocation = function createLocation(location) {
+  return typeof location === 'string' ? Object(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__["parsePath"])(location) : normalizeLocation(location);
+};
+
+var createURL = function createURL(location) {
+  return typeof location === 'string' ? location : Object(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__["createPath"])(location);
+};
+
+var staticHandler = function staticHandler(methodName) {
+  return function () {
+    __WEBPACK_IMPORTED_MODULE_1_invariant___default()(false, 'You cannot %s with <StaticRouter>', methodName);
+  };
+};
+
+var noop = function noop() {};
+
+/**
+ * The public top-level API for a "static" <Router>, so-called because it
+ * can't actually change the current location. Instead, it just records
+ * location changes in a context object. Useful mainly in testing and
+ * server-rendering scenarios.
+ */
+
+var StaticRouter = function (_React$Component) {
+  _inherits(StaticRouter, _React$Component);
+
+  function StaticRouter() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, StaticRouter);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this.createHref = function (path) {
+      return Object(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__["addLeadingSlash"])(_this.props.basename + createURL(path));
+    }, _this.handlePush = function (location) {
+      var _this$props = _this.props,
+          basename = _this$props.basename,
+          context = _this$props.context;
+
+      context.action = 'PUSH';
+      context.location = addBasename(basename, createLocation(location));
+      context.url = createURL(context.location);
+    }, _this.handleReplace = function (location) {
+      var _this$props2 = _this.props,
+          basename = _this$props2.basename,
+          context = _this$props2.context;
+
+      context.action = 'REPLACE';
+      context.location = addBasename(basename, createLocation(location));
+      context.url = createURL(context.location);
+    }, _this.handleListen = function () {
+      return noop;
+    }, _this.handleBlock = function () {
+      return noop;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  StaticRouter.prototype.getChildContext = function getChildContext() {
+    return {
+      router: {
+        staticContext: this.props.context
+      }
+    };
+  };
+
+  StaticRouter.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_0_warning___default()(!this.props.history, '<StaticRouter> ignores the history prop. To use a custom history, ' + 'use `import { Router }` instead of `import { StaticRouter as Router }`.');
+  };
+
+  StaticRouter.prototype.render = function render() {
+    var _props = this.props,
+        basename = _props.basename,
+        context = _props.context,
+        location = _props.location,
+        props = _objectWithoutProperties(_props, ['basename', 'context', 'location']);
+
+    var history = {
+      createHref: this.createHref,
+      action: 'POP',
+      location: stripBasename(basename, createLocation(location)),
+      push: this.handlePush,
+      replace: this.handleReplace,
+      go: staticHandler('go'),
+      goBack: staticHandler('goBack'),
+      goForward: staticHandler('goForward'),
+      listen: this.handleListen,
+      block: this.handleBlock
+    };
+
+    return __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Router__["a" /* default */], _extends({}, props, { history: history }));
+  };
+
+  return StaticRouter;
+}(__WEBPACK_IMPORTED_MODULE_2_react___default.a.Component);
+
+StaticRouter.propTypes = {
+  basename: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.string,
+  context: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired,
+  location: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object])
+};
+StaticRouter.defaultProps = {
+  basename: '',
+  location: '/'
+};
+StaticRouter.childContextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.object.isRequired
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (StaticRouter);
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__ = __webpack_require__(79);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Switch__["a" /* default */]);
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(48);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+/**
+ * The public API for rendering the first <Route> that matches.
+ */
+
+var Switch = function (_React$Component) {
+  _inherits(Switch, _React$Component);
+
+  function Switch() {
+    _classCallCheck(this, Switch);
+
+    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+  }
+
+  Switch.prototype.componentWillMount = function componentWillMount() {
+    __WEBPACK_IMPORTED_MODULE_3_invariant___default()(this.context.router, 'You should not use <Switch> outside a <Router>');
+  };
+
+  Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    __WEBPACK_IMPORTED_MODULE_2_warning___default()(!(nextProps.location && !this.props.location), '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.');
+
+    __WEBPACK_IMPORTED_MODULE_2_warning___default()(!(!nextProps.location && this.props.location), '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.');
+  };
+
+  Switch.prototype.render = function render() {
+    var route = this.context.router.route;
+    var children = this.props.children;
+
+    var location = this.props.location || route.location;
+
+    var match = void 0,
+        child = void 0;
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.Children.forEach(children, function (element) {
+      if (!__WEBPACK_IMPORTED_MODULE_0_react___default.a.isValidElement(element)) return;
+
+      var _element$props = element.props,
+          pathProp = _element$props.path,
+          exact = _element$props.exact,
+          strict = _element$props.strict,
+          sensitive = _element$props.sensitive,
+          from = _element$props.from;
+
+      var path = pathProp || from;
+
+      if (match == null) {
+        child = element;
+        match = path ? Object(__WEBPACK_IMPORTED_MODULE_4__matchPath__["a" /* default */])(location.pathname, { path: path, exact: exact, strict: strict, sensitive: sensitive }) : route.match;
+      }
+    });
+
+    return match ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.cloneElement(child, { location: location, computedMatch: match }) : null;
+  };
+
+  return Switch;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+Switch.contextTypes = {
+  router: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
+    route: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
+  }).isRequired
+};
+Switch.propTypes = {
+  children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node,
+  location: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object
+};
+
+
+/* harmony default export */ __webpack_exports__["a"] = (Switch);
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__ = __webpack_require__(48);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_matchPath__["a" /* default */]);
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__ = __webpack_require__(82);
+// Written in this round about way for babel-transform-imports
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_withRouter__["a" /* default */]);
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(55);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
+
+
+
+
+/**
+ * A public higher-order component to access the imperative API
+ */
+var withRouter = function withRouter(Component) {
+  var C = function C(props) {
+    var wrappedComponentRef = props.wrappedComponentRef,
+        remainingProps = _objectWithoutProperties(props, ['wrappedComponentRef']);
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Route__["a" /* default */], { render: function render(routeComponentProps) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, _extends({}, remainingProps, routeComponentProps, { ref: wrappedComponentRef }));
+      } });
+  };
+
+  C.displayName = 'withRouter(' + (Component.displayName || Component.name) + ')';
+  C.WrappedComponent = Component;
+  C.propTypes = {
+    wrappedComponentRef: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func
+  };
+
+  return __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default()(C, Component);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (withRouter);
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+
+
+var REACT_STATICS = {
+    childContextTypes: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+};
+
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
+
+module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+
+        if (objectPrototype) {
+            var inheritedComponent = getPrototypeOf(sourceComponent);
+            if (inheritedComponent && inheritedComponent !== objectPrototype) {
+                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+            }
+        }
+
+        var keys = getOwnPropertyNames(sourceComponent);
+
+        if (getOwnPropertySymbols) {
+            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+        }
+
+        for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i];
+            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+                try { // Avoid failures from read-only properties
+                    defineProperty(targetComponent, key, descriptor);
+                } catch (e) {}
+            }
+        }
+
+        return targetComponent;
+    }
+
+    return targetComponent;
+};
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Error = function (_Component) {
+  _inherits(Error, _Component);
+
+  function Error() {
+    _classCallCheck(this, Error);
+
+    return _possibleConstructorReturn(this, (Error.__proto__ || Object.getPrototypeOf(Error)).apply(this, arguments));
+  }
+
+  _createClass(Error, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "offcanvas-wrapper" },
+        _react2.default.createElement(
+          "div",
+          { className: "container padding-top-3x padding-bottom-3x mb-1" },
+          _react2.default.createElement("img", { className: "d-block m-auto", src: "img/404_art.jpg", style: { width: '100%', maxWidth: 550 }, alt: 404 }),
+          _react2.default.createElement(
+            "div",
+            { className: "padding-top-1x mt-2 text-center" },
+            _react2.default.createElement(
+              "h3",
+              null,
+              "Page Not Found"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "It seems we can\u2019t find page you are looking for. ",
+              _react2.default.createElement(
+                "a",
+                { href: "index-2.html" },
+                "Go back to Homepage"
+              ),
+              _react2.default.createElement("br", null),
+              "Or try using search at the top right corner of the page."
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Error;
+}(_react.Component);
+
+exports.default = Error;
+
+/***/ }),
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(20);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _main = __webpack_require__(33);
+
+var _main2 = _interopRequireDefault(_main);
+
+var _reactRouterDom = __webpack_require__(57);
+
+var _footer = __webpack_require__(40);
+
+var _footer2 = _interopRequireDefault(_footer);
+
+var _featured = __webpack_require__(108);
+
+var _featured2 = _interopRequireDefault(_featured);
+
+var _searchResults = __webpack_require__(109);
+
+var _searchResults2 = _interopRequireDefault(_searchResults);
+
+var _shopCategories = __webpack_require__(110);
+
+var _shopCategories2 = _interopRequireDefault(_shopCategories);
+
+var _shopGrid = __webpack_require__(111);
+
+var _shopGrid2 = _interopRequireDefault(_shopGrid);
+
+var _shopSingle = __webpack_require__(112);
+
+var _shopSingle2 = _interopRequireDefault(_shopSingle);
+
+var _error = __webpack_require__(84);
+
+var _error2 = _interopRequireDefault(_error);
+
+var _showcase = __webpack_require__(113);
+
+var _showcase2 = _interopRequireDefault(_showcase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Shopping = function (_Component) {
+    _inherits(Shopping, _Component);
+
+    function Shopping() {
+        _classCallCheck(this, Shopping);
+
+        return _possibleConstructorReturn(this, (Shopping.__proto__ || Object.getPrototypeOf(Shopping)).apply(this, arguments));
+    }
+
+    _createClass(Shopping, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_main2.default, null),
+                _react2.default.createElement(
+                    'div',
+                    { style: { marginTop: "30px" } },
+                    _react2.default.createElement(
+                        _reactRouterDom.Switch,
+                        null,
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _shopGrid2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/featured', component: _featured2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/search-results', component: _searchResults2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/shop-categories', component: _shopCategories2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/shop-grid', component: _shopGrid2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/shop-single', component: _shopSingle2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/showcase', component: _showcase2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/error', component: _error2.default }),
+                        _react2.default.createElement(_reactRouterDom.Redirect, { to: '/error' })
+                    )
+                ),
+                _react2.default.createElement(_footer2.default, null),
+                _react2.default.createElement(
+                    'a',
+                    { className: 'scroll-to-top-btn', href: '#' },
+                    _react2.default.createElement('i', { className: 'icon-arrow-up' })
+                ),
+                _react2.default.createElement('div', { className: 'site-backdrop' })
+            );
+        }
+    }]);
+
+    return Shopping;
+}(_react.Component);
+
+_reactDom2.default.render(_react2.default.createElement(
+    _reactRouterDom.HashRouter,
+    null,
+    _react2.default.createElement(Shopping, null)
+), document.getElementById('shopping'));
+
+/***/ }),
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Featured = function (_Component) {
+  _inherits(Featured, _Component);
+
+  function Featured() {
+    _classCallCheck(this, Featured);
+
+    return _possibleConstructorReturn(this, (Featured.__proto__ || Object.getPrototypeOf(Featured)).apply(this, arguments));
+  }
+
+  _createClass(Featured, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "div",
+          { className: "container-fluid px-0" },
+          _react2.default.createElement(
+            "div",
+            { className: "row mx-0" },
+            _react2.default.createElement(
+              "div",
+              { className: "category-card col-md-6 col-sm-12 fw-section padding-top-7x padding-bottom-7x", style: { backgroundImage: 'url(img/banners/home05.jpg)' } },
+              _react2.default.createElement("span", { className: "overlay", style: { backgroundColor: '#000', opacity: '.5' } }),
+              _react2.default.createElement(
+                "div",
+                { className: "d-flex justify-content-center" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "px-3 text-center" },
+                  _react2.default.createElement(
+                    "h2",
+                    { className: "display-4 text-white text-shadow" },
+                    "Shoes"
+                  ),
+                  _react2.default.createElement(
+                    "h5",
+                    { className: "text-white text-normal mb-3 opacity-60 text-shadow" },
+                    "Starting from $56.00"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "view-button" },
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-primary", href: "/shopping#/shop-grid" },
+                      "View Collection"
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "category-card col-md-6 col-sm-12 fw-section padding-top-7x padding-bottom-7x", style: { backgroundImage: 'url(img/banners/home04.jpg)' } },
+              _react2.default.createElement("span", { className: "overlay", style: { backgroundColor: '#000', opacity: '.5' } }),
+              _react2.default.createElement(
+                "div",
+                { className: "d-flex justify-content-center" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "px-3 text-center" },
+                  _react2.default.createElement(
+                    "h2",
+                    { className: "display-4 text-white text-shadow" },
+                    "Bags"
+                  ),
+                  _react2.default.createElement(
+                    "h5",
+                    { className: "text-white text-normal mb-3 opacity-60 text-shadow" },
+                    "Starting from $27.00"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "view-button" },
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-primary", href: "/shopping#/shop-grid" },
+                      "View Collection"
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row mx-0" },
+            _react2.default.createElement(
+              "div",
+              { className: "category-card col-md-6 col-sm-12 fw-section padding-top-7x padding-bottom-7x", style: { backgroundImage: 'url(img/banners/home01.jpg)' } },
+              _react2.default.createElement("span", { className: "overlay", style: { backgroundColor: '#000', opacity: '.5' } }),
+              _react2.default.createElement(
+                "div",
+                { className: "d-flex justify-content-center" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "px-3 text-center" },
+                  _react2.default.createElement(
+                    "h2",
+                    { className: "display-4 text-white text-shadow" },
+                    "Sunglasses"
+                  ),
+                  _react2.default.createElement(
+                    "h5",
+                    { className: "text-white text-normal mb-3 opacity-60 text-shadow" },
+                    "Starting from $35.99"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "view-button" },
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-primary", href: "/shopping#/shop-grid" },
+                      "View Collection"
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "category-card col-md-6 col-sm-12 fw-section padding-top-7x padding-bottom-7x", style: { backgroundImage: 'url(img/banners/home06.jpg)' } },
+              _react2.default.createElement("span", { className: "overlay", style: { backgroundColor: '#000', opacity: '.5' } }),
+              _react2.default.createElement(
+                "div",
+                { className: "d-flex justify-content-center" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "px-3 text-center" },
+                  _react2.default.createElement(
+                    "h2",
+                    { className: "display-4 text-white text-shadow" },
+                    "Watches"
+                  ),
+                  _react2.default.createElement(
+                    "h5",
+                    { className: "text-white text-normal mb-3 opacity-60 text-shadow" },
+                    "Starting from $79.99"
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "view-button" },
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-primary", href: "/shopping#/shop-grid" },
+                      "View Collection"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "container padding-top-3x padding-bottom-3x" },
+          _react2.default.createElement(
+            "h3",
+            { className: "text-center mb-30" },
+            "Featured Products"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "isotope-grid cols-4 mb-2" },
+            _react2.default.createElement("div", { className: "gutter-sizer" }),
+            _react2.default.createElement("div", { className: "grid-sizer" }),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-badge text-danger" },
+                  "50% Off"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/01.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Unionbay Park"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  _react2.default.createElement(
+                    "del",
+                    null,
+                    "$99.99"
+                  ),
+                  "$49.99"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/02.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Cole Haan Crossbody"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$200.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "rating-stars" },
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star" })
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/03.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Oakley Kickback"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$155.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/04.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Waist Leather Belt"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$47.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "rating-stars" },
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star filled" }),
+                  _react2.default.createElement("i", { className: "icon-star" }),
+                  _react2.default.createElement("i", { className: "icon-star" })
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/05.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Jordan City Man's Hoodie"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$65.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-badge text-danger" },
+                  "40% Off"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/06.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Palace Shell Track Jacket"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  _react2.default.createElement(
+                    "del",
+                    null,
+                    "$60.00"
+                  ),
+                  "$36.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/07.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Stretch Woven Jogger"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$69.99"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                    "Add to Cart"
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "grid-item" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-card" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-badge text-muted" },
+                  "Out of stock"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "product-thumb", href: "/shopping#/shop-single" },
+                  _react2.default.createElement("img", { src: "img/shop/products/08.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "product-title" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "/shopping#/shop-single" },
+                    "Off the Shoulder Top"
+                  )
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "product-price" },
+                  "$128.00"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "product-buttons" },
+                  _react2.default.createElement(
+                    "button",
+                    { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                    _react2.default.createElement("i", { className: "icon-heart" })
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "btn btn-outline-secondary btn-sm", href: "/shopping#/shop-single" },
+                    "View Details"
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "text-center" },
+            _react2.default.createElement(
+              "a",
+              { className: "btn btn-outline-secondary margin-top-none", href: "/shopping#/shop-grid" },
+              "View All Products"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "fw-section", style: { backgroundImage: 'url(img/banners/home03.jpg)' } },
+          _react2.default.createElement("span", { className: "overlay", style: { backgroundColor: '#374250', opacity: '.55' } }),
+          _react2.default.createElement(
+            "div",
+            { className: "container text-center padding-top-4x padding-bottom-4x" },
+            _react2.default.createElement(
+              "h3",
+              { className: "display-4 text-normal text-white text-shadow mb-1" },
+              "Old Collection"
+            ),
+            _react2.default.createElement(
+              "h2",
+              { className: "display-2 text-bold text-white text-shadow" },
+              "HUGE SALE!"
+            ),
+            _react2.default.createElement(
+              "h4",
+              { className: "d-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4" },
+              "at our outlet stores"
+            ),
+            _react2.default.createElement("br", null),
+            _react2.default.createElement(
+              "a",
+              { className: "btn btn-primary", href: "/company#/contacts" },
+              "Locate Stores"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "container padding-top-3x padding-bottom-2x" },
+          _react2.default.createElement(
+            "h3",
+            { className: "text-center mb-30" },
+            "Staff Picks"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row pt-1" },
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-4 col-sm-6" },
+              _react2.default.createElement(
+                "div",
+                { className: "widget widget-featured-products" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Top Sellers"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/01.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Oakley Kickback"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$155.00"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/03.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Vented Straw Fedora"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$49.50"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/04.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Big Wordmark Tote"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$29.99"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-outline-secondary btn-sm mb-0", href: "/shopping#/shop-grid" },
+                  "View More"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-4 col-sm-6" },
+              _react2.default.createElement(
+                "div",
+                { className: "widget widget-featured-products" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "New Arrivals"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/05.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Union Park"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$49.99"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/06.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Cole Haan Crossbody"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$200.00"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/07.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Skagen Holst Watch"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$145.00"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-outline-secondary btn-sm mb-0", href: "/shopping#/shop-grid" },
+                  "View More"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-4 col-sm-6" },
+              _react2.default.createElement(
+                "div",
+                { className: "widget widget-featured-products" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Best Rated"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/08.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Jordan's City Hoodie"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$65.00"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/09.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Palace Shell Track Jacket"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$36.99"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "entry" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-thumb" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "/shopping#/shop-single" },
+                      _react2.default.createElement("img", { src: "img/shop/widget/10.jpg", alt: "Product" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "entry-content" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "entry-title" },
+                      _react2.default.createElement(
+                        "a",
+                        { href: "/shopping#/shop-single" },
+                        "Off the Shoulder Top"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      { className: "entry-meta" },
+                      "$128.00"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-outline-secondary btn-sm mb-0", href: "/shopping#/shop-grid" },
+                  "View More"
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "bg-faded padding-top-3x padding-bottom-3x" },
+          _react2.default.createElement(
+            "div",
+            { className: "container" },
+            _react2.default.createElement(
+              "h3",
+              { className: "text-center mb-30 pb-2" },
+              "Popular Brands"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "owl-carousel", "data-owl-carousel": "{ \"nav\": false, \"dots\": false, \"loop\": true, \"autoplay\": true, \"autoplayTimeout\": 4000, \"responsive\": {\"0\":{\"items\":2}, \"470\":{\"items\":3},\"630\":{\"items\":4},\"991\":{\"items\":5},\"1200\":{\"items\":6}} }" },
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/01.png", alt: "Adidas" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/02.png", alt: "Brooks" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/03.png", alt: "Valentino" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/04.png", alt: "Nike" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/05.png", alt: "Puma" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/06.png", alt: "New Balance" }),
+              _react2.default.createElement("img", { className: "d-block w-110 opacity-75 m-auto", src: "img/brands/07.png", alt: "Dior" })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "container padding-top-3x padding-bottom-2x" },
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/01.png", alt: "Shipping" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Free Worldwide Shipping"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "Free shipping for all orders over $100"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/02.png", alt: "Money Back" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Money Back Guarantee"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "We return money within 30 days"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/03.png", alt: "Support" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "24/7 Customer Support"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "Friendly 24/7 customer support"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/04.png", alt: "Payment" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Secure Online Payment"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "We posess SSL / Secure Certificate"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Featured;
+}(_react.Component);
+
+exports.default = Featured;
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchResults = function (_Component) {
+  _inherits(SearchResults, _Component);
+
+  function SearchResults() {
+    _classCallCheck(this, SearchResults);
+
+    return _possibleConstructorReturn(this, (SearchResults.__proto__ || Object.getPrototypeOf(SearchResults)).apply(this, arguments));
+  }
+
+  _createClass(SearchResults, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "container padding-bottom-3x mb-2" },
+        _react2.default.createElement(
+          "div",
+          { className: "row" },
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-9 col-lg-8" },
+            _react2.default.createElement(
+              "div",
+              { className: "card mb-4" },
+              _react2.default.createElement(
+                "div",
+                { className: "card-header" },
+                _react2.default.createElement(
+                  "span",
+                  { className: "badge badge-pill badge-primary" },
+                  "Product"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "card-body" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "d-flex" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "pr-4 hidden-xs-down", href: "/shopping#/shop-single", style: { maxWidth: 225 } },
+                    _react2.default.createElement("img", { src: "img/shop/products/01.jpg", alt: "Product" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      _react2.default.createElement(
+                        "a",
+                        { className: "navi-link", href: "/shopping#/shop-single" },
+                        "Unionbay Park "
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "h6",
+                      null,
+                      _react2.default.createElement(
+                        "del",
+                        { className: "text-muted" },
+                        "$99.99"
+                      ),
+                      " $49.99"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      null,
+                      "Consequatur omnis ",
+                      _react2.default.createElement(
+                        "span",
+                        { className: "text-highlighted" },
+                        "lorem ipsum"
+                      ),
+                      " reprehenderit suscipit voluptatem blanditiis aliquid rerum animi aliquam, dicta quas nesciunt commodi sequi minima totam architecto."
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "card mb-4" },
+              _react2.default.createElement(
+                "div",
+                { className: "card-header" },
+                _react2.default.createElement(
+                  "span",
+                  { className: "badge badge-pill badge-warning" },
+                  "Blog post"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "card-body" },
+                _react2.default.createElement(
+                  "h5",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { className: "navi-link", href: "/company#/blog" },
+                    "How To Choose Perfect Summer Suit"
+                  )
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  _react2.default.createElement(
+                    "span",
+                    { className: "text-highlighted" },
+                    "Lorem ipsum"
+                  ),
+                  " dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "text-highlighted" },
+                    "lorem ipsum"
+                  ),
+                  " aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. Aliquid id nobis, amet dolorum earum maxime."
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "card mb-4" },
+              _react2.default.createElement(
+                "div",
+                { className: "card-header" },
+                _react2.default.createElement(
+                  "span",
+                  { className: "badge badge-pill badge-primary" },
+                  "Product"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "card-body" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "d-flex" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "pr-4 hidden-xs-down", href: "/shopping#/shop-single", style: { maxWidth: 225 } },
+                    _react2.default.createElement("img", { src: "img/shop/products/03.jpg", alt: "Product" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      _react2.default.createElement(
+                        "a",
+                        { className: "navi-link", href: "/shopping#/shop-single" },
+                        "Oakley Kickback"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "h6",
+                      null,
+                      "$155.00"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      null,
+                      "Ut enim ad minim veniam, ",
+                      _react2.default.createElement(
+                        "span",
+                        { className: "text-highlighted" },
+                        "lorem ipsum"
+                      ),
+                      " reprehenderit suscipit voluptatem blanditiis aliquid rerum animi aliquam, dicta quas nesciunt commodi sequi minima totam architecto."
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "card mb-4" },
+              _react2.default.createElement(
+                "div",
+                { className: "card-header" },
+                _react2.default.createElement(
+                  "span",
+                  { className: "badge badge-pill badge-warning" },
+                  "Blog post"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "card-body" },
+                _react2.default.createElement(
+                  "h5",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { className: "navi-link", href: "/company#/blog" },
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-highlighted" },
+                      "Lorem Ipsum"
+                    ),
+                    " Trends in Suburban Fashion"
+                  )
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Ut enim ad minim veniam, ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "text-highlighted" },
+                    "lorem ipsum"
+                  ),
+                  " reprehenderit suscipit voluptatem blanditiis aliquid rerum animi aliquam, dicta quas nesciunt commodi sequi minima totam architecto."
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "nav",
+              { className: "pagination" },
+              _react2.default.createElement(
+                "div",
+                { className: "column" },
+                _react2.default.createElement(
+                  "ul",
+                  { className: "pages" },
+                  _react2.default.createElement(
+                    "li",
+                    { className: "active" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "1"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "2"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "3"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "4"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    "..."
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "12"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "column text-right hidden-xs-down" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-outline-secondary btn-sm", href: "#" },
+                  "Next\xA0",
+                  _react2.default.createElement("i", { className: "icon-arrow-right" })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-3 col-lg-4" },
+            _react2.default.createElement(
+              "aside",
+              { className: "sidebar" },
+              _react2.default.createElement("div", { className: "padding-top-2x hidden-lg-up" }),
+              _react2.default.createElement(
+                "section",
+                { className: "widget widget-categories" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Shop Categories"
+                ),
+                _react2.default.createElement(
+                  "ul",
+                  null,
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children expanded" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Shoes"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(1138)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Women's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(508)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sneakers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Heels"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Loafers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sandals"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Men's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(423)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Boots"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Oxfords"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Loafers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sandals"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Boy's Shoes"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(97)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Girl's Shoes"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(110)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Clothing"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(2356)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Women's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(1032)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Dresses"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shirts & Tops"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Swimwear"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shorts"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Men's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(937)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shirts & Tops"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shorts"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Swimwear"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Pants"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Kid's Clothing"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(386)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Bags"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(420)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Handbags"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(180)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Backpacks"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(132)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Wallets & Accessories"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(47)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Luggage"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(61)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Accessories"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(874)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Sunglasses"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(211)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Hats"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(195)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Watches"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(159)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Jewelry"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(203)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Belts"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(106)"
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "widget widget-categories margin-bottom-none" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Blog Categories"
+                ),
+                _react2.default.createElement(
+                  "ul",
+                  null,
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Editor's Choice"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(24)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Fashion"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(12)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Travel"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(5)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Online Shopping"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(7)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Closing Design"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(3)"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return SearchResults;
+}(_react.Component);
+
+exports.default = SearchResults;
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShopCategories = function (_Component) {
+  _inherits(ShopCategories, _Component);
+
+  function ShopCategories() {
+    _classCallCheck(this, ShopCategories);
+
+    return _possibleConstructorReturn(this, (ShopCategories.__proto__ || Object.getPrototypeOf(ShopCategories)).apply(this, arguments));
+  }
+
+  _createClass(ShopCategories, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "container padding-bottom-2x mb-2" },
+        _react2.default.createElement(
+          "div",
+          { className: "row" },
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-9 col-lg-8 order-lg-2" },
+            _react2.default.createElement(
+              "div",
+              { className: "alert alert-image-bg alert-dismissible fade show text-center mb-4", style: { backgroundImage: 'url(img/banners/alert-bg.jpg)' } },
+              _react2.default.createElement("span", { className: "alert-close text-white", "data-dismiss": "alert" }),
+              _react2.default.createElement(
+                "div",
+                { className: "h3 text-medium text-white padding-top-1x padding-bottom-1x" },
+                _react2.default.createElement("i", { className: "icon-clock", style: { fontSize: 33, marginTop: '-5px' } }),
+                "\xA0\xA0Check our Limited Offers. Save up to 50%\xA0\xA0\xA0",
+                _react2.default.createElement("div", { className: "mt-3 hidden-xl-up" }),
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-primary", href: "#" },
+                  "View Offers"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "row" },
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/01.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/02.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/03.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Clothing"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $49.99"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/04.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/05.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/06.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Shoes"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $56.00"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/07.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/08.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/09.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Bags"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $27.00"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/10.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/11.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/12.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Hats"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $14.50"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/13.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/14.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/15.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Sunglasses"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $35.99"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-6" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "card mb-30" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "card-img-tiles", href: "/shopping#/shop-grid" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "inner" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "main-img" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/16.jpg", alt: "Category" })
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "thumblist" },
+                        _react2.default.createElement("img", { src: "img/shop/categories/17.jpg", alt: "Category" }),
+                        _react2.default.createElement("img", { src: "img/shop/categories/18.jpg", alt: "Category" })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "card-body text-center" },
+                    _react2.default.createElement(
+                      "h4",
+                      { className: "card-title" },
+                      "Watches"
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "text-muted" },
+                      "Starting from $79.99"
+                    ),
+                    _react2.default.createElement(
+                      "a",
+                      { className: "btn btn-outline-primary btn-sm", href: "/shopping#/shop-grid" },
+                      "View Products"
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-3 col-lg-4 order-lg-1" },
+            _react2.default.createElement(
+              "aside",
+              { className: "sidebar" },
+              _react2.default.createElement("div", { className: "padding-top-2x hidden-lg-up" }),
+              _react2.default.createElement(
+                "section",
+                { className: "widget widget-categories" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Popular Brands"
+                ),
+                _react2.default.createElement(
+                  "ul",
+                  null,
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Adidas"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(254)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Bilabong"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(39)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Brooks"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(205)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Calvin Klein"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(128)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Cole Haan"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(104)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Columbia"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(217)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "New Balance"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(95)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Nike"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(310)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Nine West"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(134)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Oakley"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(73)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Puma"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(446)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Scechers"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(87)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Tommy Bahama"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(42)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Tommy Hilfiger"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(289)"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Valentino"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(68)"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ShopCategories;
+}(_react.Component);
+
+exports.default = ShopCategories;
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShopGrid = function (_Component) {
+  _inherits(ShopGrid, _Component);
+
+  function ShopGrid(props) {
+    _classCallCheck(this, ShopGrid);
+
+    var _this = _possibleConstructorReturn(this, (ShopGrid.__proto__ || Object.getPrototypeOf(ShopGrid)).call(this, props));
+
+    _this.state = {
+      tags: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    };
+    return _this;
+  }
+
+  _createClass(ShopGrid, [{
+    key: "render",
+    value: function render() {
+      var something = this.state.tags.map(function (curr, index) {
+        return _react2.default.createElement(
+          "div",
+          { key: index, className: "grid-item" },
+          _react2.default.createElement(
+            "div",
+            { className: "product-card" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-badge text-danger" },
+              "50% Off"
+            ),
+            _react2.default.createElement(
+              "a",
+              { className: "product-thumb", href: "/shoppint#/shop-single" },
+              _react2.default.createElement("img", { src: "img/shop/products/01.jpg", alt: "Product" })
+            ),
+            _react2.default.createElement(
+              "h3",
+              { className: "product-title" },
+              _react2.default.createElement(
+                "a",
+                { href: "/shoppint#/shop-single" },
+                "Unionbay Park"
+              )
+            ),
+            _react2.default.createElement(
+              "h4",
+              { className: "product-price" },
+              _react2.default.createElement(
+                "del",
+                null,
+                "$99.99"
+              ),
+              "$49.99 No ",
+              curr
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "product-buttons" },
+              _react2.default.createElement(
+                "button",
+                { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                _react2.default.createElement("i", { className: "icon-heart" })
+              ),
+              _react2.default.createElement(
+                "button",
+                { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                "Add to Cart"
+              )
+            )
+          )
+        );
+      });
+      return _react2.default.createElement(
+        "div",
+        { className: "container padding-bottom-3x mb-1" },
+        _react2.default.createElement(
+          "div",
+          { className: "row" },
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-9 col-lg-8 order-lg-2" },
+            _react2.default.createElement(
+              "div",
+              { className: "shop-toolbar padding-bottom-1x mb-2" },
+              _react2.default.createElement(
+                "div",
+                { className: "column" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "shop-sorting" },
+                  _react2.default.createElement(
+                    "label",
+                    { htmlFor: "sorting" },
+                    "Sort by:"
+                  ),
+                  _react2.default.createElement(
+                    "select",
+                    { className: "form-control", id: "sorting" },
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Popularity"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Low - High Price"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "High - Low Price"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Avarage Rating"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "A - Z Order"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Z - A Order"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "text-muted" },
+                    "Showing:\xA0"
+                  ),
+                  _react2.default.createElement(
+                    "span",
+                    null,
+                    "1 - 12 items"
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "column" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "shop-view" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "grid-view active", href: "/shoppint#/shop-grid" },
+                    _react2.default.createElement("span", null),
+                    _react2.default.createElement("span", null),
+                    _react2.default.createElement("span", null)
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "list-view", href: "/shoppint#/shop-grid" },
+                    _react2.default.createElement("span", null),
+                    _react2.default.createElement("span", null),
+                    _react2.default.createElement("span", null)
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "isotope-grid cols-3 mb-2" },
+              _react2.default.createElement("div", { className: "gutter-sizer" }),
+              _react2.default.createElement("div", { className: "grid-sizer" }),
+              something
+            ),
+            _react2.default.createElement(
+              "nav",
+              { className: "pagination" },
+              _react2.default.createElement(
+                "div",
+                { className: "column" },
+                _react2.default.createElement(
+                  "ul",
+                  { className: "pages" },
+                  _react2.default.createElement(
+                    "li",
+                    { className: "active" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "1"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "2"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "3"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "4"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    "..."
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    null,
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "12"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "column text-right hidden-xs-down" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "btn btn-outline-secondary btn-sm", href: "#" },
+                  "Next\xA0",
+                  _react2.default.createElement("i", { className: "icon-arrow-right" })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "col-xl-3 col-lg-4 order-lg-1" },
+            _react2.default.createElement(
+              "aside",
+              { className: "sidebar" },
+              _react2.default.createElement("div", { className: "padding-top-2x hidden-lg-up" }),
+              _react2.default.createElement(
+                "section",
+                { className: "widget widget-categories" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Shop Categories"
+                ),
+                _react2.default.createElement(
+                  "ul",
+                  null,
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children expanded" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Shoes"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(1138)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Women's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(508)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sneakers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Heels"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Loafers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sandals"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Men's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(423)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Boots"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Oxfords"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Loafers"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Sandals"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Boy's Shoes"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(97)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Girl's Shoes"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(110)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Clothing"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(2356)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Women's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(1032)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Dresses"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shirts & Tops"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Swimwear"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shorts"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Men's"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(937)"
+                        ),
+                        _react2.default.createElement(
+                          "ul",
+                          null,
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shirts & Tops"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Shorts"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Swimwear"
+                            )
+                          ),
+                          _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                              "a",
+                              { href: "#" },
+                              "Pants"
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Kid's Clothing"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(386)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Bags"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(420)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Handbags"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(180)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Backpacks"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(132)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Wallets & Accessories"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(47)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Luggage"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(61)"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "li",
+                    { className: "has-children" },
+                    _react2.default.createElement(
+                      "a",
+                      { href: "#" },
+                      "Accessories"
+                    ),
+                    _react2.default.createElement(
+                      "span",
+                      null,
+                      "(874)"
+                    ),
+                    _react2.default.createElement(
+                      "ul",
+                      null,
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Sunglasses"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(211)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Hats"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(195)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Watches"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(159)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Jewelry"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(203)"
+                        )
+                      ),
+                      _react2.default.createElement(
+                        "li",
+                        null,
+                        _react2.default.createElement(
+                          "a",
+                          { href: "#" },
+                          "Belts"
+                        ),
+                        _react2.default.createElement(
+                          "span",
+                          null,
+                          "(106)"
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "widget widget-categories" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Price Range"
+                ),
+                _react2.default.createElement(
+                  "form",
+                  { className: "price-range-slider", method: "post", "data-start-min": 250, "data-start-max": 650, "data-min": 0, "data-max": 1000, "data-step": 1 },
+                  _react2.default.createElement("div", { className: "ui-range-slider" }),
+                  _react2.default.createElement(
+                    "footer",
+                    { className: "ui-range-slider-footer" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "column" },
+                      _react2.default.createElement(
+                        "button",
+                        { className: "btn btn-outline-primary btn-sm", type: "submit" },
+                        "Filter"
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "column" },
+                      _react2.default.createElement(
+                        "div",
+                        { className: "ui-range-values" },
+                        _react2.default.createElement(
+                          "div",
+                          { className: "ui-range-value-min" },
+                          "$",
+                          _react2.default.createElement("span", null),
+                          _react2.default.createElement("input", { type: "hidden" })
+                        ),
+                        "\xA0-\xA0",
+                        _react2.default.createElement(
+                          "div",
+                          { className: "ui-range-value-max" },
+                          "$",
+                          _react2.default.createElement("span", null),
+                          _react2.default.createElement("input", { type: "hidden" })
+                        )
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "widget" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Filter by Brand"
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "Adidas\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(254)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "Bilabong\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(39)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "Calvin Klein\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(128)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "Nike\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(310)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "Tommy Bahama\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(42)"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "widget" },
+                _react2.default.createElement(
+                  "h3",
+                  { className: "widget-title" },
+                  "Filter by Size"
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "XL\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(208)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "L\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(311)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "M\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(485)"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "label",
+                  { className: "custom-control custom-checkbox d-block" },
+                  _react2.default.createElement("input", { className: "custom-control-input", type: "checkbox" }),
+                  _react2.default.createElement("span", { className: "custom-control-indicator" }),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "custom-control-description" },
+                    "S\xA0",
+                    _react2.default.createElement(
+                      "span",
+                      { className: "text-muted" },
+                      "(213)"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "promo-box", style: { backgroundImage: 'url(img/banners/02.jpg)' } },
+                _react2.default.createElement("span", { className: "overlay-dark", style: { opacity: '.45' } }),
+                _react2.default.createElement(
+                  "div",
+                  { className: "promo-box-content text-center padding-top-3x padding-bottom-2x" },
+                  _react2.default.createElement(
+                    "h4",
+                    { className: "text-light text-thin text-shadow" },
+                    "New Collection of"
+                  ),
+                  _react2.default.createElement(
+                    "h3",
+                    { className: "text-bold text-light text-shadow" },
+                    "Sunglassess"
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "btn btn-sm btn-primary", href: "#" },
+                    "Shop Now"
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ShopGrid;
+}(_react.Component);
+
+exports.default = ShopGrid;
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ShopSingle = function (_Component) {
+  _inherits(ShopSingle, _Component);
+
+  function ShopSingle() {
+    _classCallCheck(this, ShopSingle);
+
+    return _possibleConstructorReturn(this, (ShopSingle.__proto__ || Object.getPrototypeOf(ShopSingle)).apply(this, arguments));
+  }
+
+  _createClass(ShopSingle, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "container padding-bottom-3x mb-1" },
+        _react2.default.createElement(
+          "div",
+          { className: "row" },
+          _react2.default.createElement(
+            "div",
+            { className: "col-md-6" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-gallery" },
+              _react2.default.createElement(
+                "span",
+                { className: "product-badge text-danger" },
+                "30% Off"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "gallery-wrapper" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item active" },
+                  _react2.default.createElement("a", { href: "img/shop/single/01.jpg", "data-hash": "one", "data-size": "1000x667" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item" },
+                  _react2.default.createElement("a", { href: "img/shop/single/02.jpg", "data-hash": "two", "data-size": "1000x667" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item" },
+                  _react2.default.createElement("a", { href: "img/shop/single/03.jpg", "data-hash": "three", "data-size": "1000x667" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item" },
+                  _react2.default.createElement("a", { href: "img/shop/single/04.jpg", "data-hash": "four", "data-size": "1000x667" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item" },
+                  _react2.default.createElement("a", { href: "img/shop/single/05.jpg", "data-hash": "five", "data-size": "1000x667" })
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-carousel owl-carousel" },
+                _react2.default.createElement(
+                  "div",
+                  { "data-hash": "one" },
+                  _react2.default.createElement("img", { src: "img/shop/single/01.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { "data-hash": "two" },
+                  _react2.default.createElement("img", { src: "img/shop/single/02.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { "data-hash": "three" },
+                  _react2.default.createElement("img", { src: "img/shop/single/03.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { "data-hash": "four" },
+                  _react2.default.createElement("img", { src: "img/shop/single/04.jpg", alt: "Product" })
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { "data-hash": "five" },
+                  _react2.default.createElement("img", { src: "img/shop/single/05.jpg", alt: "Product" })
+                )
+              ),
+              _react2.default.createElement(
+                "ul",
+                { className: "product-thumbnails" },
+                _react2.default.createElement(
+                  "li",
+                  { className: "active" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#one" },
+                    _react2.default.createElement("img", { src: "img/shop/single/th01.jpg", alt: "Product" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#two" },
+                    _react2.default.createElement("img", { src: "img/shop/single/th02.jpg", alt: "Product" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#three" },
+                    _react2.default.createElement("img", { src: "img/shop/single/th03.jpg", alt: "Product" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#four" },
+                    _react2.default.createElement("img", { src: "img/shop/single/th04.jpg", alt: "Product" })
+                  )
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#five" },
+                    _react2.default.createElement("img", { src: "img/shop/single/th05.jpg", alt: "Product" })
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "col-md-6" },
+            _react2.default.createElement("div", { className: "padding-top-2x mt-2 hidden-md-up" }),
+            _react2.default.createElement(
+              "div",
+              { className: "rating-stars" },
+              _react2.default.createElement("i", { className: "icon-star filled" }),
+              _react2.default.createElement("i", { className: "icon-star filled" }),
+              _react2.default.createElement("i", { className: "icon-star filled" }),
+              _react2.default.createElement("i", { className: "icon-star filled" }),
+              _react2.default.createElement("i", { className: "icon-star" })
+            ),
+            _react2.default.createElement(
+              "span",
+              { className: "text-muted align-middle" },
+              "\xA0\xA04.2 | 3 customer reviews"
+            ),
+            _react2.default.createElement(
+              "h2",
+              { className: "padding-top-1x text-normal" },
+              "Reebok Royal CL Jogger 2"
+            ),
+            _react2.default.createElement(
+              "span",
+              { className: "h2 d-block" },
+              _react2.default.createElement(
+                "del",
+                { className: "text-muted text-normal" },
+                "$68.00"
+              ),
+              "\xA0 $47.60"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptatibus quos ea dolore rem, molestias laudantium et explicabo assumenda fugiat deserunt in, facilis laborum excepturi aliquid nobis ipsam deleniti aut? Aliquid sit hic id velit qui fuga nemo suscipit obcaecati. Officia nisi quaerat minus nulla saepe aperiam sint possimus magni veniam provident."
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "row margin-top-1x" },
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-4" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "form-group" },
+                  _react2.default.createElement(
+                    "label",
+                    { htmlFor: "size" },
+                    "Men's size"
+                  ),
+                  _react2.default.createElement(
+                    "select",
+                    { className: "form-control", id: "size" },
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Chooze size"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "11.5"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "11"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "10.5"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "10"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "9.5"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "9"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "8.5"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-5" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "form-group" },
+                  _react2.default.createElement(
+                    "label",
+                    { htmlFor: "color" },
+                    "Choose color"
+                  ),
+                  _react2.default.createElement(
+                    "select",
+                    { className: "form-control", id: "color" },
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "White/Red/Blue"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Black/Orange/Green"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "Gray/Purple/White"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "col-sm-3" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "form-group" },
+                  _react2.default.createElement(
+                    "label",
+                    { htmlFor: "quantity" },
+                    "Quantity"
+                  ),
+                  _react2.default.createElement(
+                    "select",
+                    { className: "form-control", id: "quantity" },
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "1"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "2"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "3"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "4"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      null,
+                      "5"
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "pt-1 mb-2" },
+              _react2.default.createElement(
+                "span",
+                { className: "text-medium" },
+                "SKU:"
+              ),
+              " #21457832"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "padding-bottom-1x mb-2" },
+              _react2.default.createElement(
+                "span",
+                { className: "text-medium" },
+                "Categories:\xA0"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "navi-link", href: "#" },
+                "Men\u2019s shoes,"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "navi-link", href: "#" },
+                " Snickers,"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "navi-link", href: "#" },
+                " Sport shoes"
+              )
+            ),
+            _react2.default.createElement("hr", { className: "mb-3" }),
+            _react2.default.createElement(
+              "div",
+              { className: "d-flex flex-wrap justify-content-between" },
+              _react2.default.createElement(
+                "div",
+                { className: "entry-share mt-2 mb-2" },
+                _react2.default.createElement(
+                  "span",
+                  { className: "text-muted" },
+                  "Share:"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "share-links" },
+                  _react2.default.createElement(
+                    "a",
+                    { className: "social-button shape-circle sb-facebook", href: "#", "data-toggle": "tooltip", "data-placement": "top", title: "Facebook" },
+                    _react2.default.createElement("i", { className: "socicon-facebook" })
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "social-button shape-circle sb-twitter", href: "#", "data-toggle": "tooltip", "data-placement": "top", title: "Twitter" },
+                    _react2.default.createElement("i", { className: "socicon-twitter" })
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "social-button shape-circle sb-instagram", href: "#", "data-toggle": "tooltip", "data-placement": "top", title: "Instagram" },
+                    _react2.default.createElement("i", { className: "socicon-instagram" })
+                  ),
+                  _react2.default.createElement(
+                    "a",
+                    { className: "social-button shape-circle sb-google-plus", href: "#", "data-toggle": "tooltip", "data-placement": "top", title: "Google +" },
+                    _react2.default.createElement("i", { className: "socicon-googleplus" })
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "sp-buttons mt-2 mb-2" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-primary", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  _react2.default.createElement("i", { className: "icon-bag" }),
+                  " Add to Cart"
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "row padding-top-3x mb-3" },
+          _react2.default.createElement(
+            "div",
+            { className: "col-lg-10 offset-lg-1" },
+            _react2.default.createElement(
+              "ul",
+              { className: "nav nav-tabs", role: "tablist" },
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link active", href: "#description", "data-toggle": "tab", role: "tab" },
+                  "Description"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link", href: "#reviews", "data-toggle": "tab", role: "tab" },
+                  "Reviews (3)"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "tab-content" },
+              _react2.default.createElement(
+                "div",
+                { className: "tab-pane fade show active", id: "description", role: "tabpanel" },
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error blanditiis a, deserunt magnam pariatur quam suscipit quae. Veniam, deserunt reprehenderit quasi hic recusandae itaque omnis fugiat animi architecto facilis repellendus. Commodi dolorem, eius consectetur. Amet maiores nemo at nobi s aspernatur velit, sequi odio, a veritatis inventore autem esse provident in? Placeat, sunt!"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  { className: "mb-30" },
+                  "Iste assumenda, vitae, aliquam excepturi libero quia ullam quisquam tenetur id sint labore. Pariatur praesentium velit, fugit facere maxime voluptates optio qui? Quidem obcaecati necessitatibus rem aspernatur, mollitia, assumenda explicabo numquam minus eos sapiente totam dicta, laborum dolorum! Vitae distinctio quos non ut fugiat."
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "embed-responsive embed-responsive-16by9" },
+                  _react2.default.createElement("iframe", { className: "embed-responsive-item", src: "http://www.youtube.com/embed/B81qd2v6alw?rel=0", allowFullScreen: true })
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "tab-pane fade", id: "reviews", role: "tabpanel" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "comment" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-author-ava" },
+                    _react2.default.createElement("img", { src: "img/reviews/01.jpg", alt: "Review author" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-body" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-header d-flex flex-wrap justify-content-between" },
+                      _react2.default.createElement(
+                        "h4",
+                        { className: "comment-title" },
+                        "Average quality for the price"
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "mb-2" },
+                        _react2.default.createElement(
+                          "div",
+                          { className: "rating-stars" },
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star" }),
+                          _react2.default.createElement("i", { className: "icon-star" })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "comment-text" },
+                      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-footer" },
+                      _react2.default.createElement(
+                        "span",
+                        { className: "comment-meta" },
+                        "Francis Burton"
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "comment" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-author-ava" },
+                    _react2.default.createElement("img", { src: "img/reviews/02.jpg", alt: "Review author" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-body" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-header d-flex flex-wrap justify-content-between" },
+                      _react2.default.createElement(
+                        "h4",
+                        { className: "comment-title" },
+                        "My husband love his new..."
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "mb-2" },
+                        _react2.default.createElement(
+                          "div",
+                          { className: "rating-stars" },
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "comment-text" },
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-footer" },
+                      _react2.default.createElement(
+                        "span",
+                        { className: "comment-meta" },
+                        "Maggie Scott"
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "comment" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-author-ava" },
+                    _react2.default.createElement("img", { src: "img/reviews/03.jpg", alt: "Review author" })
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "comment-body" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-header d-flex flex-wrap justify-content-between" },
+                      _react2.default.createElement(
+                        "h4",
+                        { className: "comment-title" },
+                        "Soft, comfortable, quite durable..."
+                      ),
+                      _react2.default.createElement(
+                        "div",
+                        { className: "mb-2" },
+                        _react2.default.createElement(
+                          "div",
+                          { className: "rating-stars" },
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star filled" }),
+                          _react2.default.createElement("i", { className: "icon-star" })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      "p",
+                      { className: "comment-text" },
+                      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+                    ),
+                    _react2.default.createElement(
+                      "div",
+                      { className: "comment-footer" },
+                      _react2.default.createElement(
+                        "span",
+                        { className: "comment-meta" },
+                        "Jacob Hammond"
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "h5",
+                  { className: "mb-30 padding-top-1x" },
+                  "Leave Review"
+                ),
+                _react2.default.createElement(
+                  "form",
+                  { className: "row", method: "post" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-6" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "form-group" },
+                      _react2.default.createElement(
+                        "label",
+                        { htmlFor: "review_name" },
+                        "Your Name"
+                      ),
+                      _react2.default.createElement("input", { className: "form-control form-control-rounded", type: "text", id: "review_name", required: true })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-6" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "form-group" },
+                      _react2.default.createElement(
+                        "label",
+                        { htmlFor: "review_email" },
+                        "Your Email"
+                      ),
+                      _react2.default.createElement("input", { className: "form-control form-control-rounded", type: "email", id: "review_email", required: true })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-6" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "form-group" },
+                      _react2.default.createElement(
+                        "label",
+                        { htmlFor: "review_subject" },
+                        "Subject"
+                      ),
+                      _react2.default.createElement("input", { className: "form-control form-control-rounded", type: "text", id: "review_subject", required: true })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-6" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "form-group" },
+                      _react2.default.createElement(
+                        "label",
+                        { htmlFor: "review_rating" },
+                        "Rating"
+                      ),
+                      _react2.default.createElement(
+                        "select",
+                        { className: "form-control form-control-rounded", id: "review_rating" },
+                        _react2.default.createElement(
+                          "option",
+                          null,
+                          "5 Stars"
+                        ),
+                        _react2.default.createElement(
+                          "option",
+                          null,
+                          "4 Stars"
+                        ),
+                        _react2.default.createElement(
+                          "option",
+                          null,
+                          "3 Stars"
+                        ),
+                        _react2.default.createElement(
+                          "option",
+                          null,
+                          "2 Stars"
+                        ),
+                        _react2.default.createElement(
+                          "option",
+                          null,
+                          "1 Star"
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-12" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "form-group" },
+                      _react2.default.createElement(
+                        "label",
+                        { htmlFor: "review_text" },
+                        "Review "
+                      ),
+                      _react2.default.createElement("textarea", { className: "form-control form-control-rounded", id: "review_text", rows: 8, required: true, defaultValue: "" })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "col-12 text-right" },
+                    _react2.default.createElement(
+                      "button",
+                      { className: "btn btn-outline-primary", type: "submit" },
+                      "Submit Review"
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "h3",
+          { className: "text-center padding-top-2x mt-2 padding-bottom-1x" },
+          "You May Also Like"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "owl-carousel", "data-owl-carousel": "{ \"nav\": false, \"dots\": true, \"margin\": 30, \"responsive\": {\"0\":{\"items\":1},\"576\":{\"items\":2},\"768\":{\"items\":3},\"991\":{\"items\":4},\"1200\":{\"items\":4}} }" },
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-badge text-danger" },
+                "22% Off"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/09.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Rocket Dog"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                _react2.default.createElement(
+                  "del",
+                  null,
+                  "$44.95"
+                ),
+                "$34.99"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "div",
+                { className: "rating-stars" },
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star" })
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/03.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Oakley Kickback"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                "$155.00"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/12.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Vented Straw Fedora"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                "$49.50"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "div",
+                { className: "rating-stars" },
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" }),
+                _react2.default.createElement("i", { className: "icon-star filled" })
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/11.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Top-Sider Fathom"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                "$90.00"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/04.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Waist Leather Belt"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                "$47.00"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "grid-item" },
+            _react2.default.createElement(
+              "div",
+              { className: "product-card" },
+              _react2.default.createElement(
+                "div",
+                { className: "product-badge text-danger" },
+                "50% Off"
+              ),
+              _react2.default.createElement(
+                "a",
+                { className: "product-thumb", href: "/shopping#/shop-single" },
+                _react2.default.createElement("img", { src: "img/shop/products/01.jpg", alt: "Product" })
+              ),
+              _react2.default.createElement(
+                "h3",
+                { className: "product-title" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "/shopping#/shop-single" },
+                  "Unionbay Park"
+                )
+              ),
+              _react2.default.createElement(
+                "h4",
+                { className: "product-price" },
+                _react2.default.createElement(
+                  "del",
+                  null,
+                  "$99.99"
+                ),
+                "$49.99"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "product-buttons" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                  _react2.default.createElement("i", { className: "icon-heart" })
+                ),
+                _react2.default.createElement(
+                  "button",
+                  { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                  "Add to Cart"
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ShopSingle;
+}(_react.Component);
+
+exports.default = ShopSingle;
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Showcase = function (_Component) {
+  _inherits(Showcase, _Component);
+
+  function Showcase(props) {
+    _classCallCheck(this, Showcase);
+
+    var _this = _possibleConstructorReturn(this, (Showcase.__proto__ || Object.getPrototypeOf(Showcase)).call(this, props));
+
+    _this.state = {
+      some: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+    };
+    return _this;
+  }
+
+  _createClass(Showcase, [{
+    key: "render",
+    value: function render() {
+      var something = this.state.some.map(function (curr) {
+        return _react2.default.createElement(
+          "div",
+          { className: "grid-item classic" },
+          _react2.default.createElement(
+            "div",
+            { className: "product-card" },
+            _react2.default.createElement(
+              "a",
+              { className: "product-thumb", href: "/shopping#/shop-single" },
+              _react2.default.createElement("img", { src: "img/shop/products/17.jpg", alt: "Product" })
+            ),
+            _react2.default.createElement(
+              "h3",
+              { className: "product-title" },
+              _react2.default.createElement(
+                "a",
+                { href: "/shopping#/shop-single" },
+                "Gents BN0024 Classic"
+              )
+            ),
+            _react2.default.createElement(
+              "h4",
+              { className: "product-price" },
+              "\u20AC185.00"
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "product-buttons" },
+              _react2.default.createElement(
+                "button",
+                { className: "btn btn-outline-secondary btn-sm btn-wishlist", "data-toggle": "tooltip", title: "Whishlist" },
+                _react2.default.createElement("i", { className: "icon-heart" })
+              ),
+              _react2.default.createElement(
+                "button",
+                { className: "btn btn-outline-primary btn-sm", "data-toast": true, "data-toast-type": "success", "data-toast-position": "topRight", "data-toast-icon": "icon-circle-check", "data-toast-title": "Product", "data-toast-message": "successfuly added to cart!" },
+                "Add to Cart"
+              )
+            )
+          )
+        );
+      });
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "section",
+          { className: "fw-section padding-top-10x padding-bottom-10x", style: { backgroundImage: 'url(img/hero/hero-bg.jpg)' } },
+          _react2.default.createElement(
+            "div",
+            { className: "container padding-top-2x text-center" },
+            _react2.default.createElement(
+              "div",
+              { className: "d-inline-block mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-150", src: "img/hero/logo-braun.png", alt: "Braun" })
+            ),
+            _react2.default.createElement(
+              "h2",
+              { className: "text-white text-normal mb-2" },
+              "Braun premium watch collection"
+            ),
+            _react2.default.createElement(
+              "h6",
+              { className: "text-white text-normal opacity-80 mb-4" },
+              "Check our new collection of watches that represents true quality and functionality"
+            ),
+            _react2.default.createElement(
+              "a",
+              { className: "btn btn-primary scroll-to", href: "#collections" },
+              "View Collection"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "container padding-top-3x", id: "collections" },
+          _react2.default.createElement(
+            "h3",
+            { className: "text-center mb-30" },
+            "Featured Collections (Video)"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "row pt-1 justify-content-center" },
+            _react2.default.createElement(
+              "div",
+              { className: "col-xl-10" },
+              _react2.default.createElement(
+                "div",
+                { className: "gallery-wrapper owl-carousel", "data-owl-carousel": "{ \"nav\": false, \"dots\": true }" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item no-hover-effect" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#", "data-type": "video", "data-video": "<div class=\"wrapper\"><div class=\"video-wrapper\"><iframe class=\"pswp__video\" width=\"960\" height=\"640\" src=_https_/player.vimeo.com/video/1382353127790.html?color=ffffff&title=0&byline=0&portrait=0%22 frameborder=\"0\" allowfullscreen></iframe></div></div>" },
+                    _react2.default.createElement("img", { src: "img/video-covers/01.jpg", alt: "Cover" })
+                  ),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "caption" },
+                    "Classic Collection"
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item no-hover-effect" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#", "data-type": "video", "data-video": "<div class=\"wrapper\"><div class=\"video-wrapper\"><iframe class=\"pswp__video\" width=\"960\" height=\"640\" src=_https_/player.vimeo.com/video/1382906177790.html?color=ffffff&title=0&byline=0&portrait=0%22 frameborder=\"0\" allowfullscreen></iframe></div></div>" },
+                    _react2.default.createElement("img", { src: "img/video-covers/02.jpg", alt: "Cover" })
+                  ),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "caption" },
+                    "Prestige Collection"
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery-item no-hover-effect" },
+                  _react2.default.createElement(
+                    "a",
+                    { href: "#", "data-type": "video", "data-video": "<div class=\"wrapper\"><div class=\"video-wrapper\"><iframe class=\"pswp__video\" width=\"960\" height=\"640\" src=_https_/player.vimeo.com/video/1382353127790.html?color=ffffff&title=0&byline=0&portrait=0%22 frameborder=\"0\" allowfullscreen></iframe></div></div>" },
+                    _react2.default.createElement("img", { src: "img/video-covers/03.jpg", alt: "Cover" })
+                  ),
+                  _react2.default.createElement(
+                    "span",
+                    { className: "caption" },
+                    "Sports Collection"
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "bg-secondary padding-top-3x padding-bottom-2x margin-top-3x" },
+          _react2.default.createElement(
+            "div",
+            { className: "container" },
+            _react2.default.createElement(
+              "h3",
+              { className: "text-center mb-30" },
+              "Explore Watches"
+            ),
+            _react2.default.createElement(
+              "ul",
+              { className: "nav nav-pills justify-content-center pb-2" },
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link active", href: "#", "data-filter": "*" },
+                  "All"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link", href: "#", "data-filter": ".classic" },
+                  "Classic"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link", href: "#", "data-filter": ".digital" },
+                  "Digital"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link", href: "#", "data-filter": ".prestige" },
+                  "Prestige"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "nav-item" },
+                _react2.default.createElement(
+                  "a",
+                  { className: "nav-link", href: "#", "data-filter": ".sport" },
+                  "Sport"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "isotope-grid filter-grid cols-4 mt-4" },
+              _react2.default.createElement("div", { className: "gutter-sizer" }),
+              _react2.default.createElement("div", { className: "grid-sizer" }),
+              something
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { className: "container padding-top-3x padding-bottom-2x" },
+          _react2.default.createElement(
+            "div",
+            { className: "row" },
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/01.png", alt: "Shipping" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Free Worldwide Shipping"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "Free shipping for all orders over $100"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/02.png", alt: "Money Back" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Money Back Guarantee"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "We return money within 30 days"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/03.png", alt: "Support" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "24/7 Customer Support"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "Friendly 24/7 customer support"
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "col-md-3 col-sm-6 text-center mb-30" },
+              _react2.default.createElement("img", { className: "d-block w-90 img-thumbnail rounded-circle mx-auto mb-3", src: "img/services/04.png", alt: "Payment" }),
+              _react2.default.createElement(
+                "h6",
+                null,
+                "Secure Online Payment"
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "text-muted margin-bottom-none" },
+                "We posess SSL / Secure Certificate"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Showcase;
+}(_react.Component);
+
+exports.default = Showcase;
 
 /***/ })
 /******/ ]);
