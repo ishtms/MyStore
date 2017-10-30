@@ -61,7 +61,7 @@ class App extends Component{
                         <div className="from-bottom"><img className="d-inline-block w-150 mb-4" src="img/hero-slider/logo02.png" alt="Puma" />
                           <div className="h2 text-body text-normal mb-2 pt-1">Puma Backpacks Collection</div>
                           <div className="h2 text-body text-normal mb-4 pb-1">starting at <span className="text-bold">$37.99</span></div>
-                        </div><a className="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">View Offers</a>
+                        </div><a className="btn btn-primary scale-up delay-1" href="/shopping#/shop-grid">View Offers</a>
                       </div>
                       <div className="col-md-6 padding-bottom-2x mb-3"><img className="d-block mx-auto" src="img/hero-slider/02.png" alt="Puma Backpack" /></div>
                     </div>
@@ -74,7 +74,7 @@ class App extends Component{
                         <div className="from-bottom"><img className="d-inline-block w-200 mb-4" src="img/hero-slider/logo01.png" alt="Converse" />
                           <div className="h2 text-body text-normal mb-2 pt-1">Chuck Taylor All Star II</div>
                           <div className="h2 text-body text-normal mb-4 pb-1">for only <span className="text-bold">$59.99</span></div>
-                        </div><a className="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now</a>
+                        </div><a className="btn btn-primary scale-up delay-1" href="/shopping#/shop-single">Shop Now</a>
                       </div>
                       <div className="col-md-6 padding-bottom-2x mb-3"><img className="d-block mx-auto" src="img/hero-slider/01.png" alt="Chuck Taylor All Star II" /></div>
                     </div>
@@ -87,7 +87,7 @@ class App extends Component{
                         <div className="from-bottom"><img className="d-inline-block mb-4" src="img/hero-slider/logo03.png" style={{width: 125}} alt="Motorola" />
                           <div className="h2 text-body text-normal mb-2 pt-1">Smart Watch Moto 360 2nd</div>
                           <div className="h2 text-body text-normal mb-4 pb-1">for only <span className="text-bold">$299.99</span></div>
-                        </div><a className="btn btn-primary scale-up delay-1" href="shop-single.html">Shop Now</a>
+                        </div><a className="btn btn-primary scale-up delay-1" href="/shopping#/shop-single">Shop Now</a>
                       </div>
                       <div className="col-md-6 padding-bottom-2x mb-3"><img className="d-block mx-auto" src="img/hero-slider/03.png" alt="Moto 360" /></div>
                     </div>
@@ -100,43 +100,43 @@ class App extends Component{
               <h3 className="text-center mb-30">Top Categories</h3>
               <div className="row">
                 <div className="col-md-4 col-sm-6">
-                  <div className="card mb-30"><a className="card-img-tiles" href="shop-grid-ls.html">
+                  <div className="card mb-30"><a className="card-img-tiles" href="/shopping#/shop-grid">
                       <div className="inner">
                         <div className="main-img"><img src="img/shop/categories/01.jpg" alt="Category" /></div>
                         <div className="thumblist"><img src="img/shop/categories/02.jpg" alt="Category" /><img src="img/shop/categories/03.jpg" alt="Category" /></div>
                       </div></a>
                     <div className="card-body text-center">
                       <h4 className="card-title">Clothing</h4>
-                      <p className="text-muted">Starting from $49.99</p><a className="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
+                      <p className="text-muted">Starting from $49.99</p><a className="btn btn-outline-primary btn-sm" href="/shopping#/shop-grid">View Products</a>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-6">
-                  <div className="card mb-30"><a className="card-img-tiles" href="shop-grid-ls.html">
+                  <div className="card mb-30"><a className="card-img-tiles" href="/shopping#/shop-grid">
                       <div className="inner">
                         <div className="main-img"><img src="img/shop/categories/04.jpg" alt="Category" /></div>
                         <div className="thumblist"><img src="img/shop/categories/05.jpg" alt="Category" /><img src="img/shop/categories/06.jpg" alt="Category" /></div>
                       </div></a>
                     <div className="card-body text-center">
                       <h4 className="card-title">Shoes</h4>
-                      <p className="text-muted">Starting from $56.00</p><a className="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
+                      <p className="text-muted">Starting from $56.00</p><a className="btn btn-outline-primary btn-sm" href="/shopping#/shop-grid">View Products</a>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-6">
-                  <div className="card mb-30"><a className="card-img-tiles" href="shop-grid-ls.html">
+                  <div className="card mb-30"><a className="card-img-tiles" href="/shopping#/shop-grid">
                       <div className="inner">
                         <div className="main-img"><img src="img/shop/categories/07.jpg" alt="Category" /></div>
                         <div className="thumblist"><img src="img/shop/categories/08.jpg" alt="Category" /><img src="img/shop/categories/09.jpg" alt="Category" /></div>
                       </div></a>
                     <div className="card-body text-center">
                       <h4 className="card-title">Bags</h4>
-                      <p className="text-muted">Starting from $27.00</p><a className="btn btn-outline-primary btn-sm" href="shop-grid-ls.html">View Products</a>
+                      <p className="text-muted">Starting from $27.00</p><a className="btn btn-outline-primary btn-sm" href="/shopping#/shop-grid">View Products</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="text-center"><a className="btn btn-outline-secondary margin-top-none" href="shop-categories.html">All Categories</a></div>
+              <div className="text-center"><a className="btn btn-outline-secondary margin-top-none" href="/shopping#/shop-categories">All Categories</a></div>
             </section>
             {/* Promo #1*/}
             <section className="container-fluid padding-top-3x">
@@ -177,7 +177,7 @@ class App extends Component{
                     <div className="text-center">
                       <h3 className="display-4 text-normal text-white text-shadow mb-1">Old Collection</h3>
                       <h2 className="display-2 text-bold text-white text-shadow">HUGE SALE!</h2>
-                      <h4 className="d-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4">at our outlet stores</h4><br /><a className="btn btn-primary margin-bottom-none" href="contacts.html">Locate Stores</a>
+                      <h4 className="d-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4">at our outlet stores</h4><br /><a className="btn btn-primary margin-bottom-none" href="/company#/contacts">Locate Stores</a>
                     </div>
                   </div>
                 </div>
@@ -199,23 +199,23 @@ class App extends Component{
                     <h3 className="widget-title">Top Sellers</h3>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/01.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/01.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Oakley Kickback</a></h4><span className="entry-meta">$155.00</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Oakley Kickback</a></h4><span className="entry-meta">$155.00</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/03.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/03.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Vented Straw Fedora</a></h4><span className="entry-meta">$49.50</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Vented Straw Fedora</a></h4><span className="entry-meta">$49.50</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/04.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Big Wordmark Tote</a></h4><span className="entry-meta">$29.99</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Big Wordmark Tote</a></h4><span className="entry-meta">$29.99</span>
                       </div>
                     </div>
                   </div>
@@ -225,23 +225,23 @@ class App extends Component{
                     <h3 className="widget-title">New Arrivals</h3>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/05.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/05.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Union Park</a></h4><span className="entry-meta">$49.99</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Union Park</a></h4><span className="entry-meta">$49.99</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/06.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/06.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Cole Haan Crossbody</a></h4><span className="entry-meta">$200.00</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Cole Haan Crossbody</a></h4><span className="entry-meta">$200.00</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/07.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/07.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Skagen Holst Watch</a></h4><span className="entry-meta">$145.00</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Skagen Holst Watch</a></h4><span className="entry-meta">$145.00</span>
                       </div>
                     </div>
                   </div>
@@ -251,23 +251,23 @@ class App extends Component{
                     <h3 className="widget-title">Best Rated</h3>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/08.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/08.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Jordan's City Hoodie</a></h4><span className="entry-meta">$65.00</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Jordan's City Hoodie</a></h4><span className="entry-meta">$65.00</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/09.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/09.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Palace Shell Track Jacket</a></h4><span className="entry-meta">$36.99</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Palace Shell Track Jacket</a></h4><span className="entry-meta">$36.99</span>
                       </div>
                     </div>
                     {/* Entry*/}
                     <div className="entry">
-                      <div className="entry-thumb"><a href="shop-single.html"><img src="img/shop/widget/10.jpg" alt="Product" /></a></div>
+                      <div className="entry-thumb"><a href="/shopping#/shop-single"><img src="img/shop/widget/10.jpg" alt="Product" /></a></div>
                       <div className="entry-content">
-                        <h4 className="entry-title"><a href="shop-single.html">Off the Shoulder Top</a></h4><span className="entry-meta">$128.00</span>
+                        <h4 className="entry-title"><a href="/shopping#/shop-single">Off the Shoulder Top</a></h4><span className="entry-meta">$128.00</span>
                       </div>
                     </div>
                   </div>

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 298);
+/******/ 	return __webpack_require__(__webpack_require__.s = 157);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -72,9 +72,9 @@
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(46);
+  module.exports = __webpack_require__(33);
 } else {
-  module.exports = __webpack_require__(47);
+  module.exports = __webpack_require__(34);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -272,32 +272,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 13:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var emptyObject = {};
-
-if (process.env.NODE_ENV !== 'production') {
-  Object.freeze(emptyObject);
-}
-
-module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 14:
+/***/ 10:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -311,7 +286,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(6);
+var emptyFunction = __webpack_require__(4);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -367,7 +342,7 @@ module.exports = warning;
 
 /***/ }),
 
-/***/ 16:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -381,9 +356,9 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(7);
-  var warning = __webpack_require__(14);
-  var ReactPropTypesSecret = __webpack_require__(17);
+  var invariant = __webpack_require__(5);
+  var warning = __webpack_require__(10);
+  var ReactPropTypesSecret = __webpack_require__(14);
   var loggedTypeFailures = {};
 }
 
@@ -435,7 +410,7 @@ module.exports = checkPropTypes;
 
 /***/ }),
 
-/***/ 17:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -455,7 +430,7 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
-/***/ 18:
+/***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -495,279 +470,7 @@ module.exports = ExecutionEnvironment;
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-var emptyFunction = __webpack_require__(6);
-
-/**
- * Upstream version of event listener. Does not take into account specific
- * nature of platform.
- */
-var EventListener = {
-  /**
-   * Listen to DOM events during the bubble phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
-  listen: function listen(target, eventType, callback) {
-    if (target.addEventListener) {
-      target.addEventListener(eventType, callback, false);
-      return {
-        remove: function remove() {
-          target.removeEventListener(eventType, callback, false);
-        }
-      };
-    } else if (target.attachEvent) {
-      target.attachEvent('on' + eventType, callback);
-      return {
-        remove: function remove() {
-          target.detachEvent('on' + eventType, callback);
-        }
-      };
-    }
-  },
-
-  /**
-   * Listen to DOM events during the capture phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
-  capture: function capture(target, eventType, callback) {
-    if (target.addEventListener) {
-      target.addEventListener(eventType, callback, true);
-      return {
-        remove: function remove() {
-          target.removeEventListener(eventType, callback, true);
-        }
-      };
-    } else {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Attempted to listen to events during the capture phase on a ' + 'browser that does not support the capture phase. Your application ' + 'will not receive some events.');
-      }
-      return {
-        remove: emptyFunction
-      };
-    }
-  },
-
-  registerDefault: function registerDefault() {}
-};
-
-module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 26:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- * 
- */
-
-/*eslint-disable no-self-compare */
-
-
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    // Added the nonzero y check to make Flow happy, but it is redundant
-    return x !== 0 || y !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
-  }
-}
-
-/**
- * Performs equality by iterating through keys on an object and returning false
- * when any key has values which are not strictly equal between the arguments.
- * Returns true when the values of all keys are strictly equal.
- */
-function shallowEqual(objA, objB) {
-  if (is(objA, objB)) {
-    return true;
-  }
-
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
-  // Test for A's keys different from B.
-  for (var i = 0; i < keysA.length; i++) {
-    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-module.exports = shallowEqual;
-
-/***/ }),
-
-/***/ 27:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-var isTextNode = __webpack_require__(50);
-
-/*eslint-disable no-bitwise */
-
-/**
- * Checks if a given DOM node contains or is another DOM node.
- */
-function containsNode(outerNode, innerNode) {
-  if (!outerNode || !innerNode) {
-    return false;
-  } else if (outerNode === innerNode) {
-    return true;
-  } else if (isTextNode(outerNode)) {
-    return false;
-  } else if (isTextNode(innerNode)) {
-    return containsNode(outerNode, innerNode.parentNode);
-  } else if ('contains' in outerNode) {
-    return outerNode.contains(innerNode);
-  } else if (outerNode.compareDocumentPosition) {
-    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
-  } else {
-    return false;
-  }
-}
-
-module.exports = containsNode;
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * @param {DOMElement} node input/textarea to focus
- */
-
-function focusNode(node) {
-  // IE8 can throw "Can't move focus to the control because it is invisible,
-  // not enabled, or of a type that does not accept the focus." for all kinds of
-  // reasons that are too expensive and fragile to test.
-  try {
-    node.focus();
-  } catch (e) {}
-}
-
-module.exports = focusNode;
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-/* eslint-disable fb-www/typeof-undefined */
-
-/**
- * Same as document.activeElement but wraps in a try-catch block. In IE it is
- * not safe to call document.activeElement if there is nothing focused.
- *
- * The activeElement will be null only if the document or document body is not
- * yet defined.
- *
- * @param {?DOMDocument} doc Defaults to current document.
- * @return {?DOMElement}
- */
-function getActiveElement(doc) /*?DOMElement*/{
-  doc = doc || (typeof document !== 'undefined' ? document : undefined);
-  if (typeof doc === 'undefined') {
-    return null;
-  }
-  try {
-    return doc.activeElement || doc.body;
-  } catch (e) {
-    return doc.body;
-  }
-}
-
-module.exports = getActiveElement;
-
-/***/ }),
-
-/***/ 298:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -779,15 +482,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(48);
+var _reactDom = __webpack_require__(35);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _main = __webpack_require__(61);
+var _main = __webpack_require__(48);
 
 var _main2 = _interopRequireDefault(_main);
 
-var _footer = __webpack_require__(68);
+var _footer = __webpack_require__(55);
 
 var _footer2 = _interopRequireDefault(_footer);
 
@@ -933,7 +636,7 @@ var App = function (_Component) {
                         ),
                         _react2.default.createElement(
                           'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-grid-ls.html' },
+                          { className: 'btn btn-primary scale-up delay-1', href: '/shopping#/shop-grid' },
                           'View Offers'
                         )
                       ),
@@ -979,7 +682,7 @@ var App = function (_Component) {
                         ),
                         _react2.default.createElement(
                           'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
+                          { className: 'btn btn-primary scale-up delay-1', href: '/shopping#/shop-single' },
                           'Shop Now'
                         )
                       ),
@@ -1025,7 +728,7 @@ var App = function (_Component) {
                         ),
                         _react2.default.createElement(
                           'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
+                          { className: 'btn btn-primary scale-up delay-1', href: '/shopping#/shop-single' },
                           'Shop Now'
                         )
                       ),
@@ -1058,7 +761,7 @@ var App = function (_Component) {
                     { className: 'card mb-30' },
                     _react2.default.createElement(
                       'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      { className: 'card-img-tiles', href: '/shopping#/shop-grid' },
                       _react2.default.createElement(
                         'div',
                         { className: 'inner' },
@@ -1090,7 +793,7 @@ var App = function (_Component) {
                       ),
                       _react2.default.createElement(
                         'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        { className: 'btn btn-outline-primary btn-sm', href: '/shopping#/shop-grid' },
                         'View Products'
                       )
                     )
@@ -1104,7 +807,7 @@ var App = function (_Component) {
                     { className: 'card mb-30' },
                     _react2.default.createElement(
                       'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      { className: 'card-img-tiles', href: '/shopping#/shop-grid' },
                       _react2.default.createElement(
                         'div',
                         { className: 'inner' },
@@ -1136,7 +839,7 @@ var App = function (_Component) {
                       ),
                       _react2.default.createElement(
                         'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        { className: 'btn btn-outline-primary btn-sm', href: '/shopping#/shop-grid' },
                         'View Products'
                       )
                     )
@@ -1150,7 +853,7 @@ var App = function (_Component) {
                     { className: 'card mb-30' },
                     _react2.default.createElement(
                       'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      { className: 'card-img-tiles', href: '/shopping#/shop-grid' },
                       _react2.default.createElement(
                         'div',
                         { className: 'inner' },
@@ -1182,7 +885,7 @@ var App = function (_Component) {
                       ),
                       _react2.default.createElement(
                         'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        { className: 'btn btn-outline-primary btn-sm', href: '/shopping#/shop-grid' },
                         'View Products'
                       )
                     )
@@ -1194,7 +897,7 @@ var App = function (_Component) {
                 { className: 'text-center' },
                 _react2.default.createElement(
                   'a',
-                  { className: 'btn btn-outline-secondary margin-top-none', href: 'shop-categories.html' },
+                  { className: 'btn btn-outline-secondary margin-top-none', href: '/shopping#/shop-categories' },
                   'All Categories'
                 )
               )
@@ -1344,7 +1047,7 @@ var App = function (_Component) {
                       _react2.default.createElement('br', null),
                       _react2.default.createElement(
                         'a',
-                        { className: 'btn btn-primary margin-bottom-none', href: 'contacts.html' },
+                        { className: 'btn btn-primary margin-bottom-none', href: '/company#/contacts' },
                         'Locate Stores'
                       )
                     )
@@ -1391,7 +1094,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/01.jpg', alt: 'Product' })
                         )
                       ),
@@ -1403,7 +1106,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Oakley Kickback'
                           )
                         ),
@@ -1422,7 +1125,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/03.jpg', alt: 'Product' })
                         )
                       ),
@@ -1434,7 +1137,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Vented Straw Fedora'
                           )
                         ),
@@ -1453,7 +1156,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/04.jpg', alt: 'Product' })
                         )
                       ),
@@ -1465,7 +1168,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Big Wordmark Tote'
                           )
                         ),
@@ -1497,7 +1200,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/05.jpg', alt: 'Product' })
                         )
                       ),
@@ -1509,7 +1212,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Union Park'
                           )
                         ),
@@ -1528,7 +1231,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/06.jpg', alt: 'Product' })
                         )
                       ),
@@ -1540,7 +1243,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Cole Haan Crossbody'
                           )
                         ),
@@ -1559,7 +1262,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/07.jpg', alt: 'Product' })
                         )
                       ),
@@ -1571,7 +1274,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Skagen Holst Watch'
                           )
                         ),
@@ -1603,7 +1306,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/08.jpg', alt: 'Product' })
                         )
                       ),
@@ -1615,7 +1318,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Jordan\'s City Hoodie'
                           )
                         ),
@@ -1634,7 +1337,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/09.jpg', alt: 'Product' })
                         )
                       ),
@@ -1646,7 +1349,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Palace Shell Track Jacket'
                           )
                         ),
@@ -1665,7 +1368,7 @@ var App = function (_Component) {
                         { className: 'entry-thumb' },
                         _react2.default.createElement(
                           'a',
-                          { href: 'shop-single.html' },
+                          { href: '/shopping#/shop-single' },
                           _react2.default.createElement('img', { src: 'img/shop/widget/10.jpg', alt: 'Product' })
                         )
                       ),
@@ -1677,7 +1380,7 @@ var App = function (_Component) {
                           { className: 'entry-title' },
                           _react2.default.createElement(
                             'a',
-                            { href: 'shop-single.html' },
+                            { href: '/shopping#/shop-single' },
                             'Off the Shoulder Top'
                           )
                         ),
@@ -1804,7 +1507,315 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 
 /***/ }),
 
-/***/ 46:
+/***/ 20:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+var emptyFunction = __webpack_require__(4);
+
+/**
+ * Upstream version of event listener. Does not take into account specific
+ * nature of platform.
+ */
+var EventListener = {
+  /**
+   * Listen to DOM events during the bubble phase.
+   *
+   * @param {DOMEventTarget} target DOM element to register listener on.
+   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
+   * @param {function} callback Callback function.
+   * @return {object} Object with a `remove` method.
+   */
+  listen: function listen(target, eventType, callback) {
+    if (target.addEventListener) {
+      target.addEventListener(eventType, callback, false);
+      return {
+        remove: function remove() {
+          target.removeEventListener(eventType, callback, false);
+        }
+      };
+    } else if (target.attachEvent) {
+      target.attachEvent('on' + eventType, callback);
+      return {
+        remove: function remove() {
+          target.detachEvent('on' + eventType, callback);
+        }
+      };
+    }
+  },
+
+  /**
+   * Listen to DOM events during the capture phase.
+   *
+   * @param {DOMEventTarget} target DOM element to register listener on.
+   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
+   * @param {function} callback Callback function.
+   * @return {object} Object with a `remove` method.
+   */
+  capture: function capture(target, eventType, callback) {
+    if (target.addEventListener) {
+      target.addEventListener(eventType, callback, true);
+      return {
+        remove: function remove() {
+          target.removeEventListener(eventType, callback, true);
+        }
+      };
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Attempted to listen to events during the capture phase on a ' + 'browser that does not support the capture phase. Your application ' + 'will not receive some events.');
+      }
+      return {
+        remove: emptyFunction
+      };
+    }
+  },
+
+  registerDefault: function registerDefault() {}
+};
+
+module.exports = EventListener;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ * 
+ */
+
+/*eslint-disable no-self-compare */
+
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */
+function is(x, y) {
+  // SameValue algorithm
+  if (x === y) {
+    // Steps 1-5, 7-10
+    // Steps 6.b-6.e: +0 != -0
+    // Added the nonzero y check to make Flow happy, but it is redundant
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    // Step 6.a: NaN == NaN
+    return x !== x && y !== y;
+  }
+}
+
+/**
+ * Performs equality by iterating through keys on an object and returning false
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns true when the values of all keys are strictly equal.
+ */
+function shallowEqual(objA, objB) {
+  if (is(objA, objB)) {
+    return true;
+  }
+
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A's keys different from B.
+  for (var i = 0; i < keysA.length; i++) {
+    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+module.exports = shallowEqual;
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+var isTextNode = __webpack_require__(37);
+
+/*eslint-disable no-bitwise */
+
+/**
+ * Checks if a given DOM node contains or is another DOM node.
+ */
+function containsNode(outerNode, innerNode) {
+  if (!outerNode || !innerNode) {
+    return false;
+  } else if (outerNode === innerNode) {
+    return true;
+  } else if (isTextNode(outerNode)) {
+    return false;
+  } else if (isTextNode(innerNode)) {
+    return containsNode(outerNode, innerNode.parentNode);
+  } else if ('contains' in outerNode) {
+    return outerNode.contains(innerNode);
+  } else if (outerNode.compareDocumentPosition) {
+    return !!(outerNode.compareDocumentPosition(innerNode) & 16);
+  } else {
+    return false;
+  }
+}
+
+module.exports = containsNode;
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * @param {DOMElement} node input/textarea to focus
+ */
+
+function focusNode(node) {
+  // IE8 can throw "Can't move focus to the control because it is invisible,
+  // not enabled, or of a type that does not accept the focus." for all kinds of
+  // reasons that are too expensive and fragile to test.
+  try {
+    node.focus();
+  } catch (e) {}
+}
+
+module.exports = focusNode;
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @typechecks
+ */
+
+/* eslint-disable fb-www/typeof-undefined */
+
+/**
+ * Same as document.activeElement but wraps in a try-catch block. In IE it is
+ * not safe to call document.activeElement if there is nothing focused.
+ *
+ * The activeElement will be null only if the document or document body is not
+ * yet defined.
+ *
+ * @param {?DOMDocument} doc Defaults to current document.
+ * @return {?DOMElement}
+ */
+function getActiveElement(doc) /*?DOMElement*/{
+  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+  if (typeof doc === 'undefined') {
+    return null;
+  }
+  try {
+    return doc.activeElement || doc.body;
+  } catch (e) {
+    return doc.body;
+  }
+}
+
+module.exports = getActiveElement;
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(46)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(47)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1817,7 +1828,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(9),p=__webpack_require__(13);__webpack_require__(7);var r=__webpack_require__(6);
+var f=__webpack_require__(8),p=__webpack_require__(9);__webpack_require__(5);var r=__webpack_require__(4);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -1835,7 +1846,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 /***/ }),
 
-/***/ 47:
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1855,12 +1866,12 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var objectAssign$1 = __webpack_require__(9);
-var require$$0 = __webpack_require__(14);
-var emptyObject = __webpack_require__(13);
-var invariant = __webpack_require__(7);
-var emptyFunction = __webpack_require__(6);
-var checkPropTypes = __webpack_require__(16);
+var objectAssign$1 = __webpack_require__(8);
+var require$$0 = __webpack_require__(10);
+var emptyObject = __webpack_require__(9);
+var invariant = __webpack_require__(5);
+var emptyFunction = __webpack_require__(4);
+var checkPropTypes = __webpack_require__(13);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -3542,7 +3553,7 @@ module.exports = ReactEntry;
 
 /***/ }),
 
-/***/ 48:
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3580,16 +3591,16 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(49);
+  module.exports = __webpack_require__(36);
 } else {
-  module.exports = __webpack_require__(52);
+  module.exports = __webpack_require__(39);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 49:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3603,7 +3614,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(7);var l=__webpack_require__(18),n=__webpack_require__(9),ba=__webpack_require__(25),ca=__webpack_require__(6),da=__webpack_require__(13),ea=__webpack_require__(26),fa=__webpack_require__(27),ha=__webpack_require__(28),ia=__webpack_require__(29);
+var aa=__webpack_require__(0);__webpack_require__(5);var l=__webpack_require__(15),n=__webpack_require__(8),ba=__webpack_require__(20),ca=__webpack_require__(4),da=__webpack_require__(9),ea=__webpack_require__(21),fa=__webpack_require__(22),ha=__webpack_require__(23),ia=__webpack_require__(24);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -3853,43 +3864,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(59)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(60)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 50:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3904,7 +3879,7 @@ if (process.env.NODE_ENV !== 'production') {
  * @typechecks
  */
 
-var isNode = __webpack_require__(51);
+var isNode = __webpack_require__(38);
 
 /**
  * @param {*} object The object to check.
@@ -3918,7 +3893,7 @@ module.exports = isTextNode;
 
 /***/ }),
 
-/***/ 51:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3947,7 +3922,7 @@ module.exports = isNode;
 
 /***/ }),
 
-/***/ 52:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3968,22 +3943,22 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var react = __webpack_require__(0);
-var invariant = __webpack_require__(7);
-var ExecutionEnvironment = __webpack_require__(18);
-var _assign = __webpack_require__(9);
-var EventListener = __webpack_require__(25);
-var require$$0 = __webpack_require__(14);
-var hyphenateStyleName = __webpack_require__(53);
-var emptyFunction = __webpack_require__(6);
-var camelizeStyleName = __webpack_require__(55);
-var performanceNow = __webpack_require__(57);
-var propTypes = __webpack_require__(5);
-var emptyObject = __webpack_require__(13);
-var checkPropTypes = __webpack_require__(16);
-var shallowEqual = __webpack_require__(26);
-var containsNode = __webpack_require__(27);
-var focusNode = __webpack_require__(28);
-var getActiveElement = __webpack_require__(29);
+var invariant = __webpack_require__(5);
+var ExecutionEnvironment = __webpack_require__(15);
+var _assign = __webpack_require__(8);
+var EventListener = __webpack_require__(20);
+var require$$0 = __webpack_require__(10);
+var hyphenateStyleName = __webpack_require__(40);
+var emptyFunction = __webpack_require__(4);
+var camelizeStyleName = __webpack_require__(42);
+var performanceNow = __webpack_require__(44);
+var propTypes = __webpack_require__(3);
+var emptyObject = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(13);
+var shallowEqual = __webpack_require__(21);
+var containsNode = __webpack_require__(22);
+var focusNode = __webpack_require__(23);
+var getActiveElement = __webpack_require__(24);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -21177,7 +21152,50 @@ module.exports = ReactDOMFiberEntry;
 
 /***/ }),
 
-/***/ 53:
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
+
+/***/ }),
+
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21192,7 +21210,7 @@ module.exports = ReactDOMFiberEntry;
 
 
 
-var hyphenate = __webpack_require__(54);
+var hyphenate = __webpack_require__(41);
 
 var msPattern = /^ms-/;
 
@@ -21220,7 +21238,7 @@ module.exports = hyphenateStyleName;
 
 /***/ }),
 
-/***/ 54:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21257,7 +21275,7 @@ module.exports = hyphenate;
 
 /***/ }),
 
-/***/ 55:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21272,7 +21290,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(56);
+var camelize = __webpack_require__(43);
 
 var msPattern = /^-ms-/;
 
@@ -21301,7 +21319,7 @@ module.exports = camelizeStyleName;
 
 /***/ }),
 
-/***/ 56:
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21337,7 +21355,7 @@ module.exports = camelize;
 
 /***/ }),
 
-/***/ 57:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21352,7 +21370,7 @@ module.exports = camelize;
  * @typechecks
  */
 
-var performance = __webpack_require__(58);
+var performance = __webpack_require__(45);
 
 var performanceNow;
 
@@ -21375,7 +21393,7 @@ module.exports = performanceNow;
 
 /***/ }),
 
-/***/ 58:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21390,7 +21408,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(18);
+var ExecutionEnvironment = __webpack_require__(15);
 
 var performance;
 
@@ -21402,7 +21420,7 @@ module.exports = performance || {};
 
 /***/ }),
 
-/***/ 59:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21415,13 +21433,13 @@ module.exports = performance || {};
 
 
 
-var emptyFunction = __webpack_require__(6);
-var invariant = __webpack_require__(7);
-var warning = __webpack_require__(14);
-var assign = __webpack_require__(9);
+var emptyFunction = __webpack_require__(4);
+var invariant = __webpack_require__(5);
+var warning = __webpack_require__(10);
+var assign = __webpack_require__(8);
 
-var ReactPropTypesSecret = __webpack_require__(17);
-var checkPropTypes = __webpack_require__(16);
+var ReactPropTypesSecret = __webpack_require__(14);
+var checkPropTypes = __webpack_require__(13);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21953,50 +21971,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-
-/***/ 60:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22009,9 +21984,9 @@ module.exports = emptyFunction;
 
 
 
-var emptyFunction = __webpack_require__(6);
-var invariant = __webpack_require__(7);
-var ReactPropTypesSecret = __webpack_require__(17);
+var emptyFunction = __webpack_require__(4);
+var invariant = __webpack_require__(5);
+var ReactPropTypesSecret = __webpack_require__(14);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -22062,7 +22037,7 @@ module.exports = function() {
 
 /***/ }),
 
-/***/ 61:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22078,27 +22053,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _mobileMenu = __webpack_require__(62);
+var _mobileMenu = __webpack_require__(49);
 
 var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
 
-var _drawerLayout = __webpack_require__(63);
+var _drawerLayout = __webpack_require__(50);
 
 var _drawerLayout2 = _interopRequireDefault(_drawerLayout);
 
-var _topbar = __webpack_require__(64);
+var _topbar = __webpack_require__(51);
 
 var _topbar2 = _interopRequireDefault(_topbar);
 
-var _searchBox = __webpack_require__(65);
+var _searchBox = __webpack_require__(52);
 
 var _searchBox2 = _interopRequireDefault(_searchBox);
 
-var _navigationBar = __webpack_require__(66);
+var _navigationBar = __webpack_require__(53);
 
 var _navigationBar2 = _interopRequireDefault(_navigationBar);
 
-var _accountInfo = __webpack_require__(67);
+var _accountInfo = __webpack_require__(54);
 
 var _accountInfo2 = _interopRequireDefault(_accountInfo);
 
@@ -22161,7 +22136,7 @@ exports.default = Navigation;
 
 /***/ }),
 
-/***/ 62:
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22986,7 +22961,68 @@ exports.default = MobileMenu;
 
 /***/ }),
 
-/***/ 63:
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23498,7 +23534,7 @@ exports.default = DrawerLayout;
 
 /***/ }),
 
-/***/ 64:
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23598,7 +23634,7 @@ exports.default = TopBar;
 
 /***/ }),
 
-/***/ 65:
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23667,7 +23703,7 @@ exports.default = SearchBox;
 
 /***/ }),
 
-/***/ 66:
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24279,7 +24315,7 @@ exports.default = NavigationBar;
 
 /***/ }),
 
-/***/ 67:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24566,7 +24602,7 @@ exports.default = AccountInfo;
 
 /***/ }),
 
-/***/ 68:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24950,68 +24986,7 @@ exports.default = Footer;
 
 /***/ }),
 
-/***/ 7:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 9:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25106,6 +25081,31 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyObject = {};
+
+if (process.env.NODE_ENV !== 'production') {
+  Object.freeze(emptyObject);
+}
+
+module.exports = emptyObject;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ })
 
