@@ -1,8 +1,36 @@
 import React, { Component } from 'react';
+import bcrypt from 'bcryptjs';
+import superagent from 'superagent';
 import ReactDOM from 'react-dom';
 import Navigation from './navigation/main';
 import Footer from './navigation/footer';
 class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            password: ''
+        }
+    }
+    handleChange(event){
+        this.state.password = event.target.value;
+    }
+    handleSubmit(){
+        var context = this;
+        bcrypt.compare("390775866",this.state.password, function(err,res){
+            if(err){
+                alert(err);
+            }else{
+                alert(res)
+             superagent.post('/send-mail').send({}).set("Accept",'application/json').end((err,res)=>{
+                if(err){
+                    alert(err)
+                }else{
+                    alert("MSG SENT")
+                }
+             })   
+            }
+         })
+    }
     render () {
         return (
             <div>
@@ -60,7 +88,7 @@ class Login extends Component {
                         <div className="padding-top-3x hidden-md-up" />
                         <h3 className="margin-bottom-1x">No Account? Register</h3>
                         <p>Registration takes less than a minute but gives you full control over your orders.</p>
-                        <form className="row" method="post">
+                        <form className="row">
                             <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="reg-fn">First Name</label>
@@ -88,7 +116,7 @@ class Login extends Component {
                             <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="reg-pass">Password</label>
-                                <input className="form-control" type="password" id="reg-pass" required />
+                                <input onChange={this.handleChange.bind(this)} className="form-control" type="password" id="reg-pass" required />
                             </div>
                             </div>
                             <div className="col-sm-6">
@@ -98,7 +126,7 @@ class Login extends Component {
                             </div>
                             </div>
                             <div className="col-12 text-center text-sm-right">
-                            <button className="btn btn-primary margin-bottom-none" type="submit">Register</button>
+                            <button onClick={this.handleSubmit.bind(this)} className="btn btn-primary margin-bottom-none">Register</button>
                             </div>
                         </form>
                         </div>

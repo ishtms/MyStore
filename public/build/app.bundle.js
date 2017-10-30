@@ -60,26 +60,28 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 85);
+/******/ 	return __webpack_require__(__webpack_require__.s = 298);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(18);
+  module.exports = __webpack_require__(46);
 } else {
-  module.exports = __webpack_require__(19);
+  module.exports = __webpack_require__(47);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -269,242 +271,8 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(31)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(32)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 6 */,
-/* 7 */
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -528,7 +296,8 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -542,7 +311,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(6);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -597,7 +366,8 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 9 */
+
+/***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -611,9 +381,9 @@ module.exports = warning;
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(3);
-  var warning = __webpack_require__(8);
-  var ReactPropTypesSecret = __webpack_require__(10);
+  var invariant = __webpack_require__(7);
+  var warning = __webpack_require__(14);
+  var ReactPropTypesSecret = __webpack_require__(17);
   var loggedTypeFailures = {};
 }
 
@@ -664,7 +434,8 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 10 */
+
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -683,7 +454,8 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 11 */
+
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -722,8 +494,8 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 12 */,
-/* 13 */
+
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -738,7 +510,7 @@ module.exports = ExecutionEnvironment;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(2);
+var emptyFunction = __webpack_require__(6);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -804,7 +576,8 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 14 */
+
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -875,7 +648,8 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 15 */
+
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -890,7 +664,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(22);
+var isTextNode = __webpack_require__(50);
 
 /*eslint-disable no-bitwise */
 
@@ -918,7 +692,8 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 16 */
+
+/***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -948,7 +723,8 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 17 */
+
+/***/ 29:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -990,7 +766,1045 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 18 */
+
+/***/ 298:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(48);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _main = __webpack_require__(61);
+
+var _main2 = _interopRequireDefault(_main);
+
+var _footer = __webpack_require__(68);
+
+var _footer2 = _interopRequireDefault(_footer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_Component) {
+  _inherits(App, _Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      featured: [{
+        itemName: "Oakley Kickback",
+        price: "$155.00",
+        imageLink: "img/shop/products/03.jpg",
+        href: "#"
+      }, {
+        itemName: "Oakley Kickback",
+        price: "$155.00",
+        imageLink: "img/shop/products/03.jpg",
+        href: "#"
+      }, {
+        itemName: "Oakley Kickback",
+        price: "$155.00",
+        imageLink: "img/shop/products/03.jpg",
+        href: "#"
+      }]
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      var something = this.state.featured.map(function (curr) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'grid-item' },
+          _react2.default.createElement(
+            'div',
+            { className: 'product-card' },
+            _react2.default.createElement(
+              'div',
+              { className: 'rating-stars' },
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star filled' }),
+              _react2.default.createElement('i', { className: 'icon-star' })
+            ),
+            _react2.default.createElement(
+              'a',
+              { className: 'product-thumb', href: curr.href },
+              _react2.default.createElement('img', { src: curr.imageLink, alt: 'Product' })
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'product-title' },
+              _react2.default.createElement(
+                'a',
+                { href: curr.href },
+                curr.itemName
+              )
+            ),
+            _react2.default.createElement(
+              'h4',
+              { className: 'product-price' },
+              curr.price
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'product-buttons' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
+                _react2.default.createElement('i', { className: 'icon-heart' })
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
+                'Add to Cart'
+              )
+            )
+          )
+        );
+      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_main2.default, null),
+          _react2.default.createElement(
+            'div',
+            { className: 'offcanvas-wrapper' },
+            _react2.default.createElement(
+              'section',
+              { className: 'hero-slider', style: { backgroundImage: 'url(img/hero-slider/main-bg.jpg)' } },
+              _react2.default.createElement(
+                'div',
+                { className: 'owl-carousel large-controls dots-inside', 'data-owl-carousel': '{ "nav": true, "dots": true, "loop": true, "autoplay": true, "autoplayTimeout": 7000 }' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'item' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'container padding-top-3x' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'row justify-content-center align-items-center' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'from-bottom' },
+                          _react2.default.createElement('img', { className: 'd-inline-block w-150 mb-4', src: 'img/hero-slider/logo02.png', alt: 'Puma' }),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-2 pt-1' },
+                            'Puma Backpacks Collection'
+                          ),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-4 pb-1' },
+                            'starting at ',
+                            _react2.default.createElement(
+                              'span',
+                              { className: 'text-bold' },
+                              '$37.99'
+                            )
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'a',
+                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-grid-ls.html' },
+                          'View Offers'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 padding-bottom-2x mb-3' },
+                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/02.png', alt: 'Puma Backpack' })
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'item' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'container padding-top-3x' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'row justify-content-center align-items-center' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'from-bottom' },
+                          _react2.default.createElement('img', { className: 'd-inline-block w-200 mb-4', src: 'img/hero-slider/logo01.png', alt: 'Converse' }),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-2 pt-1' },
+                            'Chuck Taylor All Star II'
+                          ),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-4 pb-1' },
+                            'for only ',
+                            _react2.default.createElement(
+                              'span',
+                              { className: 'text-bold' },
+                              '$59.99'
+                            )
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'a',
+                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
+                          'Shop Now'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 padding-bottom-2x mb-3' },
+                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/01.png', alt: 'Chuck Taylor All Star II' })
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'item' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'container padding-top-3x' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'row justify-content-center align-items-center' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'from-bottom' },
+                          _react2.default.createElement('img', { className: 'd-inline-block mb-4', src: 'img/hero-slider/logo03.png', style: { width: 125 }, alt: 'Motorola' }),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-2 pt-1' },
+                            'Smart Watch Moto 360 2nd'
+                          ),
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'h2 text-body text-normal mb-4 pb-1' },
+                            'for only ',
+                            _react2.default.createElement(
+                              'span',
+                              { className: 'text-bold' },
+                              '$299.99'
+                            )
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'a',
+                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
+                          'Shop Now'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 padding-bottom-2x mb-3' },
+                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/03.png', alt: 'Moto 360' })
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container padding-top-3x' },
+              _react2.default.createElement(
+                'h3',
+                { className: 'text-center mb-30' },
+                'Top Categories'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'row' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card mb-30' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'inner' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'main-img' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/01.jpg', alt: 'Category' })
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'thumblist' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/02.jpg', alt: 'Category' }),
+                          _react2.default.createElement('img', { src: 'img/shop/categories/03.jpg', alt: 'Category' })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body text-center' },
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'card-title' },
+                        'Clothing'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        { className: 'text-muted' },
+                        'Starting from $49.99'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        'View Products'
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card mb-30' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'inner' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'main-img' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/04.jpg', alt: 'Category' })
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'thumblist' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/05.jpg', alt: 'Category' }),
+                          _react2.default.createElement('img', { src: 'img/shop/categories/06.jpg', alt: 'Category' })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body text-center' },
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'card-title' },
+                        'Shoes'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        { className: 'text-muted' },
+                        'Starting from $56.00'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        'View Products'
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'card mb-30' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'inner' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'main-img' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/07.jpg', alt: 'Category' })
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'thumblist' },
+                          _react2.default.createElement('img', { src: 'img/shop/categories/08.jpg', alt: 'Category' }),
+                          _react2.default.createElement('img', { src: 'img/shop/categories/09.jpg', alt: 'Category' })
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'card-body text-center' },
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'card-title' },
+                        'Bags'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        { className: 'text-muted' },
+                        'Starting from $27.00'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
+                        'View Products'
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'text-center' },
+                _react2.default.createElement(
+                  'a',
+                  { className: 'btn btn-outline-secondary margin-top-none', href: 'shop-categories.html' },
+                  'All Categories'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container-fluid padding-top-3x' },
+              _react2.default.createElement(
+                'div',
+                { className: 'row justify-content-center' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-xl-5 col-lg-6 mb-30' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'rounded bg-faded position-relative padding-top-3x padding-bottom-3x' },
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'product-badge text-danger', style: { top: 24, left: 24 } },
+                      'Limited Offer'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'text-center' },
+                      _react2.default.createElement(
+                        'h3',
+                        { className: 'h2 text-normal mb-1' },
+                        'New'
+                      ),
+                      _react2.default.createElement(
+                        'h2',
+                        { className: 'display-2 text-bold mb-2' },
+                        'Sunglasses'
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'h3 text-normal mb-4' },
+                        'collection at discounted price!'
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'countdown mb-3', 'data-date-time': '12/30/2017 12:00:00' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'item' },
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'days' },
+                            '00'
+                          ),
+                          _react2.default.createElement(
+                            'span',
+                            { className: 'days_ref' },
+                            'Days'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'item' },
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'hours' },
+                            '00'
+                          ),
+                          _react2.default.createElement(
+                            'span',
+                            { className: 'hours_ref' },
+                            'Hours'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'item' },
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'minutes' },
+                            '00'
+                          ),
+                          _react2.default.createElement(
+                            'span',
+                            { className: 'minutes_ref' },
+                            'Mins'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'item' },
+                          _react2.default.createElement(
+                            'div',
+                            { className: 'seconds' },
+                            '00'
+                          ),
+                          _react2.default.createElement(
+                            'span',
+                            { className: 'seconds_ref' },
+                            'Secs'
+                          )
+                        )
+                      ),
+                      _react2.default.createElement('br', null),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'btn btn-primary margin-bottom-none', href: '#' },
+                        'View Offers'
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-xl-5 col-lg-6 mb-30', style: { minHeight: 270 } },
+                  _react2.default.createElement('div', { className: 'img-cover rounded', style: { backgroundImage: 'url(img/banners/home01.jpg)' } })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container-fluid' },
+              _react2.default.createElement(
+                'div',
+                { className: 'row justify-content-center' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-xl-10 col-lg-12' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'fw-section rounded padding-top-4x padding-bottom-4x', style: { backgroundImage: 'url(img/banners/home02.jpg)' } },
+                    _react2.default.createElement('span', { className: 'overlay rounded', style: { opacity: '.35' } }),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'text-center' },
+                      _react2.default.createElement(
+                        'h3',
+                        { className: 'display-4 text-normal text-white text-shadow mb-1' },
+                        'Old Collection'
+                      ),
+                      _react2.default.createElement(
+                        'h2',
+                        { className: 'display-2 text-bold text-white text-shadow' },
+                        'HUGE SALE!'
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'd-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4' },
+                        'at our outlet stores'
+                      ),
+                      _react2.default.createElement('br', null),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'btn btn-primary margin-bottom-none', href: 'contacts.html' },
+                        'Locate Stores'
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container padding-top-3x padding-bottom-3x' },
+              _react2.default.createElement(
+                'h3',
+                { className: 'text-center mb-30' },
+                'Featured Products'
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'owl-carousel', 'data-owl-carousel': '{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }' },
+                something
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container padding-bottom-2x' },
+              _react2.default.createElement(
+                'div',
+                { className: 'row' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'widget widget-featured-products' },
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'widget-title' },
+                      'Top Sellers'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/01.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Oakley Kickback'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$155.00'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/03.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Vented Straw Fedora'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$49.50'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/04.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Big Wordmark Tote'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$29.99'
+                        )
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'widget widget-featured-products' },
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'widget-title' },
+                      'New Arrivals'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/05.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Union Park'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$49.99'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/06.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Cole Haan Crossbody'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$200.00'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/07.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Skagen Holst Watch'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$145.00'
+                        )
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-4 col-sm-6' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'widget widget-featured-products' },
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'widget-title' },
+                      'Best Rated'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/08.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Jordan\'s City Hoodie'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$65.00'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/09.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Palace Shell Track Jacket'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$36.99'
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'entry' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-thumb' },
+                        _react2.default.createElement(
+                          'a',
+                          { href: 'shop-single.html' },
+                          _react2.default.createElement('img', { src: 'img/shop/widget/10.jpg', alt: 'Product' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'entry-content' },
+                        _react2.default.createElement(
+                          'h4',
+                          { className: 'entry-title' },
+                          _react2.default.createElement(
+                            'a',
+                            { href: 'shop-single.html' },
+                            'Off the Shoulder Top'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'entry-meta' },
+                          '$128.00'
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'bg-faded padding-top-3x padding-bottom-3x' },
+              _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                  'h3',
+                  { className: 'text-center mb-30 pb-2' },
+                  'Popular Brands'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'owl-carousel', 'data-owl-carousel': '{ "nav": false, "dots": false, "loop": true, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2}, "470":{"items":3},"630":{"items":4},"991":{"items":5},"1200":{"items":6}} }' },
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/01.png', alt: 'Adidas' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/02.png', alt: 'Brooks' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/03.png', alt: 'Valentino' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/04.png', alt: 'Nike' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/05.png', alt: 'Puma' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/06.png', alt: 'New Balance' }),
+                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/07.png', alt: 'Dior' })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'section',
+              { className: 'container padding-top-3x padding-bottom-2x' },
+              _react2.default.createElement(
+                'div',
+                { className: 'row' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
+                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/01.png', alt: 'Shipping' }),
+                  _react2.default.createElement(
+                    'h6',
+                    null,
+                    'Free Worldwide Shipping'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'text-muted margin-bottom-none' },
+                    'Free shipping for all orders over $100'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
+                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/02.png', alt: 'Money Back' }),
+                  _react2.default.createElement(
+                    'h6',
+                    null,
+                    'Money Back Guarantee'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'text-muted margin-bottom-none' },
+                    'We return money within 30 days'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
+                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/03.png', alt: 'Support' }),
+                  _react2.default.createElement(
+                    'h6',
+                    null,
+                    '24/7 Customer Support'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'text-muted margin-bottom-none' },
+                    'Friendly 24/7 customer support'
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
+                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/04.png', alt: 'Payment' }),
+                  _react2.default.createElement(
+                    'h6',
+                    null,
+                    'Secure Online Payment'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'text-muted margin-bottom-none' },
+                    'We posess SSL / Secure Certificate'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(_footer2.default, null)
+          ),
+          _react2.default.createElement(
+            'a',
+            { className: 'scroll-to-top-btn', href: '#' },
+            _react2.default.createElement('i', { className: 'icon-arrow-up' })
+          ),
+          _react2.default.createElement('div', { className: 'site-backdrop' })
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react.Component);
+
+_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ }),
+
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1003,7 +1817,7 @@ module.exports = getActiveElement;
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
-var f=__webpack_require__(4),p=__webpack_require__(7);__webpack_require__(3);var r=__webpack_require__(2);
+var f=__webpack_require__(9),p=__webpack_require__(13);__webpack_require__(7);var r=__webpack_require__(6);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function w(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}function x(){}x.prototype=v.prototype;var y=w.prototype=new x;y.constructor=w;f(y,v.prototype);y.isPureReactComponent=!0;function z(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}var A=z.prototype=new x;A.constructor=z;f(A,v.prototype);A.unstable_isAsyncReactComponent=!0;A.render=function(){return this.props.children};
@@ -1020,7 +1834,8 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 
 /***/ }),
-/* 19 */
+
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,12 +1855,12 @@ if (process.env.NODE_ENV !== "production") {
 
 'use strict';
 
-var objectAssign$1 = __webpack_require__(4);
-var require$$0 = __webpack_require__(8);
-var emptyObject = __webpack_require__(7);
-var invariant = __webpack_require__(3);
-var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(9);
+var objectAssign$1 = __webpack_require__(9);
+var require$$0 = __webpack_require__(14);
+var emptyObject = __webpack_require__(13);
+var invariant = __webpack_require__(7);
+var emptyFunction = __webpack_require__(6);
+var checkPropTypes = __webpack_require__(16);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2726,7 +3541,8 @@ module.exports = ReactEntry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2764,15 +3580,16 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(21);
+  module.exports = __webpack_require__(49);
 } else {
-  module.exports = __webpack_require__(24);
+  module.exports = __webpack_require__(52);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 21 */
+
+/***/ 49:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2786,7 +3603,7 @@ if (process.env.NODE_ENV === 'production') {
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0);__webpack_require__(3);var l=__webpack_require__(11),n=__webpack_require__(4),ba=__webpack_require__(13),ca=__webpack_require__(2),da=__webpack_require__(7),ea=__webpack_require__(14),fa=__webpack_require__(15),ha=__webpack_require__(16),ia=__webpack_require__(17);
+var aa=__webpack_require__(0);__webpack_require__(7);var l=__webpack_require__(18),n=__webpack_require__(9),ba=__webpack_require__(25),ca=__webpack_require__(6),da=__webpack_require__(13),ea=__webpack_require__(26),fa=__webpack_require__(27),ha=__webpack_require__(28),ia=__webpack_require__(29);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
 var ka={Namespaces:{html:"http://www.w3.org/1999/xhtml",mathml:"http://www.w3.org/1998/Math/MathML",svg:"http://www.w3.org/2000/svg"},getIntrinsicNamespace:ja,getChildNamespace:function(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?ja(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}},la=null,oa={};
@@ -3035,7 +3852,44 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 
 /***/ }),
-/* 22 */
+
+/***/ 5:
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(59)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(60)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 50:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3050,7 +3904,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
  * @typechecks
  */
 
-var isNode = __webpack_require__(23);
+var isNode = __webpack_require__(51);
 
 /**
  * @param {*} object The object to check.
@@ -3063,7 +3917,8 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 23 */
+
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3091,7 +3946,8 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 24 */
+
+/***/ 52:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3112,22 +3968,22 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var react = __webpack_require__(0);
-var invariant = __webpack_require__(3);
-var ExecutionEnvironment = __webpack_require__(11);
-var _assign = __webpack_require__(4);
-var EventListener = __webpack_require__(13);
-var require$$0 = __webpack_require__(8);
-var hyphenateStyleName = __webpack_require__(25);
-var emptyFunction = __webpack_require__(2);
-var camelizeStyleName = __webpack_require__(27);
-var performanceNow = __webpack_require__(29);
+var invariant = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(18);
+var _assign = __webpack_require__(9);
+var EventListener = __webpack_require__(25);
+var require$$0 = __webpack_require__(14);
+var hyphenateStyleName = __webpack_require__(53);
+var emptyFunction = __webpack_require__(6);
+var camelizeStyleName = __webpack_require__(55);
+var performanceNow = __webpack_require__(57);
 var propTypes = __webpack_require__(5);
-var emptyObject = __webpack_require__(7);
-var checkPropTypes = __webpack_require__(9);
-var shallowEqual = __webpack_require__(14);
-var containsNode = __webpack_require__(15);
-var focusNode = __webpack_require__(16);
-var getActiveElement = __webpack_require__(17);
+var emptyObject = __webpack_require__(13);
+var checkPropTypes = __webpack_require__(16);
+var shallowEqual = __webpack_require__(26);
+var containsNode = __webpack_require__(27);
+var focusNode = __webpack_require__(28);
+var getActiveElement = __webpack_require__(29);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -20320,7 +21176,8 @@ module.exports = ReactDOMFiberEntry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 25 */
+
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20335,7 +21192,7 @@ module.exports = ReactDOMFiberEntry;
 
 
 
-var hyphenate = __webpack_require__(26);
+var hyphenate = __webpack_require__(54);
 
 var msPattern = /^ms-/;
 
@@ -20362,7 +21219,8 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 26 */
+
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20398,7 +21256,8 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 27 */
+
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20413,7 +21272,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(28);
+var camelize = __webpack_require__(56);
 
 var msPattern = /^-ms-/;
 
@@ -20441,7 +21300,8 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 28 */
+
+/***/ 56:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20476,7 +21336,8 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 29 */
+
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20491,7 +21352,7 @@ module.exports = camelize;
  * @typechecks
  */
 
-var performance = __webpack_require__(30);
+var performance = __webpack_require__(58);
 
 var performanceNow;
 
@@ -20513,7 +21374,8 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 30 */
+
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20528,7 +21390,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(11);
+var ExecutionEnvironment = __webpack_require__(18);
 
 var performance;
 
@@ -20539,7 +21401,8 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 31 */
+
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20552,13 +21415,13 @@ module.exports = performance || {};
 
 
 
-var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(3);
-var warning = __webpack_require__(8);
-var assign = __webpack_require__(4);
+var emptyFunction = __webpack_require__(6);
+var invariant = __webpack_require__(7);
+var warning = __webpack_require__(14);
+var assign = __webpack_require__(9);
 
-var ReactPropTypesSecret = __webpack_require__(10);
-var checkPropTypes = __webpack_require__(9);
+var ReactPropTypesSecret = __webpack_require__(17);
+var checkPropTypes = __webpack_require__(16);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -21089,7 +21952,51 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 32 */
+
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
+
+/***/ }),
+
+/***/ 60:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21102,9 +22009,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(2);
-var invariant = __webpack_require__(3);
-var ReactPropTypesSecret = __webpack_require__(10);
+var emptyFunction = __webpack_require__(6);
+var invariant = __webpack_require__(7);
+var ReactPropTypesSecret = __webpack_require__(17);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21154,7 +22061,8 @@ module.exports = function() {
 
 
 /***/ }),
-/* 33 */
+
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21170,27 +22078,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _mobileMenu = __webpack_require__(34);
+var _mobileMenu = __webpack_require__(62);
 
 var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
 
-var _drawerLayout = __webpack_require__(35);
+var _drawerLayout = __webpack_require__(63);
 
 var _drawerLayout2 = _interopRequireDefault(_drawerLayout);
 
-var _topbar = __webpack_require__(36);
+var _topbar = __webpack_require__(64);
 
 var _topbar2 = _interopRequireDefault(_topbar);
 
-var _searchBox = __webpack_require__(37);
+var _searchBox = __webpack_require__(65);
 
 var _searchBox2 = _interopRequireDefault(_searchBox);
 
-var _navigationBar = __webpack_require__(38);
+var _navigationBar = __webpack_require__(66);
 
 var _navigationBar2 = _interopRequireDefault(_navigationBar);
 
-var _accountInfo = __webpack_require__(39);
+var _accountInfo = __webpack_require__(67);
 
 var _accountInfo2 = _interopRequireDefault(_accountInfo);
 
@@ -21252,7 +22160,8 @@ var Navigation = function (_Component) {
 exports.default = Navigation;
 
 /***/ }),
-/* 34 */
+
+/***/ 62:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22076,7 +22985,8 @@ var MobileMenu = function (_Component) {
 exports.default = MobileMenu;
 
 /***/ }),
-/* 35 */
+
+/***/ 63:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22587,7 +23497,8 @@ var DrawerLayout = function (_Component) {
 exports.default = DrawerLayout;
 
 /***/ }),
-/* 36 */
+
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22686,7 +23597,8 @@ var TopBar = function (_Component) {
 exports.default = TopBar;
 
 /***/ }),
-/* 37 */
+
+/***/ 65:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22754,7 +23666,8 @@ var SearchBox = function (_Component) {
 exports.default = SearchBox;
 
 /***/ }),
-/* 38 */
+
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23365,7 +24278,8 @@ var NavigationBar = function (_Component) {
 exports.default = NavigationBar;
 
 /***/ }),
-/* 39 */
+
+/***/ 67:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23651,7 +24565,8 @@ var AccountInfo = function (_Component) {
 exports.default = AccountInfo;
 
 /***/ }),
-/* 40 */
+
+/***/ 68:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24034,1085 +24949,165 @@ var Footer = function (_Component) {
 exports.default = Footer;
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */
+
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
 
-var _react2 = _interopRequireDefault(_react);
+var validateFormat = function validateFormat(format) {};
 
-var _reactDom = __webpack_require__(20);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _main = __webpack_require__(33);
-
-var _main2 = _interopRequireDefault(_main);
-
-var _footer = __webpack_require__(40);
-
-var _footer2 = _interopRequireDefault(_footer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_Component) {
-  _inherits(App, _Component);
-
-  function App(props) {
-    _classCallCheck(this, App);
-
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-    _this.state = {
-      featured: [{
-        itemName: "Oakley Kickback",
-        price: "$155.00",
-        imageLink: "img/shop/products/03.jpg",
-        href: "#"
-      }, {
-        itemName: "Oakley Kickback",
-        price: "$155.00",
-        imageLink: "img/shop/products/03.jpg",
-        href: "#"
-      }, {
-        itemName: "Oakley Kickback",
-        price: "$155.00",
-        imageLink: "img/shop/products/03.jpg",
-        href: "#"
-      }]
-    };
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      var something = this.state.featured.map(function (curr) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'grid-item' },
-          _react2.default.createElement(
-            'div',
-            { className: 'product-card' },
-            _react2.default.createElement(
-              'div',
-              { className: 'rating-stars' },
-              _react2.default.createElement('i', { className: 'icon-star filled' }),
-              _react2.default.createElement('i', { className: 'icon-star filled' }),
-              _react2.default.createElement('i', { className: 'icon-star filled' }),
-              _react2.default.createElement('i', { className: 'icon-star filled' }),
-              _react2.default.createElement('i', { className: 'icon-star' })
-            ),
-            _react2.default.createElement(
-              'a',
-              { className: 'product-thumb', href: curr.href },
-              _react2.default.createElement('img', { src: curr.imageLink, alt: 'Product' })
-            ),
-            _react2.default.createElement(
-              'h3',
-              { className: 'product-title' },
-              _react2.default.createElement(
-                'a',
-                { href: curr.href },
-                curr.itemName
-              )
-            ),
-            _react2.default.createElement(
-              'h4',
-              { className: 'product-price' },
-              curr.price
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'product-buttons' },
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-outline-secondary btn-sm btn-wishlist', 'data-toggle': 'tooltip', title: 'Whishlist' },
-                _react2.default.createElement('i', { className: 'icon-heart' })
-              ),
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-outline-primary btn-sm', 'data-toast': true, 'data-toast-type': 'success', 'data-toast-position': 'topRight', 'data-toast-icon': 'icon-circle-check', 'data-toast-title': 'Product', 'data-toast-message': 'successfuly added to cart!' },
-                'Add to Cart'
-              )
-            )
-          )
-        );
-      });
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_main2.default, null),
-          _react2.default.createElement(
-            'div',
-            { className: 'offcanvas-wrapper' },
-            _react2.default.createElement(
-              'section',
-              { className: 'hero-slider', style: { backgroundImage: 'url(img/hero-slider/main-bg.jpg)' } },
-              _react2.default.createElement(
-                'div',
-                { className: 'owl-carousel large-controls dots-inside', 'data-owl-carousel': '{ "nav": true, "dots": true, "loop": true, "autoplay": true, "autoplayTimeout": 7000 }' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'container padding-top-3x' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'row justify-content-center align-items-center' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'from-bottom' },
-                          _react2.default.createElement('img', { className: 'd-inline-block w-150 mb-4', src: 'img/hero-slider/logo02.png', alt: 'Puma' }),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-2 pt-1' },
-                            'Puma Backpacks Collection'
-                          ),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-4 pb-1' },
-                            'starting at ',
-                            _react2.default.createElement(
-                              'span',
-                              { className: 'text-bold' },
-                              '$37.99'
-                            )
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-grid-ls.html' },
-                          'View Offers'
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 padding-bottom-2x mb-3' },
-                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/02.png', alt: 'Puma Backpack' })
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'container padding-top-3x' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'row justify-content-center align-items-center' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'from-bottom' },
-                          _react2.default.createElement('img', { className: 'd-inline-block w-200 mb-4', src: 'img/hero-slider/logo01.png', alt: 'Converse' }),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-2 pt-1' },
-                            'Chuck Taylor All Star II'
-                          ),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-4 pb-1' },
-                            'for only ',
-                            _react2.default.createElement(
-                              'span',
-                              { className: 'text-bold' },
-                              '$59.99'
-                            )
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
-                          'Shop Now'
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 padding-bottom-2x mb-3' },
-                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/01.png', alt: 'Chuck Taylor All Star II' })
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'item' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'container padding-top-3x' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'row justify-content-center align-items-center' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'from-bottom' },
-                          _react2.default.createElement('img', { className: 'd-inline-block mb-4', src: 'img/hero-slider/logo03.png', style: { width: 125 }, alt: 'Motorola' }),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-2 pt-1' },
-                            'Smart Watch Moto 360 2nd'
-                          ),
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'h2 text-body text-normal mb-4 pb-1' },
-                            'for only ',
-                            _react2.default.createElement(
-                              'span',
-                              { className: 'text-bold' },
-                              '$299.99'
-                            )
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'a',
-                          { className: 'btn btn-primary scale-up delay-1', href: 'shop-single.html' },
-                          'Shop Now'
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'col-md-6 padding-bottom-2x mb-3' },
-                        _react2.default.createElement('img', { className: 'd-block mx-auto', src: 'img/hero-slider/03.png', alt: 'Moto 360' })
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container padding-top-3x' },
-              _react2.default.createElement(
-                'h3',
-                { className: 'text-center mb-30' },
-                'Top Categories'
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'row' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card mb-30' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'inner' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'main-img' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/01.jpg', alt: 'Category' })
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'thumblist' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/02.jpg', alt: 'Category' }),
-                          _react2.default.createElement('img', { src: 'img/shop/categories/03.jpg', alt: 'Category' })
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body text-center' },
-                      _react2.default.createElement(
-                        'h4',
-                        { className: 'card-title' },
-                        'Clothing'
-                      ),
-                      _react2.default.createElement(
-                        'p',
-                        { className: 'text-muted' },
-                        'Starting from $49.99'
-                      ),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
-                        'View Products'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card mb-30' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'inner' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'main-img' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/04.jpg', alt: 'Category' })
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'thumblist' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/05.jpg', alt: 'Category' }),
-                          _react2.default.createElement('img', { src: 'img/shop/categories/06.jpg', alt: 'Category' })
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body text-center' },
-                      _react2.default.createElement(
-                        'h4',
-                        { className: 'card-title' },
-                        'Shoes'
-                      ),
-                      _react2.default.createElement(
-                        'p',
-                        { className: 'text-muted' },
-                        'Starting from $56.00'
-                      ),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
-                        'View Products'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card mb-30' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'card-img-tiles', href: 'shop-grid-ls.html' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'inner' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'main-img' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/07.jpg', alt: 'Category' })
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'thumblist' },
-                          _react2.default.createElement('img', { src: 'img/shop/categories/08.jpg', alt: 'Category' }),
-                          _react2.default.createElement('img', { src: 'img/shop/categories/09.jpg', alt: 'Category' })
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'card-body text-center' },
-                      _react2.default.createElement(
-                        'h4',
-                        { className: 'card-title' },
-                        'Bags'
-                      ),
-                      _react2.default.createElement(
-                        'p',
-                        { className: 'text-muted' },
-                        'Starting from $27.00'
-                      ),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-outline-primary btn-sm', href: 'shop-grid-ls.html' },
-                        'View Products'
-                      )
-                    )
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'text-center' },
-                _react2.default.createElement(
-                  'a',
-                  { className: 'btn btn-outline-secondary margin-top-none', href: 'shop-categories.html' },
-                  'All Categories'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container-fluid padding-top-3x' },
-              _react2.default.createElement(
-                'div',
-                { className: 'row justify-content-center' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-xl-5 col-lg-6 mb-30' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'rounded bg-faded position-relative padding-top-3x padding-bottom-3x' },
-                    _react2.default.createElement(
-                      'span',
-                      { className: 'product-badge text-danger', style: { top: 24, left: 24 } },
-                      'Limited Offer'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'text-center' },
-                      _react2.default.createElement(
-                        'h3',
-                        { className: 'h2 text-normal mb-1' },
-                        'New'
-                      ),
-                      _react2.default.createElement(
-                        'h2',
-                        { className: 'display-2 text-bold mb-2' },
-                        'Sunglasses'
-                      ),
-                      _react2.default.createElement(
-                        'h4',
-                        { className: 'h3 text-normal mb-4' },
-                        'collection at discounted price!'
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'countdown mb-3', 'data-date-time': '12/30/2017 12:00:00' },
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'item' },
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'days' },
-                            '00'
-                          ),
-                          _react2.default.createElement(
-                            'span',
-                            { className: 'days_ref' },
-                            'Days'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'item' },
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'hours' },
-                            '00'
-                          ),
-                          _react2.default.createElement(
-                            'span',
-                            { className: 'hours_ref' },
-                            'Hours'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'item' },
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'minutes' },
-                            '00'
-                          ),
-                          _react2.default.createElement(
-                            'span',
-                            { className: 'minutes_ref' },
-                            'Mins'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'div',
-                          { className: 'item' },
-                          _react2.default.createElement(
-                            'div',
-                            { className: 'seconds' },
-                            '00'
-                          ),
-                          _react2.default.createElement(
-                            'span',
-                            { className: 'seconds_ref' },
-                            'Secs'
-                          )
-                        )
-                      ),
-                      _react2.default.createElement('br', null),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-primary margin-bottom-none', href: '#' },
-                        'View Offers'
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-xl-5 col-lg-6 mb-30', style: { minHeight: 270 } },
-                  _react2.default.createElement('div', { className: 'img-cover rounded', style: { backgroundImage: 'url(img/banners/home01.jpg)' } })
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container-fluid' },
-              _react2.default.createElement(
-                'div',
-                { className: 'row justify-content-center' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-xl-10 col-lg-12' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'fw-section rounded padding-top-4x padding-bottom-4x', style: { backgroundImage: 'url(img/banners/home02.jpg)' } },
-                    _react2.default.createElement('span', { className: 'overlay rounded', style: { opacity: '.35' } }),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'text-center' },
-                      _react2.default.createElement(
-                        'h3',
-                        { className: 'display-4 text-normal text-white text-shadow mb-1' },
-                        'Old Collection'
-                      ),
-                      _react2.default.createElement(
-                        'h2',
-                        { className: 'display-2 text-bold text-white text-shadow' },
-                        'HUGE SALE!'
-                      ),
-                      _react2.default.createElement(
-                        'h4',
-                        { className: 'd-inline-block h2 text-normal text-white text-shadow border-default border-left-0 border-right-0 mb-4' },
-                        'at our outlet stores'
-                      ),
-                      _react2.default.createElement('br', null),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'btn btn-primary margin-bottom-none', href: 'contacts.html' },
-                        'Locate Stores'
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container padding-top-3x padding-bottom-3x' },
-              _react2.default.createElement(
-                'h3',
-                { className: 'text-center mb-30' },
-                'Featured Products'
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'owl-carousel', 'data-owl-carousel': '{ "nav": false, "dots": true, "margin": 30, "responsive": {"0":{"items":1},"576":{"items":2},"768":{"items":3},"991":{"items":4},"1200":{"items":4}} }' },
-                something
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container padding-bottom-2x' },
-              _react2.default.createElement(
-                'div',
-                { className: 'row' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'widget widget-featured-products' },
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'widget-title' },
-                      'Top Sellers'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/01.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Oakley Kickback'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$155.00'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/03.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Vented Straw Fedora'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$49.50'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/04.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Big Wordmark Tote'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$29.99'
-                        )
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'widget widget-featured-products' },
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'widget-title' },
-                      'New Arrivals'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/05.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Union Park'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$49.99'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/06.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Cole Haan Crossbody'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$200.00'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/07.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Skagen Holst Watch'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$145.00'
-                        )
-                      )
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-4 col-sm-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'widget widget-featured-products' },
-                    _react2.default.createElement(
-                      'h3',
-                      { className: 'widget-title' },
-                      'Best Rated'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/08.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Jordan\'s City Hoodie'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$65.00'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/09.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Palace Shell Track Jacket'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$36.99'
-                        )
-                      )
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'entry' },
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-thumb' },
-                        _react2.default.createElement(
-                          'a',
-                          { href: 'shop-single.html' },
-                          _react2.default.createElement('img', { src: 'img/shop/widget/10.jpg', alt: 'Product' })
-                        )
-                      ),
-                      _react2.default.createElement(
-                        'div',
-                        { className: 'entry-content' },
-                        _react2.default.createElement(
-                          'h4',
-                          { className: 'entry-title' },
-                          _react2.default.createElement(
-                            'a',
-                            { href: 'shop-single.html' },
-                            'Off the Shoulder Top'
-                          )
-                        ),
-                        _react2.default.createElement(
-                          'span',
-                          { className: 'entry-meta' },
-                          '$128.00'
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'bg-faded padding-top-3x padding-bottom-3x' },
-              _react2.default.createElement(
-                'div',
-                { className: 'container' },
-                _react2.default.createElement(
-                  'h3',
-                  { className: 'text-center mb-30 pb-2' },
-                  'Popular Brands'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'owl-carousel', 'data-owl-carousel': '{ "nav": false, "dots": false, "loop": true, "autoplay": true, "autoplayTimeout": 4000, "responsive": {"0":{"items":2}, "470":{"items":3},"630":{"items":4},"991":{"items":5},"1200":{"items":6}} }' },
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/01.png', alt: 'Adidas' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/02.png', alt: 'Brooks' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/03.png', alt: 'Valentino' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/04.png', alt: 'Nike' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/05.png', alt: 'Puma' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/06.png', alt: 'New Balance' }),
-                  _react2.default.createElement('img', { className: 'd-block w-110 opacity-75 m-auto', src: 'img/brands/07.png', alt: 'Dior' })
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'container padding-top-3x padding-bottom-2x' },
-              _react2.default.createElement(
-                'div',
-                { className: 'row' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
-                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/01.png', alt: 'Shipping' }),
-                  _react2.default.createElement(
-                    'h6',
-                    null,
-                    'Free Worldwide Shipping'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    { className: 'text-muted margin-bottom-none' },
-                    'Free shipping for all orders over $100'
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
-                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/02.png', alt: 'Money Back' }),
-                  _react2.default.createElement(
-                    'h6',
-                    null,
-                    'Money Back Guarantee'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    { className: 'text-muted margin-bottom-none' },
-                    'We return money within 30 days'
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
-                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/03.png', alt: 'Support' }),
-                  _react2.default.createElement(
-                    'h6',
-                    null,
-                    '24/7 Customer Support'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    { className: 'text-muted margin-bottom-none' },
-                    'Friendly 24/7 customer support'
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-3 col-sm-6 text-center mb-30' },
-                  _react2.default.createElement('img', { className: 'd-block w-90 img-thumbnail rounded-circle mx-auto mb-3', src: 'img/services/04.png', alt: 'Payment' }),
-                  _react2.default.createElement(
-                    'h6',
-                    null,
-                    'Secure Online Payment'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    { className: 'text-muted margin-bottom-none' },
-                    'We posess SSL / Secure Certificate'
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(_footer2.default, null)
-          ),
-          _react2.default.createElement(
-            'a',
-            { className: 'scroll-to-top-btn', href: '#' },
-            _react2.default.createElement('i', { className: 'icon-arrow-up' })
-          ),
-          _react2.default.createElement('div', { className: 'site-backdrop' })
-        )
-      );
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
     }
-  }]);
+  };
+}
 
-  return App;
-}(_react.Component);
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
 
-_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
 
 /***/ })
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=5.bundle.map
